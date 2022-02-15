@@ -29,3 +29,52 @@ if (strpos($route, '/cart') !== false) {
 
 
 }
+if (strpos($route, '/login') !== false) {
+
+    $isPost = strtoupper($_SERVER['REQUEST_METHOD']) === 'POST';
+    $emailadress = "";
+    $password = "";
+    $errors = [];
+    $hasError = false;
+
+    if ($isPost) {
+
+        $emailadress = filter_input(INPUT_POST, 'emailadress');
+        $password = filter_input(INPUT_POST, 'password');
+
+
+        if (false === (bool) $emailadress) {
+            $errors[] = "Das Feld der Email Adresse ist leer";
+        }
+        if (false === (bool) $password) {
+            $errors[] = "Das Feld des Passwortes ist leer";
+        }
+
+        $userData = getUserData($emailadress);
+        if (0 === count($userData)) {
+            $errors[] = "Email existiert nicht";
+        }
+
+        if ((bool) $password && isset($userData['passwort']) && false === password_verify($password, $userData['passwort'])) {
+            $errors[] = "Passwort stimmt nicht";
+        }
+        if (0 === count($errors)) {
+            $_SESSION['userid'] = (int)$userData['kundenid'];
+        }
+    }
+    $hasError = count($errors) > 0;
+    var_dump($errors);
+    require 'templates/login.php';
+    exit();
+}
+
+
+if (strpos($route, '/checkout') !== false) {
+
+    if(!isLoggedIn()) {
+        header("Location: /Webshop/index.php/login");
+        exit();
+    }
+
+    exit();
+}

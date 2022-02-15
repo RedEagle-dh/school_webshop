@@ -14,7 +14,25 @@ function getCurrentUserId()
 
     }
 
-
-
     return $userid;
+}
+
+function isLoggedIn():bool {
+    return isset($_SESSION['userid']);
+
+
+}
+
+function getUserData(string $username):array {
+    $sql = "SELECT kundenid, passwort FROM kunde WHERE email = '".$username."'";
+    $stmt = db_query($sql);
+    if (false === $stmt) {
+        return [];
+    }
+    if (0 === $stmt->num_rows) {
+        return [];
+    }
+    $row = $stmt->fetch_row();
+    return $row;
+
 }

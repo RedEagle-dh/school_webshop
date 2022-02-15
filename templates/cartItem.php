@@ -1,10 +1,20 @@
 <div class="row">
+    <hr>
 <div class="col-4">
+    <div class="form-check">
+
+        <input class="form-check-input form-check-input-bg" type="checkbox" value="" id="flexCheckDefault">
+
+
+    </div>
     <img src="<?= $cartItem[4] ?>" class="center" alt="...">
 </div>
 <div class="col-8">
-    <div><?= $cartItem[1] ?></div>
+    <div><h5 class="card-title"><?= $cartItem[1] ?></h5></div>
     <div><?= $cartItem[2] ?></div>
-    <div><?= $cartItem[3] ?></div>
+    <br>
+
+    <div><h5 class="card-title"><?= $cartItem[3] ?>€</h5></div>
 </div>
+
 </div>

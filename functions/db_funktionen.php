@@ -66,4 +66,11 @@
 	function zeigeParameter() {
 
 	}
+
+
+	function db_exe($sql) {
+		mysqli_stmt_execute($sql);
+
+
+	}
 ?>
