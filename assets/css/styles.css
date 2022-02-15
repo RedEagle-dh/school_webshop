@@ -1,0 +1,13 @@
+#test {
+    height: 70%;
+    width: 70%;
+
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    max-height: 200px;
+}
