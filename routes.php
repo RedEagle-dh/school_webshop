@@ -14,6 +14,10 @@ if (!$route) {
 }
 
 if (strpos($route, '/cart/add/') !== false) {
+    if(!isLoggedIn()) {
+        header("Location: /Webshop/index.php/login");
+        exit();
+    }
     addProductToCart($route, $userid);
 
     header("Location: /Webshop/index.php");
@@ -90,5 +94,12 @@ if (strpos($route, '/checkout') !== false) {
         echo "eingeloggt";
     }
 
+    exit();
+}
+
+
+if(strpos($route, '/register') !== false) {
+    //header("Location: /Webshop/index.php/register");
+    require 'templates/register.php';
     exit();
 }

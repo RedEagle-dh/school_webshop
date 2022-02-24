@@ -56,12 +56,17 @@ include 'templates\navbar.php';
             </div>
             <div class="card-footer">
                 <button class="btn btn-success" type="submit">Login</button>
+                
             </div>
+            
 
         </div>
 
 
     </form>
+    <form method="get" action="index.php/register" >
+                    <button class="btn btn-success" type="submit">Register</button>
+                </form>
 
 
 </section>
