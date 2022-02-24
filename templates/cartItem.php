@@ -14,7 +14,12 @@
     <div><?= $cartItem[2] ?></div>
     <br>
 
-    <div><h5 class="card-title"><?= $cartItem[3] ?>€</h5></div>
+    <div><h5 class="card-title"><?php
+            $cost = number_format($cartItem[3], 2);
+            echo "$cost";
+
+
+             ?>€</h5></div>
 </div>
 
 </div>

@@ -29,6 +29,8 @@ if (strpos($route, '/cart') !== false) {
 
 
 }
+
+// Login überprüfung
 if (strpos($route, '/login') !== false) {
 
     $isPost = strtoupper($_SERVER['REQUEST_METHOD']) === 'POST';
@@ -55,11 +57,19 @@ if (strpos($route, '/login') !== false) {
             $errors[] = "Email existiert nicht";
         }
 
-        if ((bool) $password && isset($userData['passwort']) && false === password_verify($password, $userData['passwort'])) {
+        if ($password && isset($userData['passwort']) && false === password_verify($password, $userData['passwort'])) {
             $errors[] = "Passwort stimmt nicht";
         }
         if (0 === count($errors)) {
-            $_SESSION['userid'] = (int)$userData['kundenid'];
+            $_SESSION['userid'] = (int)$userData[0];
+            bindCartItemsToUser($_COOKIE['userid'], (int) $userData[0]);
+            setcookie('userid', (int) $userData[0]);
+            $redirectTarget = 'Webshop/index.php';
+            if (isset($_SESSION['redirectTarget'])) {
+                $redirectTarget = $_SESSION['redirectTarget'];
+            }
+            header("Location: ".$redirectTarget);
+            exit();
         }
     }
     $hasError = count($errors) > 0;
@@ -69,11 +79,15 @@ if (strpos($route, '/login') !== false) {
 }
 
 
+
 if (strpos($route, '/checkout') !== false) {
 
     if(!isLoggedIn()) {
+        $_SESSION['redirectTarget'] = 'Webshop/index.php/checkout';
         header("Location: /Webshop/index.php/login");
         exit();
+    } else {
+        echo "eingeloggt";
     }
 
     exit();

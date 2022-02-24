@@ -30,3 +30,9 @@
          }
          return $found;
      }
+
+     function bindCartItemsToUser(int $sourceId, int $targetId) {
+         $sql = "UPDATE cart SET userid = $targetId WHERE userid = $sourceId";
+         db_query($sql);
+
+     }
