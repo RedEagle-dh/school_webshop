@@ -14,6 +14,10 @@ if (!$route) {
 }
 
 if (strpos($route, '/cart/add/') !== false) {
+    if(!isLoggedIn()) {
+        header("Location: /Webshop/index.php/login");
+        exit();
+    }
     addProductToCart($route, $userid);
 
     header("Location: /Webshop/index.php");
@@ -59,7 +63,9 @@ if (strpos($route, '/login') !== false) {
             $errors[] = "Passwort stimmt nicht";
         }
         if (0 === count($errors)) {
-            $_SESSION['userid'] = (int)$userData['kundenid'];
+            $_SESSION['userid'] = (int)$userData[0];
+            //setcookie('userid', (int)$userData[0], strtotime('+30 days'));
+
         }
     }
     $hasError = count($errors) > 0;
@@ -76,5 +82,12 @@ if (strpos($route, '/checkout') !== false) {
         exit();
     }
 
+    exit();
+}
+
+
+if(strpos($route, '/register') !== false) {
+    //header("Location: /Webshop/index.php/register");
+    require 'templates/register.php';
     exit();
 }

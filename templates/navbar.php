@@ -55,19 +55,50 @@
                     margin-right: 10px;
                 }
             </style>
-            <form class="d-flex" method="get" action="index.php/cart">
+            
+            
+            
+            
+                
 
-                <button class="btn btn-outline-success" type="submit">Warenkorb (<?php
-                    require_once 'functions/cartFunctions.php';
+            
+
+            <?php 
+            if(!isLoggedIn()) {
+                echo "<form class=\"d-flex\" method=\"get\" action=\"index.php/login\" id=\"onetwo\">
+
+                <button class=\"btn btn-outline-success\" type=\"submit\">Login/Register
+
+                    
+                </button>
+            </form>";
+            } else {
+                echo "<form class=\"d-flex\" method=\"get\" action=\"index.php/cart\" id=\"onetwo\">
+
+                <button class=\"btn btn-outline-success\" type=\"submit\">Warenkorb (";
+
+                require_once 'functions/cartFunctions.php';
                     require_once 'functions/user.php';
                     $userid = getCurrentUserId();
                     $items = countCartItems($userid);
                     echo "$items";
+                echo ") </button>
+                </form>";
 
 
-                    ?>)
-                </button>
-            </form>
+
+
+                echo "<form class=\"d-flex\" method=\"get\" action=\"...\">
+                <a href=\"google.de\">
+<img src=\"usericon.png\" alt=\"\">
+                </a>
+
+
+            </form>";
+            }
+            
+            
+            ?>
 
         </div>
     </div>

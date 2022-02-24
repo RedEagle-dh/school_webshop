@@ -48,15 +48,22 @@ include 'templates\navbar.php';
                             <h5 class="card-title">Summe</h5>
                             <p class="card-text"><?= countCartItems(getCurrentUserId());?> Artikel: <?php
                             $prod = getCartItemsForUser(getCurrentUserId());
-                            $sql = "SELECT SUM(preis) FROM cart JOIN produkte p on cart.productid = p.artnr";
+                            
+                            //$sql = "SELECT SUM(preis) FROM cart JOIN produkte p on cart.productid = p.artnr";
+                            $sql = "SELECT sum(preis) FROM cart, produkte WHERE productid = artnr AND userid = $userid";
                             $result = db_query($sql);
 
                             while ($row = mysqli_fetch_row($result)) {
                                 $sum = $row[0];
                             }
-
-                            $erg = number_format($sum, 2);
-                            echo "$erg";
+                            if($sum == 0) {
+                                echo "0€";
+                                
+                            } else {
+                                $erg = number_format($sum, 2);
+                                echo "$erg";
+                            }
+                            
                             ?></div>
                     </div>
                     <div class="card-footer">
