@@ -148,6 +148,8 @@
 
                                         <button type="submit" class="btn btn-light btn-lg" data-mdb-ripple-color="dark">Register</button>
 
+
+                                        
                                     </div>
                                 </div>
                             </div>

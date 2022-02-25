@@ -64,6 +64,7 @@ include 'templates\navbar.php';
                                 echo "$erg";
                             }
                             
+                            
                             ?></div>
                     </div>
                     <div class="card-footer">

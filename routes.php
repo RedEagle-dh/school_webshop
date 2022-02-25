@@ -34,6 +34,7 @@ if (strpos($route, '/cart') !== false) {
 
 }
 
+
 // Login überprüfung
 if (strpos($route, '/login') !== false) {
 
