@@ -97,9 +97,57 @@ if (strpos($route, '/checkout') !== false) {
     exit();
 }
 
+if (strpos($route, '/registercheck') !== false) {
+
+    $isPost = strtoupper($_SERVER['REQUEST_METHOD']) === 'POST';
+    $emailadress = "";
+    $passwordFromForm = "";
+    $fname = "";
+    $lname = "";
+    $city = "";
+    $phone  = "";
+    $zip  = "";
+    $street  = "";
+    $hnr  = "";
+    $addinfo  = "";
+    $title  = "";
+    $country  = "";
+
+
+    if ($isPost) {
+        $emailadress = filter_input(INPUT_POST, 'emailadress');
+        $passwordFromForm = filter_input(INPUT_POST, 'password');
+        $password = password_hash($passwordFromForm, PASSWORD_DEFAULT);
+        $fname = filter_input(INPUT_POST, 'fname');
+        $lname = filter_input(INPUT_POST, 'lname');
+        $city = filter_input(INPUT_POST, 'city');
+        $phone = filter_input(INPUT_POST, 'phone');
+        $zip = filter_input(INPUT_POST, 'zip');
+        $street = filter_input(INPUT_POST, 'street');
+        $hnr = filter_input(INPUT_POST, 'hnr');
+        $addinfo = filter_input(INPUT_POST, 'addinfo');
+        $title = filter_input(INPUT_POST, 'title');
+        $country = filter_input(INPUT_POST, 'country');
+        var_dump($_SESSION['userid']);
+        $sql = "INSERT INTO kunde SET email = '" . $emailadress . "', passwort = '" . $password . "', titel = '" . $title . "', vorname = '" . $fname . "', nachname = '" . $lname . "', telefonnummer = '" . $phone . "', adresseid = 3, zahlungsid = 1, wunschlistenid = 1, rechnungsid = 1, kundenid = '".$_SESSION['userid']."';";
+        db_query($sql);
+        $sql = "INSERT INTO adressen SET strasse = '" . $street . "', hausnummer = '" . $hnr . "', plz = '" . $zip . "', ort = '" . $city . "', land = '" . $country . "', addinfo = '" . $addinfo . "', adresseid = '".$_SESSION['userid']."';";
+        
+
+        
+        db_query($sql);
+
+        
+    }
+
+
+    require 'templates/register.php';
+    exit();
+}
 
 if(strpos($route, '/register') !== false) {
-    //header("Location: /Webshop/index.php/register");
-    require 'templates/register.php';
+    $_SESSION['redirectTarget'] = 'Webshop/index.php/register';
+    header("Location: /Webshop/index.php/registercheck");
+    
     exit();
 }

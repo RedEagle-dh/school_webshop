@@ -17,3 +17,45 @@
     margin-left: 30%;
     margin-right: 30%;
 }
+
+@media (min-width: 1025px) {
+  .h-custom {
+    height: 100vh !important;
+  }
+}
+.card-registration .select-input.form-control[readonly]:not([disabled]) {
+  font-size: 1rem;
+  line-height: 2.15;
+  padding-left: .75em;
+  padding-right: .75em;
+}
+.card-registration .select-arrow {
+  top: 13px;
+}
+
+.gradient-custom-2 {
+  /* fallback for old browsers 
+  background: #a1c4fd;*/
+
+  /* Chrome 10-25, Safari 5.1-6 
+  background: -webkit-linear-gradient(to right, rgb(63, 63, 63), rgb(148, 148, 148));*/
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ 
+  background: linear-gradient(to right, rgb(63, 63, 63), rgba(148, 148, 148))*/
+}
+
+.bg-indigo {
+  background-color: #198754;
+}
+@media (min-width: 992px) {
+  .card-registration-2 .bg-indigo {
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+  }
+}
+@media (max-width: 991px) {
+  .card-registration-2 .bg-indigo {
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+  }
+}
