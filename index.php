@@ -9,9 +9,7 @@ require 'includes.php';
 
 $userid = getCurrentUserId();
 $products = getAllProducts();
-$_SESSION['userid'] = $userid;
-var_dump($_SESSION['userid']);
-//setcookie('userid', $userid, strtotime('+30 days'));
+
 
 
 

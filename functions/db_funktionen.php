@@ -39,7 +39,7 @@
 				"Fehler beim MySQL-Befehl " .
 				$fehler .
 				"<li> Fehlernummer errno = " .
-				mysqli_errno() .
+				mysqli_errno().
 				"<li> Fehlertext error = " .
 				mysqli_error();
 		}

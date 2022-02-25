@@ -7,26 +7,16 @@ function getCurrentUserId()
     if (isset($_SESSION['userid'])) {
         $userid = (int)$_SESSION['userid'];
 
-    } else {
-        $_SESSION['userid'] = random_int(0, time());
-    }
-
-    if (isset($_COOKIE['userid'])) {
-        $userid = (int)$_COOKIE['userid'];
-
-    }
+    } 
 
     
-
     return $userid;
 }
 
-function getCurrentUserName(int $userid) {
-    
-}
 
 function isLoggedIn():bool {
-    return isset($_COOKIE['userid']);
+    
+    return isset($_SESSION['userid']);
 }
 
 function getUserData(string $username):array {
@@ -43,8 +33,9 @@ function getUserData(string $username):array {
 
 }
 
-function getUserStatus(string $username) {
-    $sql = "SELECT status FROM kunde WHERE email = '".$username."'";
+function getCurrentUserStatus() {
+    $userID = getCurrentUserId();
+    $sql = "SELECT status FROM kunde WHERE kundenid = '".$userID."'";
     $result = db_query($sql);
     $enum = "";
     while ($row = mysqli_fetch_row($result)) {

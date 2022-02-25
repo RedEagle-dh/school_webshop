@@ -49,7 +49,7 @@ include 'templates\navbar.php';
                             <p class="card-text"><?= countCartItems(getCurrentUserId());?> Artikel: <?php
                             $prod = getCartItemsForUser(getCurrentUserId());
                             
-                            //$sql = "SELECT SUM(preis) FROM cart JOIN produkte p on cart.productid = p.artnr";
+                            
                             $sql = "SELECT sum(preis) FROM cart, produkte WHERE productid = artnr AND userid = $userid";
                             $result = db_query($sql);
 
@@ -65,7 +65,7 @@ include 'templates\navbar.php';
                             }
                             
                             
-                            ?></div>
+                            ?>€</div>
                     </div>
                     <div class="card-footer">
                         <a href="index.php/checkout" class="btn btn-success">Zur Kasse</a>

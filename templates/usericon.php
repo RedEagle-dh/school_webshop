@@ -26,13 +26,12 @@
                     <li><a class="dropdown-item" href="index.php/signout">Sign out</a></li>
 
                     <!-- Nur wenn man Admin ist, abfrage mit PHP -->
-                    <?php if('ADMIN' == getUserStatus("david.hermann2003@gmail.com")) {
+                    <?php if('ADMIN' == getCurrentUserStatus(getCurrentUserId())) {
                         echo '<li>
                         <hr class="dropdown-divider">
                     </li>
                     <li><a class="dropdown-item" href="#">Adminpanel</a></li>';
                     }
-                    var_dump(getUserStatus("david.hermann2003@gmail.com"));
                     
                     ?>
                     
