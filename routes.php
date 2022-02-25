@@ -66,8 +66,15 @@ if (strpos($route, '/login') !== false) {
             $errors[] = "Passwort stimmt nicht";
         }
         if (0 === count($errors)) {
+            if (isset($_COOKIE['userid'])) {
+                unset($_COOKIE['userid']);
+            }
+        
+            if (isset($_SESSION['userid'])) {
+                unset($_SESSION['userid']);
+            }
             $_SESSION['userid'] = (int)$userData[0];
-            bindCartItemsToUser($_COOKIE['userid'], (int) $userData[0]);
+            
             setcookie('userid', (int) $userData[0]);
             $redirectTarget = 'Webshop/index.php';
             if (isset($_SESSION['redirectTarget'])) {
@@ -129,14 +136,27 @@ if (strpos($route, '/registercheck') !== false) {
         $addinfo = filter_input(INPUT_POST, 'addinfo');
         $title = filter_input(INPUT_POST, 'title');
         $country = filter_input(INPUT_POST, 'country');
-        var_dump($_SESSION['userid']);
-        $sql = "INSERT INTO kunde SET email = '" . $emailadress . "', passwort = '" . $password . "', titel = '" . $title . "', vorname = '" . $fname . "', nachname = '" . $lname . "', telefonnummer = '" . $phone . "', adresseid = 3, zahlungsid = 1, wunschlistenid = 1, rechnungsid = 1, kundenid = '".$_SESSION['userid']."';";
-        db_query($sql);
-        $sql = "INSERT INTO adressen SET strasse = '" . $street . "', hausnummer = '" . $hnr . "', plz = '" . $zip . "', ort = '" . $city . "', land = '" . $country . "', addinfo = '" . $addinfo . "', adresseid = '".$_SESSION['userid']."';";
-        
+        //var_dump($_COOKIE['userid']);
 
-        
+        $sqlreadadressid = "SELECT adresseid FROM kunde ORDER BY adresseid ASC";
+        $result = db_query($sqlreadadressid);
+        $id = "";
+        while ($row = mysqli_fetch_row($result)) {
+            $id = $row[0];
+        }
+
+        $newadressid = $id[0] + 1;
+        //$_SESSION['userid'] = 2;
+        if (isset($_SESSION['userid'])) {
+            echo $_SESSION['userid'];
+        }
+        $sql = "INSERT INTO kunde SET email = '" . $emailadress . "', passwort = '" . $password . "', titel = '" . $title . "', vorname = '" . $fname . "', nachname = '" . $lname . "', telefonnummer = '" . $phone . "', adresseid = '" . $newadressid . "', zahlungsid = 1, wunschlistenid = 1, rechnungsid = 1, kundenid = '" . $_SESSION['userid'] . "';";
         db_query($sql);
+        $sql = "INSERT INTO adressen SET strasse = '" . $street . "', hausnummer = '" . $hnr . "', plz = '" . $zip . "', ort = '" . $city . "', land = '" . $country . "', addinfo = '" . $addinfo . "', adresseid = '" . $newadressid . "';";
+        db_query($sql);
+        $_SESSION['redirectTarget'] = 'Webshop/#';
+        header("Location: Webshop/index.php/login");
+        exit();
 
         
     }
@@ -151,4 +171,17 @@ if(strpos($route, '/register') !== false) {
     header("Location: /Webshop/index.php/registercheck");
     
     exit();
+}
+
+
+if (strpos($route, '/signout') !== false) {
+    session_destroy();
+    /*if (isset($_COOKIE['userid'])) {
+        unset($_COOKIE['userid']);
+    }*/
+
+    if (isset($_SESSION['userid'])) {
+        unset($_SESSION['userid']);
+    }
+    $past = time() - 3600;
 }

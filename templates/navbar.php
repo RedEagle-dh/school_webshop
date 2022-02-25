@@ -2,10 +2,10 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">Dave's Webshop</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+        <!-- Dropdown Menü -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
@@ -14,10 +14,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Link</a>
                 </li>
-                <!-- Dropdown Menü -->
+
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Kategorie
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -55,16 +54,16 @@
                     margin-right: 10px;
                 }
             </style>
-            
-            
-            
-            
-                
 
-            
 
-            <?php 
-            if(!isLoggedIn()) {
+
+
+
+
+
+
+            <?php
+            if (!isLoggedIn()) {
                 echo "<form class=\"d-flex\" method=\"get\" action=\"index.php/login\" id=\"onetwo\">
 
                 <button class=\"btn btn-outline-success\" type=\"submit\">Login/Register
@@ -78,10 +77,10 @@
                 <button class=\"btn btn-outline-success\" type=\"submit\">Warenkorb (";
 
                 require_once 'functions/cartFunctions.php';
-                    require_once 'functions/user.php';
-                    $userid = getCurrentUserId();
-                    $items = countCartItems($userid);
-                    echo "$items";
+                require_once 'functions/user.php';
+                $userid = getCurrentUserId();
+                $items = countCartItems($userid);
+                echo "$items";
                 echo ") </button>
                 </form>";
 
@@ -89,16 +88,10 @@
                 
 
 
-                echo "<form class=\"d-flex\" method=\"get\" action=\"...\">
-                <a href=\"google.de\">
-<img src=\"usericon.png\" alt=\"\">
-                </a>
-
-
-            </form>";
+                require 'templates/usericon.php';
             }
-            
-            
+
+
             ?>
 
         </div>
