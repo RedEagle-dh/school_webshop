@@ -1,8 +1,9 @@
 <!-- Navigationsbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">Dave's Webshop</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            
             <span class="navbar-toggler-icon"></span>
         </button>
         <!-- Dropdown Menü -->
@@ -27,7 +28,7 @@
                         $result = db_query($sql);
 
                         while ($row = mysqli_fetch_row($result)) {
-                            echo "<li><a class=\"dropdown-item\" href=\"#\">$row[1]</a></li>";
+                            echo "<li><a class=\"dropdown-item\" href=\"index.php/category.php?cat=$row[0]\">$row[1]</a></li>";
                         }
 
 
@@ -45,8 +46,8 @@
                     <a class="nav-link disabled">Coming Soon</a>
                 </li>
             </ul>
-            <form class="d-flex" id="onetwo">
-                <input class="form-control me-2" type="search" placeholder="Name/ArtNr" aria-label="Search">
+            <form class="d-flex" id="onetwo" action="index.php/search" method="POST">
+                <input class="form-control me-2" type="search" placeholder="Name/ArtNr" aria-label="Search" name="searchproduct">
                 <button class="btn btn-outline-success" type="submit">Suche</button>
             </form>
             <style>

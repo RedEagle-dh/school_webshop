@@ -14,6 +14,7 @@
 <?php
 include 'templates\navbar.php';
 
+
 ?>
 
 <br><br><br>
@@ -46,26 +47,7 @@ include 'templates\navbar.php';
 
                         <div class="card-body">
                             <h5 class="card-title">Summe</h5>
-                            <p class="card-text"><?= countCartItems(getCurrentUserId());?> Artikel: <?php
-                            $prod = getCartItemsForUser(getCurrentUserId());
-                            
-                            
-                            $sql = "SELECT sum(preis) FROM cart, produkte WHERE productid = artnr AND userid = $userid";
-                            $result = db_query($sql);
-
-                            while ($row = mysqli_fetch_row($result)) {
-                                $sum = $row[0];
-                            }
-                            if($sum == 0) {
-                                echo "0€";
-                                
-                            } else {
-                                $erg = number_format($sum, 2);
-                                echo "$erg";
-                            }
-                            
-                            
-                            ?>€</div>
+                            <p class="card-text"><?= countCartItems(getCurrentUserId());?> Artikel: <?= getCartPrice(getCurrentUserId())?>€</div>
                     </div>
                     <div class="card-footer">
                         <a href="index.php/checkout" class="btn btn-success">Zur Kasse</a>
@@ -102,7 +84,14 @@ include 'templates\navbar.php';
 
 </div>
 
-
+<footer class="my-5 pt-5 text-muted text-center text-small">
+            <p class="mb-1">&copy; 2022 Dave's Webshop GmbH</p>
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="#">Privacy</a></li>
+                <li class="list-inline-item"><a href="#">Terms</a></li>
+                <li class="list-inline-item"><a href="#">Support</a></li>
+            </ul>
+        </footer>
 
 
 

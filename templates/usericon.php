@@ -10,9 +10,9 @@
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <img src="usericon.png" alt="...">
                 </a>
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <ul class="dropdown-menu dropdown-menu-end shadow animated--grow-in" aria-labelledby="navbarDropdown">
 
-                    <li><a href="#" class="dropdown-item">
+                    <li><a href="index.php/settings" class="dropdown-item">
                             Settings
                         </a></li>
                     <li><a href="#" class="dropdown-item">
@@ -30,7 +30,7 @@
                         echo '<li>
                         <hr class="dropdown-divider">
                     </li>
-                    <li><a class="dropdown-item" href="#">Adminpanel</a></li>';
+                    <li><a class="dropdown-item" href="index.php/admin">Adminpanel</a></li>';
                     }
                     
                     ?>

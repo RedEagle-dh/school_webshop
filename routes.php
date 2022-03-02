@@ -62,7 +62,7 @@ if (strpos($route, '/login') !== false) {
             $errors[] = "Email existiert nicht";
         }
 
-        if ($password && isset($userData['passwort']) && false === password_verify($password, $userData['passwort'])) {
+        if ($password && isset($userData[1]) && false === password_verify($password, $userData[1])) {
             $errors[] = "Passwort stimmt nicht";
         }
         if (0 === count($errors)) {
@@ -94,7 +94,9 @@ if (strpos($route, '/checkout') !== false) {
         header("Location: /Webshop/index.php/login");
         exit();
     } else {
-        echo "eingeloggt";
+        $cartItems = getCartItemsForUser($userid);
+        require 'templates/checkout.php';
+        exit();
     }
 
     exit();
@@ -181,3 +183,54 @@ if (strpos($route, '/signout') !== false) {
     
     exit();
 }
+
+
+if (strpos($route, '/productsite') !== false) {
+
+    require 'templates/productsite.php';
+    exit();
+}
+
+if (strpos($route, '/category') !== false) {
+    require 'templates/category.php';
+    exit();
+}
+
+if (strpos($route, '/throw') !== false) {
+    $sql = "DELETE FROM webshop.cart WHERE id = '" . $_GET['id'] . "';";
+    db_query($sql);
+
+    header("Location: /Webshop/index.php/cart?");
+    require 'templates/warenkorb.php';
+    exit();
+}
+
+if (strpos($route, '/search') !== false) {
+    
+   
+    require 'templates/searchsite.php';
+    exit();
+
+
+} 
+
+
+if (strpos($route, '/admin') !== false) {
+    
+   
+    require 'templates/adminpanel.php';
+    exit();
+
+
+} 
+
+if (strpos($route, '/settings') !== false) {
+    
+   
+    require 'templates/settings.php';
+    exit();
+
+
+} 
+
+

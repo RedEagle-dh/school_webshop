@@ -9,7 +9,7 @@ require 'includes.php';
 
 $userid = getCurrentUserId();
 $products = getAllProducts();
-
+$produkteVonKategorie = getProductFromCategory();
 
 
 

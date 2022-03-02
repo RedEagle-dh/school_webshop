@@ -1,4 +1,4 @@
-<div class="card" style="width: 18rem;">
+<div class="card shadow" style="width: 18rem;">
     <div class="card-title">
 
 
@@ -11,6 +11,6 @@
         <a href="index.php/cart/add/<?= $product[0] ?>" class="btn btn-success">Add to cart</a>
 
 
-        <a href="productsite.php" class="btn btn-secondary">More</a>
+        <a href="index.php/productsite.php?id=<?= $product[0] ?>" class="btn btn-secondary">More</a>
     </div>
 </div>
