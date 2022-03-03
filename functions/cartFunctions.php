@@ -8,6 +8,12 @@
          return $result;
      }
 
+     function getProdcutThatWantsToBeAddedToCart($route) {
+        $routeParts = explode('/', $route);
+        $productId = (int) $routeParts[3];
+        return $productId;
+     }
+
      function countCartItems($userid) {
          $sql = "SELECT COUNT(id) FROM cart WHERE userid =" . $userid;
          $cartResult = db_query($sql);

@@ -18,9 +18,15 @@ if (strpos($route, '/cart/add/') !== false) {
         header("Location: /Webshop/index.php/login");
         exit();
     }
-    addProductToCart($route, $userid);
 
-    header("Location: /Webshop/index.php");
+    if(getProduct(getProdcutThatWantsToBeAddedToCart($route)) == 0) {
+        addProductToCart($route, $userid);
+    } else {
+        var_dump(getProduct(getProdcutThatWantsToBeAddedToCart($route)));
+    }
+    
+
+    //header("Location: /Webshop/index.php");
     exit();
 }
 

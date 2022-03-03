@@ -33,3 +33,22 @@ function getProductFromCategory()
 
     return $products;
 }
+
+function getProduct(int $productid)
+{
+    $userid = getCurrentUserId();
+    $sql = "SELECT * FROM cart WHERE userid = $userid AND productid = $productid;";
+    $result = db_query($sql);
+    $i = 0;
+    if (!$result) {
+        return $i;
+    } else {
+       
+        while (mysqli_fetch_row($result)) {
+            
+            $i++;
+        }
+
+        return $i;
+    }
+}
