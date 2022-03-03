@@ -8,14 +8,17 @@
          return $result;
      }
 
-     function getProdcutThatWantsToBeAddedToCart($route) {
+    function getProdcutIDThatWantsToBeAddedToCart($route)
+    {
         $routeParts = explode('/', $route);
         $productId = (int) $routeParts[3];
         return $productId;
      }
 
-     function countCartItems($userid) {
-         $sql = "SELECT COUNT(id) FROM cart WHERE userid =" . $userid;
+     function countCartItems() {
+         $userid = getCurrentUserId();
+        $sql = "SELECT sum(amount) from cart where userid = $userid;";
+         
          $cartResult = db_query($sql);
 
          $cartItems = mysqli_fetch_column($cartResult);
@@ -23,9 +26,9 @@
          return $cartItems;
      }
 
-     function getCartItemsForUser(int $userid):array {
-
-        $sql = "SELECT productid, titel, beschreibung, preis, picture, id FROM cart JOIN produkte ON(cart.productid = produkte.artnr) WHERE userid = " . $userid;
+     function getCartItemsForUser():array {
+        $userid = getCurrentUserId();
+        $sql = "SELECT productid, titel, beschreibung, preis, picture, id, amount FROM cart JOIN produkte ON(cart.productid = produkte.artnr) WHERE userid = " . $userid;
          $results = db_query($sql);
          if ($results === false) {
              return[];
@@ -43,9 +46,10 @@
 
      }
 
-    function getCartPrice(int $userid)
+    function getCartPrice()
     {
-        $sql = "SELECT sum(preis) FROM cart, produkte WHERE productid = artnr AND userid = $userid";
+        $userid = getCurrentUserId();
+        $sql = "SELECT sum(produkte.preis*cart.amount) as gesamtpreis FROM cart, produkte WHERE productid = artnr AND userid = $userid;";
         $result = db_query($sql);
 
         while ($row = mysqli_fetch_row($result)) {
@@ -58,3 +62,13 @@
             return $erg;
         }
     }
+
+    function updateAmount($productid, $aum)
+    {
+        $userid = getCurrentUserId();
+        $anzahl = getProduct($productid) + $aum;
+        $sql = "UPDATE cart SET amount = $anzahl WHERE productid = $productid AND userid = $userid;";
+        db_query($sql);
+    }
+
+   

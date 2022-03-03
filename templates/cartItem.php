@@ -28,6 +28,15 @@
                                     ?>€</h5>
         </div>
 
+        <div class="form-group col-1" id="sel1">
+            <label for="sel1">Anzahl:</label>
+            <select class="form-control" disabled>
+                <option selected><?= $cartItem[6] ?></option>
+                
+            </select>
+
+        </div>
+
     </div>
 
 </div>

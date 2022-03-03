@@ -43,3 +43,19 @@ function getCurrentUserStatus() {
     }
     return $enum;
 }
+
+
+function getCurrentUserName() {
+    $userid = getCurrentUserId();
+    $sql = "SELECT vorname, nachname FROM kunde WHERE kundenid = '".$userid."';";
+    $result = db_query($sql);
+    $name = "";
+    $lname = "";
+    $rname = "";
+    while ($row = mysqli_fetch_row($result)) {
+        $name = $row[0];
+        $lname = $row[1];
+    }
+    $rname = $name . " " . $lname;
+    return $rname;
+}

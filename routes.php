@@ -14,19 +14,20 @@ if (!$route) {
 }
 
 if (strpos($route, '/cart/add/') !== false) {
+    $productid = getProdcutIDThatWantsToBeAddedToCart($route);
     if(!isLoggedIn()) {
         header("Location: /Webshop/index.php/login");
         exit();
     }
 
-    if(getProduct(getProdcutThatWantsToBeAddedToCart($route)) == 0) {
+    if (getProduct($productid) == 0) {
         addProductToCart($route, $userid);
     } else {
-        var_dump(getProduct(getProdcutThatWantsToBeAddedToCart($route)));
+        updateAmount($productid, +1);
     }
-    
 
-    //header("Location: /Webshop/index.php");
+
+    header("Location: /Webshop/index.php");
     exit();
 }
 
@@ -86,7 +87,7 @@ if (strpos($route, '/login') !== false) {
         }
     }
     $hasError = count($errors) > 0;
-    var_dump($errors);
+    //var_dump($errors);
     require 'templates/login.php';
     exit();
 }
@@ -203,8 +204,23 @@ if (strpos($route, '/category') !== false) {
 }
 
 if (strpos($route, '/throw') !== false) {
-    $sql = "DELETE FROM webshop.cart WHERE id = '" . $_GET['id'] . "';";
-    db_query($sql);
+    $userid = getCurrentUserId();
+    $productid = strval($_GET['id']);
+    $sql = "SELECT sum(amount) FROM cart WHERE id = $productid;";
+    $result = db_query($sql);
+    $reg = "";
+    while ($row = mysqli_fetch_row($result)) {
+        $reg = $row[0];
+    }
+    if ($reg == 1) {
+        $sql = "DELETE FROM webshop.cart WHERE id = $productid AND userid = $userid;";
+        db_query($sql);
+    } else {
+        $anzahl = getProductFromBigID($productid) - 1;
+
+        $sql = "UPDATE cart SET amount = $anzahl WHERE id = $productid AND userid = $userid;";
+        db_query($sql);
+    }
 
     header("Location: /Webshop/index.php/cart?");
     require 'templates/warenkorb.php';
@@ -237,6 +253,38 @@ if (strpos($route, '/settings') !== false) {
     exit();
 
 
-} 
+}
+if (strpos($route, '/bought') !== false) {
+    require("fpdf/fpdf.php");
+    $invoicedate = date("d-m-Y");
+    $dlname = filter_input(INPUT_POST, 'dlname');
+
+
+
+    $rfname = filter_input(INPUT_POST, 'rfname');
+    $rlname = filter_input(INPUT_POST, 'rlname');
+    $rstreet = filter_input(INPUT_POST, 'rstreet');
+    $rno = filter_input(INPUT_POST, 'rno');
+    $raddress2 = filter_input(INPUT_POST, 'raddress2');
+    $rcountry = filter_input(INPUT_POST, 'rcountry');
+    $rstate = filter_input(INPUT_POST, 'rstate');
+    $rzip = filter_input(INPUT_POST, 'rzip');
+    
+    $cartItems = getCartItemsForUser();
+
+    include 'erstelleRechnung.php';
+    
+
+	
+
+    
+    //var_dump($dlname, $rcountry);
+
+
+
+
+    require 'erstelleRechnung.php';
+    exit();
+}
 
 

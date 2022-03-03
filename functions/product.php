@@ -37,18 +37,39 @@ function getProductFromCategory()
 function getProduct(int $productid)
 {
     $userid = getCurrentUserId();
-    $sql = "SELECT * FROM cart WHERE userid = $userid AND productid = $productid;";
+    $sql = "SELECT amount FROM cart WHERE userid = $userid AND productid = $productid;";
     $result = db_query($sql);
     $i = 0;
+    $amount = 0;
     if (!$result) {
         return $i;
     } else {
        
-        while (mysqli_fetch_row($result)) {
-            
+        while ($row = mysqli_fetch_row($result)) {
+            $amount = $row[0];
             $i++;
         }
 
+        return $amount;
+    }
+}
+
+function getProductFromBigID(int $productid)
+{
+    $userid = getCurrentUserId();
+    $sql = "SELECT amount FROM cart WHERE userid = $userid AND id = $productid;";
+    $result = db_query($sql);
+    $i = 0;
+    $amount = 0;
+    if (!$result) {
         return $i;
+    } else {
+       
+        while ($row = mysqli_fetch_row($result)) {
+            $amount = $row[0];
+            $i++;
+        }
+
+        return $amount;
     }
 }
