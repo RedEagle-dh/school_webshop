@@ -73,3 +73,38 @@ function getProductFromBigID(int $productid)
         return $amount;
     }
 }
+
+
+function searchProduct()
+{
+    $searchword = $_POST['searchproduct'];
+
+    $sql = "SELECT artnr, titel, beschreibung, preis, picture FROM produkte WHERE titel LIKE '%" . $searchword . "%';";
+    $result = db_query($sql);
+    if (!$result) {
+        return [];
+    }
+    $products = [];
+    while ($row = mysqli_fetch_row($result)) {
+        $products[] = $row;
+    }
+
+
+    return $products;
+}
+
+
+function getCat()
+{
+    $sql = "SELECT artnr, titel, beschreibung, preis, picture, produkte.katid FROM produkte, kategorien WHERE produkte.katid = kategorien.katid AND kategorien.katid = '" . $_GET['cat'] . "'";
+    $result = db_query($sql);
+    if (!$result) {
+        return [];
+    }
+    $products = [];
+    while ($row = mysqli_fetch_row($result)) {
+        $products[] = $row;
+    }
+
+    return $products;
+}

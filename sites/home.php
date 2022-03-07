@@ -6,6 +6,7 @@
     <title>Dave's Webshop</title>
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/dashboard.css">
     <link rel="icon" href="https://lh3.googleusercontent.com/jUoaTIlBn5ibfQcND2n5OMD6Z7xoqNj-ShHlFR6QuLffLXD5pS8V2eNg1rGlrsRrnDkoQ28O8UHzqzBQKAGY4l1CS2NQSq2SkRScK6FOjl82jppyohK-">
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
 
@@ -35,7 +36,7 @@ include 'templates\navbar.php';
 
 </section>
 <footer class="my-5 pt-5 text-muted text-center text-small">
-            <p class="mb-1">&copy; 2022 Dave's Webshop GmbH</p>
+            <p class="mb-1 goingdark">&copy; 2022 Dave's Webshop GmbH</p>
             <ul class="list-inline">
                 <li class="list-inline-item"><a href="#">Privacy</a></li>
                 <li class="list-inline-item"><a href="#">Terms</a></li>

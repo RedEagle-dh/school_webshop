@@ -72,7 +72,7 @@ include 'templates\navbar.php';
 
             <?php foreach ($cartItems as $cartItem): ?>
                 <div class="row">
-                    <?php include 'cartItem.php' ?>
+                    <?php include 'templates/cartItem.php' ?>
 
                 </div>
             <?php endforeach; ?>

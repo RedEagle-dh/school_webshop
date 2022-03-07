@@ -19,8 +19,26 @@ function isLoggedIn():bool {
     return isset($_SESSION['userid']);
 }
 
-function getUserData(string $username):array {
-    $sql = "SELECT kundenid, passwort FROM kunde WHERE email = '".$username."'";
+function getEmailAdress() {
+    $userID = getCurrentUserId();
+    $sql = "SELECT email FROM kunde WHERE kundenid = '".$userID."'";
+    $result = db_query($sql);
+    $email = "";
+    while ($row = mysqli_fetch_row($result)) {
+        $email = $row[0];
+    }
+    return $email;
+}
+
+
+function getUserData($username):array {
+
+    // Änderung, falls irgendwas nicht mehr klappt:
+    // vorher:  Attribut im Methodenkopf $username
+    //          in $sql statt "kundenid" und "$userid" -> "email" und "username"
+
+    
+    $sql = "SELECT kundenid, passwort, vorname, nachname, email, telefonnummer, strasse, hausnummer, addinfo, land, ort, plz FROM kunde, adressen WHERE kunde.adresseid = adressen.adresseid AND email = '".$username."'";
     $stmt = db_query($sql);
     if (false === $stmt) {
         return [];
@@ -32,6 +50,7 @@ function getUserData(string $username):array {
     return $row;
 
 }
+
 
 function getCurrentUserStatus() {
     $userID = getCurrentUserId();

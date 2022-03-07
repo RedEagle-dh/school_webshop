@@ -15,10 +15,7 @@
 <body>
     <?php
     include 'templates\navbar.php';
-
-
-
-    include 'templates\registrationForm.php' ?>
+    include 'templates\registrationForm.html' ?>
 
     <br><br><br>
 

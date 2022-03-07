@@ -101,4 +101,5 @@ $pdf->Cell(25, 6, 'Subtotal', 0, 0);
 $pdf->Cell(45, 6, getCartPrice().EURO, 1, 1, 'R');
 
 
-$pdf->Output();
+$content = $pdf->Output("", "S");
+return $content;

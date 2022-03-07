@@ -15,41 +15,12 @@
 
     <?php
     include 'templates\navbar.php';
-    $sql = "SELECT titel FROM produkte WHERE artnr = '" . $_GET['id'] . "';";
+    $sql = "SELECT titel, beschreibung, preis, picture FROM produkte WHERE artnr = '" . $_GET['id'] . "';";
     $result = db_query($sql);
-    $produktname = [];
-    while ($row = mysqli_fetch_row($result)) {
-        $produktname = $row[0];
-    }
 
-    $sql = "SELECT beschreibung FROM produkte WHERE artnr = '" . $_GET['id'] . "';";
-    $result = db_query($sql);
-    $beschreibung = [];
-    while ($row = mysqli_fetch_row($result)) {
-        $beschreibung = $row[0];
-    }
-
-    $sql = "SELECT preis FROM produkte WHERE artnr = '" . $_GET['id'] . "';";
-    $result = db_query($sql);
-    $preis = [];
-    while ($row = mysqli_fetch_row($result)) {
-        $preis = $row[0];
-    }
-
-    $sql = "SELECT picture FROM produkte WHERE artnr = '" . $_GET['id'] . "';";
-    $result = db_query($sql);
-    $pic = [];
-    while ($row = mysqli_fetch_row($result)) {
-        $pic = $row[0];
-    }
-
-
-
-    ?>
+    $row = mysqli_fetch_row($result);?>
 
     <br><br><br>
-
-
 
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
@@ -57,20 +28,20 @@
         <div class="card">
             <div class="card-body">
                 <h3 class="card-title">
-                    <?= $produktname ?>
+                    <?= $row[0] ?>
                 </h3>
                 <h6 class="card-subtitle">globe type chair for rest</h6>
                 <div class="row">
                     <div class="col-lg-5 col-md-5 col-sm-6">
                         <div class="white-box text-center">
-                            <img src="<?= $pic ?>" class="img-responsive">
+                            <img src="<?= $row[3] ?>" class="img-responsive">
                         </div>
                     </div>
                     <div class="col-lg-7 col-md-7 col-sm-6">
                         <h4 class="box-title mt-5">Product description</h4>
-                        <p><?= $beschreibung ?></p>
+                        <p><?= $row[1] ?></p>
                         <h2 class="mt-5">
-                            <?= $preis ?>€ <small class="text-success">(36%off)</small>
+                            <?= $row[2] ?>€ <small class="text-success">(36%off)</small>
                         </h2>
                         <button class="btn btn-dark btn-rounded mr-1" data-toggle="tooltip" title="" data-original-title="Add to cart">
                             <i class="fa fa-shopping-cart"></i>
@@ -167,11 +138,12 @@
     <script src="assets/js/bootstrap.bundle.js"></script>
 </body>
 <footer class="my-5 pt-5 text-muted text-center text-small">
-            <p class="mb-1">&copy; 2022 Dave's Webshop GmbH</p>
-            <ul class="list-inline">
-                <li class="list-inline-item"><a href="#">Privacy</a></li>
-                <li class="list-inline-item"><a href="#">Terms</a></li>
-                <li class="list-inline-item"><a href="#">Support</a></li>
-            </ul>
-        </footer>
+    <p class="mb-1">&copy; 2022 Dave's Webshop GmbH</p>
+    <ul class="list-inline">
+        <li class="list-inline-item"><a href="#">Privacy</a></li>
+        <li class="list-inline-item"><a href="#">Terms</a></li>
+        <li class="list-inline-item"><a href="#">Support</a></li>
+    </ul>
+</footer>
+
 </html>

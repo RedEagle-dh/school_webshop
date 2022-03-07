@@ -1,13 +1,13 @@
-<div class="card shadow" style="width: 18rem;">
+<div class="card shadow darkcard" style="width: 18rem;">
     <div class="card-title">
 
 
         <img src="<?= $product[4] ?>" class="card-img-top center" id='test' alt="...">
         <div class="card-body">
-            <h5 class="card-title"><?= $product[1] ?></h5>
-            <p class="card-text"><?= $product[2] ?></div>
+            <h5 class="card-title goingdark"><?= $product[1] ?></h5>
+            <p class="card-text goingdark"><?= $product[2] ?></div>
     </div>
-    <div class="card-footer">
+    <div class="card-footer darkcardfooter">
         <a href="index.php/cart/add/<?= $product[0] ?>" class="btn btn-success">Add to cart</a>
 
 

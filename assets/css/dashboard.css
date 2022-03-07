@@ -3029,8 +3029,7 @@
     list-style: none;
     background-color: #fff;
     background-clip: padding-box;
-    border: 1px solid #e3e6f0;
-    border-radius: 0.35rem;
+    
   }
   
   .dropdown-menu-left {
@@ -4491,8 +4490,8 @@
     word-wrap: break-word;
     background-color: #fff;
     background-clip: border-box;
-    border: 1px solid #e3e6f0;
-    border-radius: 0.35rem;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
   }
   
   .card > hr {
@@ -4526,6 +4525,7 @@
     flex: 1 1 auto;
     min-height: 1px;
     padding: 1.25rem;
+    
   }
   
   .card-title {
@@ -4563,7 +4563,7 @@
   .card-footer {
     padding: 0.75rem 1.25rem;
     background-color: #f8f9fc;
-    border-top: 1px solid #e3e6f0;
+    
   }
   
   .card-footer:last-child {

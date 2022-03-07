@@ -14,18 +14,7 @@
 
 
   <?php
-  include 'templates\navbar.php';
-
-  $sql = "SELECT artnr, titel, beschreibung, preis, picture, produkte.katid FROM produkte, kategorien WHERE produkte.katid = kategorien.katid AND kategorien.katid = '" . $_GET['cat'] . "'";
-  $result = db_query($sql);
-  if (!$result) {
-    return [];
-  }
-  $products = [];
-  while ($row = mysqli_fetch_row($result)) {
-    $products[] = $row;
-  }
-  ?>
+  include 'templates\navbar.php'; ?>
 
   <br><br><br>
 
@@ -59,8 +48,8 @@
     <div class="col">
       <div class="container">
 
-        <?php if (!empty($products)) {
-          foreach ($products as $product) : ?>
+        <?php if (!empty(getCat())) {
+          foreach (getCat() as $product) : ?>
             <div class="col">
               <?php include 'templates\card.php' ?>
               <br>

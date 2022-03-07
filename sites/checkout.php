@@ -19,7 +19,7 @@
 </head>
 
 <body>
-    <?php include 'navbar.php'; ?>
+    <?php include 'templates/navbar.php'; ?>
     <br><br><br>
 
 
@@ -29,14 +29,14 @@
         <div class="row">
             <div class="col-md-4 order-md-2 mb-4">
                 <h4 class="d-flex justify-content-between align-items-center mb-3">
-                    <span class="text-muted">Your cart</span>
+                    <span class="text-muted">Warenkorb</span>
                     <span class="badge badge-secondary badge-pill"><?php $items = countCartItems(getCurrentUserId());
                                                                     echo $items; ?></span>
                 </h4>
                 <ul class="list-group mb-3">
                     <?php foreach ($cartItems as $cartItem) : ?>
 
-                        <?php include 'cartcardcheckout.php'; ?>
+                        <?php include 'templates/cartcardcheckout.php'; ?>
 
 
                     <?php endforeach; ?>
@@ -59,9 +59,10 @@
 
                 <form class="card p-2">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Promo code">
+                        <input type="text" class="form-control" placeholder="Promo code" name="testinput" id="testinput">
                         <div class="input-group-append">
-                            <button type="submit" class="btn btn-secondary">Redeem</button>
+                            <button type="submit" class="btn btn-secondary">Einlösen
+                            </button>
                         </div>
                     </div>
 
@@ -71,21 +72,21 @@
 
             </div>
             <div class="col-md-8 order-md-1">
-                <h4 class="mb-3">Delivery address</h4>
-                <form class="needs-validation" action="index.php/bought" method="POST" novalidate>
+                <h4 class="mb-3">Lieferadresse</h4>
+                <form class="needs-validation" action="index.php/bought?create=1" method="POST" novalidate>
                     <div class="row">
                         <div class="col-md-6 mb-3">
-                            <label for="firstName">First name</label>
+                            <label for="firstName">Vorname</label>
                             <input type="text" class="form-control" id="firstName" placeholder="" value="" name="dfname" required>
                             <div class="invalid-feedback">
-                                Valid first name is required.
+                                Ein richtiger Vorname wird benötigt.
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label for="lastName">Last name</label>
+                            <label for="lastName">Nachname</label>
                             <input type="text" class="form-control" id="lastName" placeholder="" value="" name="dlname" required>
                             <div class="invalid-feedback">
-                                Valid last name is required.
+                                Ein richtiger Nachname wird benötigt.
                             </div>
                         </div>
                     </div>
@@ -94,54 +95,52 @@
 
                     <div class="mb-3">
                         <label for="email">Email <span class="text-muted">(Optional)</span></label>
-                        <input type="email" class="form-control" id="email" name="demail" placeholder="you@example.com">
+                        <input type="email" class="form-control" id="email" name="demail" placeholder="du@beispiel.com">
                         <div class="invalid-feedback">
-                            Please enter a valid email address for shipping updates.
+                            Bitte gib eine korrekte Emailadresse an um Lieferupdates zu erhalten.
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-9 mb-3">
-                            <label for="address">Street</label>
+                            <label for="address">Straße</label>
                             <input type="text" class="form-control" id="address" placeholder="Birkenweg" name="dstreet" required>
                             <div class="invalid-feedback">
-                                Please enter your shipping address.
+                                Bitte gib deine Straße an.
                             </div>
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="address">No.</label>
                             <input type="text" class="form-control" id="address" placeholder="24a" name="dno" required>
                             <div class="invalid-feedback">
-                                Please enter your shipping address.
+                                Bitte gib deine Hausnummer an.
                             </div>
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
-                        <input type="text" class="form-control" id="address2" placeholder="Apartment or suite" name="daddress2">
+                        <label for="address2">Adresszusatz <span class="text-muted">(Optional)</span></label>
+                        <input type="text" class="form-control" id="address2" placeholder="Stockwerk o. Wohnung" name="daddress2">
                     </div>
 
                     <div class="row">
                         <div class="col-md-5 mb-3">
-                            <label for="country">Country</label>
+                            <label for="country">Land</label>
 
-                            <?php include 'allcountriesd.php' ?>
+                            <?php include 'countries/allcountriesd.php' ?>
 
-                            <div class="invalid-feedback">
-                                Please select a valid country.
-                            </div>
+
                         </div>
                         <div class="col-md-4 mb-3">
-                            <label for="address">State</label>
+                            <label for="address">Stadt</label>
                             <input type="text" class="form-control" id="address" placeholder="Hessen" name="dstate" required>
                             <div class="invalid-feedback">
-                                Please enter your state.
+                                Bitte gib deine Stadt an.
                             </div>
                         </div>
                         <div class="col-md-3 mb-3">
-                            <label for="zip">Zip</label>
+                            <label for="zip">PLZ</label>
                             <input type="text" class="form-control" id="zip" placeholder="36110" name="dzip" required>
                             <div class="invalid-feedback">
-                                Zip code required.
+                                Bitte gib deine Postleitzahl an.
                             </div>
                         </div>
                     </div>
@@ -150,76 +149,62 @@
                     <hr class="mb-4">
                     <div class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input" id="same-address" onclick="SetBilling(this.checked);" checked="checked" />
-                        <label class="custom-control-label" for="same-address">Shipping address is the same as my billing address</label>
+                        <label class="custom-control-label" for="same-address">Die Rechnungsadresse entspricht meiner Lieferadresse</label>
                     </div>
 
-                    <div id="deliveryaddres" class="shipping_address" style="display:none;">
+                    <div id="rechnungsadressediv" class="shipping_address" style="display:none;">
 
 
                         <br>
 
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label for="firstName">First name</label>
-                                <input type="text" class="form-control" id="firstName" placeholder="" value="" name="rfname" required>
-                                <div class="invalid-feedback">
-                                    Valid first name is required.
-                                </div>
+                                <label for="firstName">Vorname</label>
+                                <input type="text" class="form-control" id="firstName" placeholder="" value="" name="rfname">
+
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="lastName">Last name</label>
-                                <input type="text" class="form-control" id="lastName" placeholder="" value="" name="rlname" required>
-                                <div class="invalid-feedback">
-                                    Valid last name is required.
-                                </div>
+                                <label for="lastName">Nachname</label>
+                                <input type="text" class="form-control" id="lastName" placeholder="" value="" name="rlname">
+
                             </div>
                         </div>
 
 
                         <div class="row">
                             <div class="col-md-9 mb-3">
-                                <label for="address">Street</label>
-                                <input type="text" class="form-control" id="address" placeholder="Birkenweg" name="rstreet" required>
-                                <div class="invalid-feedback">
-                                    Please enter your shipping address.
-                                </div>
+                                <label for="address">Straße</label>
+                                <input type="text" class="form-control" id="address" placeholder="Birkenweg" name="rstreet">
+
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="address">No.</label>
-                                <input type="text" class="form-control" id="address" placeholder="24a" name="rno" required>
-                                <div class="invalid-feedback">
-                                    Please enter your shipping address.
-                                </div>
+                                <input type="text" class="form-control" id="address" placeholder="24a" name="rno">
+
                             </div>
                         </div>
                         <div class="mb-3">
-                            <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
-                            <input type="text" class="form-control" id="address2" placeholder="Apartment or suite" name="raddress2">
+                            <label for="address2">Adresszusatz <span class="text-muted">(Optional)</span></label>
+                            <input type="text" class="form-control" id="address2" placeholder="Stockwerk o. Wohnung" name="raddress2">
                         </div>
 
                         <div class="row">
                             <div class="col-md-5 mb-3">
-                                <label for="country">Country</label>
+                                <label for="country">Land</label>
 
-                                <?php include 'allcountriesr.php' ?>
+                                <?php include 'countries/allcountriesr.php' ?>
 
-                                <div class="invalid-feedback">
-                                    Please select a valid country.
-                                </div>
+
                             </div>
                             <div class="col-md-4 mb-3">
-                                <label for="address">State</label>
-                                <input type="text" class="form-control" id="address" placeholder="Hessen" name="rstate" required>
-                                <div class="invalid-feedback">
-                                    Please enter your state.
-                                </div>
+                                <label for="address">Stadt</label>
+                                <input type="text" class="form-control" id="address" placeholder="Hessen" name="rstate">
+
                             </div>
                             <div class="col-md-3 mb-3">
-                                <label for="zip">Zip</label>
-                                <input type="text" class="form-control" id="zip" placeholder="36110" name="rzip" required>
-                                <div class="invalid-feedback">
-                                    Zip code required.
-                                </div>
+                                <label for="zip">PLZ</label>
+                                <input type="text" class="form-control" id="zip" placeholder="36110" name="rzip">
+
                             </div>
                         </div>
 
@@ -229,20 +214,20 @@
 
                     <div class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input" id="save-info">
-                        <label class="custom-control-label" for="save-info">Save this information for next time</label>
+                        <label class="custom-control-label" for="save-info">Speichere die Infos für nächstes Mal</label>
                     </div>
                     <hr class="mb-4">
 
-                    <h4 class="mb-3">Payment</h4>
+                    <h4 class="mb-3">Zahlungsart</h4>
 
                     <div class="d-block my-3">
                         <div class="custom-control custom-radio">
                             <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked required>
-                            <label class="custom-control-label" for="credit">Credit card</label>
+                            <label class="custom-control-label" for="credit">Kreditkarte</label>
                         </div>
                         <div class="custom-control custom-radio">
                             <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required>
-                            <label class="custom-control-label" for="debit">Debit card</label>
+                            <label class="custom-control-label" for="debit">Debitkarte</label>
                         </div>
                         <div class="custom-control custom-radio">
                             <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required>
@@ -251,39 +236,39 @@
                     </div>
                     <div class="row">
                         <div class="col-md-6 mb-3">
-                            <label for="cc-name">Name on card</label>
+                            <label for="cc-name">Karteninhaber</label>
                             <input type="text" class="form-control" id="cc-name" placeholder="" required>
-                            <small class="text-muted">Full name as displayed on card</small>
+                            <small class="text-muted">Auf der Karte zu finden</small>
                             <div class="invalid-feedback">
-                                Name on card is required
+                                Name benötigt
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label for="cc-number">Credit card number</label>
+                            <label for="cc-number">Kartennummer</label>
                             <input type="text" class="form-control" id="cc-number" placeholder="" required>
                             <div class="invalid-feedback">
-                                Credit card number is required
+                                Kartennummer benötigt
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-3 mb-3">
-                            <label for="cc-expiration">Expiration</label>
+                            <label for="cc-expiration">Ablaufdatum</label>
                             <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
                             <div class="invalid-feedback">
-                                Expiration date required
+                                Ablaufdatum benötigt
                             </div>
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="cc-cvv">CVV</label>
                             <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
                             <div class="invalid-feedback">
-                                Security code required
+                                Sicherheitscode benötigt
                             </div>
                         </div>
                     </div>
                     <hr class="mb-4">
-                    <button class="btn btn-success btn-lg btn-block" type="submit">Buy</button>
+                    <button class="btn btn-success btn-lg btn-block" type="submit" onclick="Watch();">Buy</button>
                 </form>
             </div>
         </div>
@@ -297,7 +282,6 @@
             </ul>
         </footer>
     </div>
-
 
 
 
@@ -322,16 +306,30 @@
                 });
             }, false);
         })();
-    </script>
 
-    <script>
+        function Watch() {
+            var c = document.getElementById("same-address");
+            if (c.checked == true) {
+                document.querySelector('input[name="rfname"]').value = document.querySelector('input[name="dfname"]').value;
+                document.querySelector('input[name="rlname"]').value = document.querySelector('input[name="dlname"]').value;
+                document.querySelector('input[name="rstreet"]').value = document.querySelector('input[name="dstreet"]').value;
+                document.querySelector('input[name="rno"]').value = document.querySelector('input[name="dno"]').value;
+                document.querySelector('input[name="rstate"]').value = document.querySelector('input[name="dstate"]').value;
+                document.querySelector('input[name="rzip"]').value = document.querySelector('input[name="dzip"]').value;
+                document.querySelector('input[name="rcountry"]').value = document.querySelector('input[name="dcountry"]').value;
+                document.querySelector('input[name="raddress2"]').value = document.querySelector('input[name="daddress2"]').value;
+
+            }
+
+
+        }
+
         function SetBilling(checked) {
+
             if (checked) {
-                document.getElementById('deliveryaddres').style.display = "none";
-                document.getElementById('deliver_firstname').value = '';
+                document.getElementById('rechnungsadressediv').style.display = "none";
             } else {
-                document.getElementById('deliveryaddres').style.display = "block";
-                document.getElementById('deliver_firstname').value = document.getElementById('firstname').value;
+                document.getElementById('rechnungsadressediv').style.display = "block";
             }
         }
     </script>

@@ -13,8 +13,6 @@ $produkteVonKategorie = getProductFromCategory();
 
 
 
-
-
 $cartItemsCount = countCartItems($userid);
 
 

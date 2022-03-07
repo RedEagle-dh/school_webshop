@@ -20,11 +20,25 @@ if (strpos($route, '/cart/add/') !== false) {
         exit();
     }
 
-    if (getProduct($productid) == 0) {
-        addProductToCart($route, $userid);
+    $sql = "SELECT auflager FROM produkte WHERE artnr = '".$productid."';";
+            $result = db_query($sql);
+            $r = (int) mysqli_fetch_column($result);
+
+    if ($r == 0) {
+        
+        header("Location: /Webshop/index.php");
+        $message = "Dieser Artikel ist ausverkauft!";
+        echo "<script type='text/javascript'>alert('$message');</script>";
+        exit();
     } else {
-        updateAmount($productid, +1);
+        if (getProduct($productid) == 0) {
+            addProductToCart($route, $userid);
+        } else {
+            updateAmount($productid, +1);
+        }
     }
+
+    
 
 
     header("Location: /Webshop/index.php");
@@ -35,7 +49,7 @@ if (strpos($route, '/cart') !== false) {
 
     $cartItems = getCartItemsForUser($userid);
 
-    require 'templates/warenkorb.php';
+    require 'sites/warenkorb.php';
     exit();
 
 
@@ -83,12 +97,14 @@ if (strpos($route, '/login') !== false) {
             
             
             header("Location: /Webshop/#");
+            
             exit();
         }
     }
     $hasError = count($errors) > 0;
-    //var_dump($errors);
-    require 'templates/login.php';
+    
+    var_dump($errors);
+    require 'sites/login.php';
     exit();
 }
 
@@ -102,7 +118,7 @@ if (strpos($route, '/checkout') !== false) {
         exit();
     } else {
         $cartItems = getCartItemsForUser($userid);
-        require 'templates/checkout.php';
+        require 'sites/checkout.php';
         exit();
     }
 
@@ -166,7 +182,7 @@ if (strpos($route, '/registercheck') !== false) {
     }
 
 
-    require 'templates/register.php';
+    require 'sites/register.php';
     exit();
 }
 
@@ -194,12 +210,12 @@ if (strpos($route, '/signout') !== false) {
 
 if (strpos($route, '/productsite') !== false) {
 
-    require 'templates/productsite.php';
+    require 'sites/productsite.php';
     exit();
 }
 
 if (strpos($route, '/category') !== false) {
-    require 'templates/category.php';
+    require 'sites/category.php';
     exit();
 }
 
@@ -223,14 +239,14 @@ if (strpos($route, '/throw') !== false) {
     }
 
     header("Location: /Webshop/index.php/cart?");
-    require 'templates/warenkorb.php';
+    require 'sites/warenkorb.php';
     exit();
 }
 
 if (strpos($route, '/search') !== false) {
     
    
-    require 'templates/searchsite.php';
+    require 'sites/searchsite.php';
     exit();
 
 
@@ -247,9 +263,18 @@ if (strpos($route, '/admin') !== false) {
 } 
 
 if (strpos($route, '/settings') !== false) {
-    
-   
-    require 'templates/settings.php';
+    $cartItems = getCartItemsForUser();
+    if (isset($_GET['update'])) {
+        $message = "Updated Successfully";
+        echo "<script type='text/javascript'>alert('$message');</script>";
+    } else if (isset($_GET['dl'])) {
+        $rnummer = $_GET['dl'];
+        $sql = "SELECT max(id) FROM rechnungen WHERE rechnummer = '" . $rnummer . "';";
+        $result = db_query($sql);
+        $c = mysqli_fetch_row($result);
+        getInvoice($c[0]);
+    }
+    require 'sites/settings.php';
     exit();
 
 
@@ -257,10 +282,6 @@ if (strpos($route, '/settings') !== false) {
 if (strpos($route, '/bought') !== false) {
     require("fpdf/fpdf.php");
     $invoicedate = date("d-m-Y");
-    $dlname = filter_input(INPUT_POST, 'dlname');
-
-
-
     $rfname = filter_input(INPUT_POST, 'rfname');
     $rlname = filter_input(INPUT_POST, 'rlname');
     $rstreet = filter_input(INPUT_POST, 'rstreet');
@@ -272,19 +293,101 @@ if (strpos($route, '/bought') !== false) {
     
     $cartItems = getCartItemsForUser();
 
-    include 'erstelleRechnung.php';
-    
+    $contentpdf = include 'functions/erstelleRechnung.php';
 
-	
+    if (isset($_GET['download'])) {
+        $sql = "SELECT max(id) FROM rechnungen WHERE userid = '" . $userid . "';";
+        $result = db_query($sql);
+        $c = mysqli_fetch_row($result);
+        getInvoice($c[0]);
+    } else if (isset($_GET['create'])) {
+        $data = getUserData(getEmailAdress());
+        $year = date('Y');
+        $month = date('m');
+        $day = date('d');
+        $sql = "SELECT max(rechnummer) FROM rechnungen WHERE userid = '" . $userid . "';";
+        $result = db_query($sql);
+        $c = mysqli_fetch_row($result);
+        if ($c[0] == 0) {
+            $c = 1;
+            $rechname = $data[3] . "_" . $data[2] . "_" . $year . "_" . $month . "_" . $day . "_" . $c;
+            $sql = "INSERT INTO rechnungen SET userid = $userid, pdf = '" . addslashes($contentpdf) . "', rechname = '" . $rechname . "', rechdatum = '" . $year . "." . $month . "." . $day . "', rechnummer = '" . $c . "';";
+            db_query($sql);
+        } else {
+            $c[0]++;
+            $rechname = $data[3] . "_" . $data[2] . "_" . $year . "_" . $month . "_" . $day . "_" . $c[0];
+            $sql = "INSERT INTO rechnungen SET userid = $userid, pdf = '" . addslashes($contentpdf) . "', rechname = '" . $rechname . "', rechdatum = '" . $year . "." . $month . "." . $day . "', rechnummer = '" . $c[0] . "';";
+            db_query($sql);
+        }
 
-    
-    //var_dump($dlname, $rcountry);
+        //var_dump($cartItems);
+        
+        //$sql = "UPDATE produkte SET auflager = '49' WHERE (`artnr` = '1');";
+        foreach ($cartItems as $cartItem) {
+            $sql = "SELECT auflager FROM produkte WHERE artnr = '".$cartItem[0]."';";
+            $result = db_query($sql);
+            $r = (int) mysqli_fetch_column($result);
+            
+            $r = $r -1;
+            
+            $sql = "UPDATE produkte SET auflager = '".$r."' WHERE (artnr = '".$cartItem[0]."');";
+            db_query($sql);
+        }
+        
+    }
 
 
-
-
-    require 'erstelleRechnung.php';
+    require('sites/finishbuy.php');
     exit();
 }
 
+
+
+if (strpos($route, '/updateprofile') !== false) {
+
+    $isPost = strtoupper($_SERVER['REQUEST_METHOD']) === 'POST';
+
+
+
+    if ($isPost) {
+        $emailadress = "";
+        $password1 = "";
+        $password2 = "";
+        $vname = "";
+        $nname = "";
+        $stadt = "";
+        $handy  = "";
+        $plz = "";
+        $strasse  = "";
+        $hausnr  = "";
+        $zusatzinf  = "";
+        $land  = "";
+
+        $emailadress = filter_input(INPUT_POST, 'emailadress');
+        $password1 = filter_input(INPUT_POST, 'firstpw');
+        $password2 = filter_input(INPUT_POST, 'secondpw');
+        $password1h = password_hash($password1, PASSWORD_DEFAULT);
+        $password2h = password_hash($password2, PASSWORD_DEFAULT);
+        $vname = filter_input(INPUT_POST, 'fname');
+        $nname = filter_input(INPUT_POST, 'lname');
+        $stadt = filter_input(INPUT_POST, 'city');
+        $handy = filter_input(INPUT_POST, 'handynummer');
+        $plz = filter_input(INPUT_POST, 'zip');
+        $strasse = filter_input(INPUT_POST, 'street');
+        $hausnr = filter_input(INPUT_POST, 'hnr');
+        $zusatzinf = filter_input(INPUT_POST, 'addinfo');
+        $land = filter_input(INPUT_POST, 'country');
+
+        $sql = "UPDATE adressen, kunde SET strasse = '" . $strasse . "', hausnummer = '" . $hausnr . "', plz = '" . $plz . "', ort = '" . $stadt . "', land = '" . $land . "', addinfo = '" . $zusatzinf . "', vorname = '" . $vname . "', nachname = '" . $nname . "', email = '" . $emailadress . "', telefonnummer = '" . $handy . "' WHERE adressen.adresseid = kunde.adresseid AND kunde.kundenid = '" . $userid . "';";
+        db_query($sql);
+
+        header("Location: Webshop/index.php/settings?update=1");
+
+        exit();
+    }
+
+
+    require 'sites/register.php';
+    exit();
+}
 
