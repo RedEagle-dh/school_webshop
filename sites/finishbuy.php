@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Dave's Webshop | Settings</title>
+    <title>Dave's Webshop | Danke!</title>
     <base href="/Webshop/">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/styles.css">

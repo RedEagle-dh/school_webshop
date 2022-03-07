@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html lang="de">
+<?php
+    include 'templates\navbar.php';
+    $sql = "SELECT titel, beschreibung, preis, picture FROM produkte WHERE artnr = '" . $_GET['id'] . "';";
+    $result = db_query($sql);
 
+    $row = mysqli_fetch_row($result);?>
 <head>
     <meta charset="utf-8">
-    <title>Dave's Webshop | Cart</title>
+    <title>Dave's Webshop | <?= $row[0] ?></title>
     <base href="/Webshop/">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/styles.css">
@@ -13,12 +18,7 @@
 <body data-menu="vertical-menu" class="vertical-layout vertical-menu content-right-sidebar menu-expanded">
 
 
-    <?php
-    include 'templates\navbar.php';
-    $sql = "SELECT titel, beschreibung, preis, picture FROM produkte WHERE artnr = '" . $_GET['id'] . "';";
-    $result = db_query($sql);
-
-    $row = mysqli_fetch_row($result);?>
+    
 
     <br><br><br>
 

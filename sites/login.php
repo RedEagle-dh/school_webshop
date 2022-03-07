@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <base href="/Webshop/">
-    <title>Dave's Webshop</title>
+    <title>Dave's Webshop | Login</title>
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="icon"
@@ -36,14 +36,14 @@ include 'templates\navbar.php';
 
                 <div class="form-floating mb-3">
                     <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" value="<?=$emailadress?>" name="emailadress">
-                    <label for="floatingInput">Email address</label>
+                    <label for="floatingInput"><nobr>Email address</nobr></label>
                 </div>
                 <?php endif; ?>
 
                 <?php if(!$hasError):?>
                 <div class="form-floating">
                     <input type="password" class="form-control" id="floatingPassword" placeholder="Password" value="<?=$password?>" name="password">
-                    <label for="floatingPassword">Password</label>
+                    <label for="floatingPassword"><nobr>Password</nobr></label>
                 </div>
                 <?php endif; ?>
                 <?php if($hasError):?>

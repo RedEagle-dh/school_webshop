@@ -2,11 +2,12 @@
 <html lang="de">
 <head>
     <meta charset="utf-8">
-    <title>Dave's Webshop | Cart</title>
+    <title>Dave's Webshop | Warenkorb</title>
     <base href="/Webshop/">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/styles.css">
-
+    <link rel="icon" href="https://lh3.googleusercontent.com/jUoaTIlBn5ibfQcND2n5OMD6Z7xoqNj-ShHlFR6QuLffLXD5pS8V2eNg1rGlrsRrnDkoQ28O8UHzqzBQKAGY4l1CS2NQSq2SkRScK6FOjl82jppyohK-">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
 </head>
 <body data-menu="vertical-menu" class="vertical-layout vertical-menu content-right-sidebar menu-expanded">
 
@@ -17,72 +18,15 @@ include 'templates\navbar.php';
 
 ?>
 
-<br><br><br>
 
 
-<div class="row">
-    <div class="col-3">
-        <div class="container">
-            <div class="align-right">
-                Nichts
-            </div>
-
-        </div>
-
-    </div>
-    <div class="col-6">
-        <div class="container">
-            <div class="align-right">
-                Infos?
-            </div>
-
-        </div>
-
-    </div>
-    <div class="col-3">
-        <div class="float-end">
-            <div class="container">
-                <div class="card darkcard" style="width: 18rem;" >
-                    <div class="card-title">
-
-                        <div class="card-body">
-                            <h5 class="card-title goingdark">Summe</h5>
-                            <p class="card-text goingdark"><?= countCartItems(getCurrentUserId());?> Artikel: <?= getCartPrice(getCurrentUserId())?>€</div>
-                    </div>
-                    <div class="card-footer">
-                        <a href="index.php/checkout" class="btn btn-success">Zur Kasse</a>
-
-                    </div>
-                </div>
-
-            </div>
-        </div>
+<?php include 'templates/newcart.php'; ?>
 
 
 
-    </div>
-
-</div>
 
 
 
-<div class="row">
-    <div class="col">
-        <div class="container">
-
-            <?php foreach ($cartItems as $cartItem): ?>
-                <div class="row">
-                    <?php include 'templates/cartItem.php' ?>
-
-                </div>
-            <?php endforeach; ?>
-
-        </div>
-
-    </div>
-
-
-</div>
 
 <footer class="my-5 pt-5 text-muted text-center text-small">
             <p class="mb-1">&copy; 2022 Dave's Webshop GmbH</p>

@@ -6,12 +6,11 @@
     <title>Dave's Webshop</title>
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="assets/css/dashboard.css">
     <link rel="icon" href="https://lh3.googleusercontent.com/jUoaTIlBn5ibfQcND2n5OMD6Z7xoqNj-ShHlFR6QuLffLXD5pS8V2eNg1rGlrsRrnDkoQ28O8UHzqzBQKAGY4l1CS2NQSq2SkRScK6FOjl82jppyohK-">
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
-
+    
 </head>
-<body>
+<body data-menu="vertical-menu" class="vertical-layout vertical-menu content-right-sidebar menu-expanded">
 
 
 <?php
@@ -45,7 +44,8 @@ include 'templates\navbar.php';
         </footer>
 
 <script src="assets/js/bootstrap.bundle.js">
+    
 
-</script>
+</script><script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 </body>
 </html>
