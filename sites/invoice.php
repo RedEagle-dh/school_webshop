@@ -24,16 +24,16 @@
         <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
             <thead>
                 <tr>
-                    <th class="th-sm">Name
+                    <th class="th-sm goingdark">Name
 
                     </th>
-                    <th class="th-sm">Rechnungsnummer
+                    <th class="th-sm goingdark">Rechnungsnummer
 
                     </th>
-                    <th class="th-sm">Datum
+                    <th class="th-sm goingdark">Datum
 
                     </th>
-                    <th class="th-sm">Download
+                    <th class="th-sm goingdark">Download
 
                     </th>
 
@@ -43,9 +43,9 @@
             <tbody>
                 <?php foreach (returnInvoice() as $row) : ?>
                     <tr>
-                        <td><?= $row[3] ?></td>
-                        <td><?= $row[4] ?></td>
-                        <td><?= $row[5] ?></td>
+                        <td class=" goingdark"><?= $row[3] ?></td>
+                        <td class=" goingdark"><?= $row[4] ?></td>
+                        <td class=" goingdark"><?= $row[5] ?></td>
                         <td>
                             <a href="index.php/settings?dl=<?= $row[4] ?>"><i class="fi fi-rr-download"></i></a>
 

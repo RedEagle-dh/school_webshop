@@ -72,18 +72,18 @@
 
             </div>
             <div class="col-md-8 order-md-1">
-                <h4 class="mb-3">Lieferadresse</h4>
+                <h4 class="mb-3 goingdark">Lieferadresse</h4>
                 <form class="needs-validation" action="index.php/bought?create=1" method="POST" novalidate>
                     <div class="row">
                         <div class="col-md-6 mb-3">
-                            <label for="firstName">Vorname</label>
+                            <label for="firstName" class="goingdark">Vorname</label>
                             <input type="text" class="form-control" id="firstName" placeholder="" value="" name="dfname" required>
                             <div class="invalid-feedback">
                                 Ein richtiger Vorname wird benötigt.
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label for="lastName">Nachname</label>
+                            <label for="lastName" class="goingdark">Nachname</label>
                             <input type="text" class="form-control" id="lastName" placeholder="" value="" name="dlname" required>
                             <div class="invalid-feedback">
                                 Ein richtiger Nachname wird benötigt.
@@ -94,7 +94,7 @@
 
 
                     <div class="mb-3">
-                        <label for="email">Email <span class="text-muted">(Optional)</span></label>
+                        <label for="email" class="goingdark">Email <span class="text-muted goingdark">(Optional)</span></label>
                         <input type="email" class="form-control" id="email" name="demail" placeholder="du@beispiel.com">
                         <div class="invalid-feedback">
                             Bitte gib eine korrekte Emailadresse an um Lieferupdates zu erhalten.
@@ -102,14 +102,14 @@
                     </div>
                     <div class="row">
                         <div class="col-md-9 mb-3">
-                            <label for="address">Straße</label>
+                            <label class="goingdark" for="address">Straße</label>
                             <input type="text" class="form-control" id="address" placeholder="Birkenweg" name="dstreet" required>
                             <div class="invalid-feedback">
                                 Bitte gib deine Straße an.
                             </div>
                         </div>
                         <div class="col-md-3 mb-3">
-                            <label for="address">No.</label>
+                            <label class="goingdark" for="address">No.</label>
                             <input type="text" class="form-control" id="address" placeholder="24a" name="dno" required>
                             <div class="invalid-feedback">
                                 Bitte gib deine Hausnummer an.
@@ -117,27 +117,27 @@
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label for="address2">Adresszusatz <span class="text-muted">(Optional)</span></label>
+                        <label class="goingdark" for="address2">Adresszusatz <span class="text-muted goingdark">(Optional)</span></label>
                         <input type="text" class="form-control" id="address2" placeholder="Stockwerk o. Wohnung" name="daddress2">
                     </div>
 
                     <div class="row">
                         <div class="col-md-5 mb-3">
-                            <label for="country">Land</label>
+                            <label for="country" class="goingdark">Land</label>
 
                             <?php include 'countries/allcountriesd.php' ?>
 
 
                         </div>
                         <div class="col-md-4 mb-3">
-                            <label for="address">Stadt</label>
+                            <label for="address" class="goingdark">Stadt</label>
                             <input type="text" class="form-control" id="address" placeholder="Hessen" name="dstate" required>
                             <div class="invalid-feedback">
                                 Bitte gib deine Stadt an.
                             </div>
                         </div>
                         <div class="col-md-3 mb-3">
-                            <label for="zip">PLZ</label>
+                            <label for="zip" class="goingdark">PLZ</label>
                             <input type="text" class="form-control" id="zip" placeholder="36110" name="dzip" required>
                             <div class="invalid-feedback">
                                 Bitte gib deine Postleitzahl an.
@@ -149,7 +149,7 @@
                     <hr class="mb-4">
                     <div class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input" id="same-address" onclick="SetBilling(this.checked);" checked="checked" />
-                        <label class="custom-control-label" for="same-address">Die Rechnungsadresse entspricht meiner Lieferadresse</label>
+                        <label class="custom-control-label goingdark" for="same-address"><nobr>Die Rechnungsadresse entspricht meiner Lieferadresse</nobr></label>
                     </div>
 
                     <div id="rechnungsadressediv" class="shipping_address" style="display:none;">
@@ -159,12 +159,12 @@
 
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label for="firstName">Vorname</label>
+                                <label for="firstName" class="goingdark">Vorname</label>
                                 <input type="text" class="form-control" id="firstName" placeholder="" value="" name="rfname">
 
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="lastName">Nachname</label>
+                                <label for="lastName" class="goingdark">Nachname</label>
                                 <input type="text" class="form-control" id="lastName" placeholder="" value="" name="rlname">
 
                             </div>
@@ -173,36 +173,36 @@
 
                         <div class="row">
                             <div class="col-md-9 mb-3">
-                                <label for="address">Straße</label>
+                                <label for="address" class="goingdark">Straße</label>
                                 <input type="text" class="form-control" id="address" placeholder="Birkenweg" name="rstreet">
 
                             </div>
                             <div class="col-md-3 mb-3">
-                                <label for="address">No.</label>
+                                <label for="address" class="goingdark">No.</label>
                                 <input type="text" class="form-control" id="address" placeholder="24a" name="rno">
 
                             </div>
                         </div>
                         <div class="mb-3">
-                            <label for="address2">Adresszusatz <span class="text-muted">(Optional)</span></label>
+                            <label for="address2" class="goingdark">Adresszusatz <span class="text-muted goingdark">(Optional)</span></label>
                             <input type="text" class="form-control" id="address2" placeholder="Stockwerk o. Wohnung" name="raddress2">
                         </div>
 
                         <div class="row">
                             <div class="col-md-5 mb-3">
-                                <label for="country">Land</label>
+                                <label for="country" class="goingdark">Land</label>
 
                                 <?php include 'countries/allcountriesr.php' ?>
 
 
                             </div>
                             <div class="col-md-4 mb-3">
-                                <label for="address">Stadt</label>
+                                <label for="address" class="goingdark">Stadt</label>
                                 <input type="text" class="form-control" id="address" placeholder="Hessen" name="rstate">
 
                             </div>
                             <div class="col-md-3 mb-3">
-                                <label for="zip">PLZ</label>
+                                <label for="zip" class="goingdark">PLZ</label>
                                 <input type="text" class="form-control" id="zip" placeholder="36110" name="rzip">
 
                             </div>
@@ -214,37 +214,37 @@
 
                     <div class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input" id="save-info">
-                        <label class="custom-control-label" for="save-info">Speichere die Infos für nächstes Mal</label>
+                        <label class="custom-control-label goingdark" for="save-info"><nobr>Speichere die Infos für nächstes Mal</nobr></label>
                     </div>
                     <hr class="mb-4">
 
-                    <h4 class="mb-3">Zahlungsart</h4>
+                    <h4 class="mb-3 goingdark">Zahlungsart</h4>
 
                     <div class="d-block my-3">
                         <div class="custom-control custom-radio">
                             <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked required>
-                            <label class="custom-control-label" for="credit">Kreditkarte</label>
+                            <label class="custom-control-label goingdark" for="credit">Kreditkarte</label>
                         </div>
                         <div class="custom-control custom-radio">
                             <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required>
-                            <label class="custom-control-label" for="debit">Debitkarte</label>
+                            <label class="custom-control-label goingdark" for="debit">Debitkarte</label>
                         </div>
                         <div class="custom-control custom-radio">
                             <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required>
-                            <label class="custom-control-label" for="paypal">PayPal</label>
+                            <label class="custom-control-label goingdark" for="paypal">PayPal</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6 mb-3">
-                            <label for="cc-name">Karteninhaber</label>
+                            <label for="cc-name" class="goingdark">Karteninhaber</label>
                             <input type="text" class="form-control" id="cc-name" placeholder="" required>
-                            <small class="text-muted">Auf der Karte zu finden</small>
+                            <small class="text-muted goingdark">Auf der Karte zu finden</small>
                             <div class="invalid-feedback">
                                 Name benötigt
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label for="cc-number">Kartennummer</label>
+                            <label for="cc-number" class="goingdark">Kartennummer</label>
                             <input type="text" class="form-control" id="cc-number" placeholder="" required>
                             <div class="invalid-feedback">
                                 Kartennummer benötigt
@@ -253,14 +253,14 @@
                     </div>
                     <div class="row">
                         <div class="col-md-3 mb-3">
-                            <label for="cc-expiration">Ablaufdatum</label>
+                            <label for="cc-expiration" class="goingdark">Ablaufdatum</label>
                             <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
                             <div class="invalid-feedback">
                                 Ablaufdatum benötigt
                             </div>
                         </div>
                         <div class="col-md-3 mb-3">
-                            <label for="cc-cvv">CVV</label>
+                            <label for="cc-cvv" class="goingdark">CVV</label>
                             <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
                             <div class="invalid-feedback">
                                 Sicherheitscode benötigt

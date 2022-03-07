@@ -42,12 +42,12 @@ include 'templates\navbar.php';
     <div class="col-3">
         <div class="float-end">
             <div class="container">
-                <div class="card" style="width: 18rem;" >
+                <div class="card darkcard" style="width: 18rem;" >
                     <div class="card-title">
 
                         <div class="card-body">
-                            <h5 class="card-title">Summe</h5>
-                            <p class="card-text"><?= countCartItems(getCurrentUserId());?> Artikel: <?= getCartPrice(getCurrentUserId())?>€</div>
+                            <h5 class="card-title goingdark">Summe</h5>
+                            <p class="card-text goingdark"><?= countCartItems(getCurrentUserId());?> Artikel: <?= getCartPrice(getCurrentUserId())?>€</div>
                     </div>
                     <div class="card-footer">
                         <a href="index.php/checkout" class="btn btn-success">Zur Kasse</a>

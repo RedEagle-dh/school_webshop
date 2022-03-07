@@ -658,3 +658,7 @@ body.dark-mode {
   border: #000000;
 }
 
+.dark-mode .row-border-light {
+  background-color: #2F3136 !important;
+  border: #000000;
+}
