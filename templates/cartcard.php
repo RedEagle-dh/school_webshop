@@ -1,4 +1,4 @@
-<div class="product">
+<div class="product" id="products">
     <div class="row">
         <div class="col-md-3">
             <img class="img-fluid mx-auto d-block image" src="<?= $cartItem[4] ?>">
@@ -18,15 +18,57 @@
                     </div>
                     <div class="col-md-4 quantity">
                         <label for="quantity">Anzahl:</label>
-                        <input onchange="aendern($cartItem[0], $anzahl)" id="quantity" type="number" value="<?= $cartItem[6] ?>" class="form-control quantity-input auswahl<?= $anzahl ?>">
+
+                        <input onchange="aendern(<?= $cartItem[0] ?>, <?= $anzahl ?>)" id="auswahl<?= $anzahl ?>" type="number" value="<?= $cartItem[6] ?>" class="form-control quantity-input artikelpr">
                     </div>
+                    <script>
+                        const artikelp = document.getElementsByClassName("artikelp");
+                        const artikelpr = document.getElementsByClassName("artikelpr");
+                        const artikelteile = document.getElementsByClassName("artikelpr");
+
+                        function aendern(a, b) {
+
+                            var anzahl = 'auswahl' + b;
+                            var e = document.getElementById(anzahl).value;
+                            var ajax = new XMLHttpRequest();
+
+                            ajax.open("GET", "templates/ajax.php?amount=" + e + "&productid=" + a, true);
+                            ajax.send();
+
+
+                            let preis = 0;
+                            for (let i = 0; i < artikelp.length; i++) {
+
+                                preis = preis + parseFloat(artikelp[i].textContent.replace(',', "")) * parseFloat(artikelpr[i].value);
+                            }
+                            var endpreis = preis.toLocaleString("en-EN");
+
+                            var gesamtteile = 0;
+                            for (let i = 0; i < artikelteile.length; i++) {
+                                gesamtteile = parseInt(artikelteile[i].value) + gesamtteile;
+                            }
+
+
+                            document.getElementById("artikelpreiss").textContent = endpreis.fixed(2).replace(/(<([^>]+)>)/gi, "") + "€";
+                            document.getElementById("artikelteile").textContent = gesamtteile;
+                            document.getElementById("warenkorbanzahl").textContent = "Warenkorb (" + gesamtteile + ")";
+                            ajax.onreadystatechange = function() {
+                                if (this.readyState == 4 && this.status == 200) {
+                                    if(this.response == "delete") {
+                                        document.getElementById("products").remove();
+                                        
+                                    }
+                                }
+                            }
+                        }
+                    </script>
                     <div class="col-md-3 price">
-                        <span><?php
-                                    $cost = number_format($cartItem[3], 2);
-                                    echo "$cost";
+                        <span class="artikelp"><?php
+                                                $cost = number_format($cartItem[3], 2);
+                                                echo "$cost";
 
 
-                                    ?>€</span>
+                                                ?>€</span>
                     </div>
                 </div>
             </div>

@@ -71,4 +71,13 @@
         db_query($sql);
     }
 
-   
+   function countCartItemsWithoutAmount() {
+    $userid = getCurrentUserId();
+    $sql = "SELECT COUNT(amount) from cart where userid = $userid;";
+     
+     $cartResult = db_query($sql);
+
+     $cartItems = mysqli_fetch_column($cartResult);
+
+     return $cartItems;
+   }

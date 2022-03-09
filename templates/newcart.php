@@ -29,10 +29,11 @@
 
 
                                 <?php 
-                                $anzahl = countCartItems();
+                                $anzahl = countCartItemsWithoutAmount();
                                 foreach ($cartItems as $cartItem) : ?>
                                     <div class="row">
                                         <?php include 'templates/cartcard.php';
+                    
                                         $anzahl = $anzahl -1;
 
                                         ?>
@@ -45,7 +46,7 @@
                         <div class="col-md-12 col-lg-4">
                             <div class="summary">
                                 <h3>Zusammenfassung</h3>
-                                <div class="summary-item"><span class="text"><?= countCartItems(getCurrentUserId()); ?> Artikel</span><span class="price"><?= getCartPrice(getCurrentUserId()) ?>€</span></div>
+                                <div class="summary-item"><span class="text" id="artikelteile"><?= countCartItems(getCurrentUserId()); ?></span><span class="text"> Artikel</span><span class="price" id="artikelpreiss"><?= getCartPrice(getCurrentUserId()) ?>€</span></div>
                                 <div class="summary-item"><span class="text">Rabatt</span><span class="price">$0</span></div>
                                 <div class="summary-item"><span class="text">Lieferkosten</span><span class="price">$0</span></div>
                                 <div class="summary-item"><span class="text">Gesamt</span><span class="price">$360</span></div>
@@ -60,30 +61,7 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script>
-    function aendern(a,b) {
-        var productid = a;
-        var eintrag = b.toString();
-        var c = 'auswahl' + eintrag;
 
-        var aus = document.getElementById(c).value;
-
-        var ajax = new XMLHttpRequest();
-
-        ajax.open("GET", "functions/ajax.php?auswahl="+aus+"&productid="+productid,  true);
-        ajax.send();
-
-        ajax.onreadystatechange = function() {
-            if(this.readyState == 4 && this.status == 200) {
-                document.getElementById('gesamtsumme').innerHTML = this.response + " &euro;";
-
-            }
-        }
-
-    }
-
-
-</script>
 </body>
 
 </html>

@@ -75,7 +75,7 @@
             } else {
                 echo  '<form class="d-flex" method= "get " action= "index.php/cart " id= "onetwo ">
 
-                <button class= "btn btn-outline-success " type= "submit ">Warenkorb (';
+                <button class= "btn btn-outline-success " id="warenkorbanzahl" type= "submit ">Warenkorb (';
 
                 $userid = getCurrentUserId();
                 $items = countCartItems($userid);
