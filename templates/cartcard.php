@@ -18,7 +18,7 @@
                     </div>
                     <div class="col-md-4 quantity">
                         <label for="quantity">Anzahl:</label>
-                        <input id="quantity" type="number" value="<?= $cartItem[6] ?>" class="form-control quantity-input">
+                        <input onchange="aendern($cartItem[0], $anzahl)" id="quantity" type="number" value="<?= $cartItem[6] ?>" class="form-control quantity-input auswahl<?= $anzahl ?>">
                     </div>
                     <div class="col-md-3 price">
                         <span><?php

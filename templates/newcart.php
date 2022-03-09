@@ -28,10 +28,14 @@
                             <div class="items">
 
 
-                                <?php foreach ($cartItems as $cartItem) : ?>
+                                <?php 
+                                $anzahl = countCartItems();
+                                foreach ($cartItems as $cartItem) : ?>
                                     <div class="row">
-                                        <?php include 'templates/cartcard.php' ?>
+                                        <?php include 'templates/cartcard.php';
+                                        $anzahl = $anzahl -1;
 
+                                        ?>
                                     </div>
                                 <?php endforeach; ?>
 
@@ -45,7 +49,7 @@
                                 <div class="summary-item"><span class="text">Rabatt</span><span class="price">$0</span></div>
                                 <div class="summary-item"><span class="text">Lieferkosten</span><span class="price">$0</span></div>
                                 <div class="summary-item"><span class="text">Gesamt</span><span class="price">$360</span></div>
-                                <button type="button" class="btn btn-primary btn-lg btn-block">Kaufen</button>
+                                <a href="index.php/checkout" type="button" class="btn btn-primary btn-lg btn-block">Kaufen</a>
                             </div>
                         </div>
                     </div>
@@ -56,6 +60,30 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script>
+    function aendern(a,b) {
+        var productid = a;
+        var eintrag = b.toString();
+        var c = 'auswahl' + eintrag;
+
+        var aus = document.getElementById(c).value;
+
+        var ajax = new XMLHttpRequest();
+
+        ajax.open("GET", "functions/ajax.php?auswahl="+aus+"&productid="+productid,  true);
+        ajax.send();
+
+        ajax.onreadystatechange = function() {
+            if(this.readyState == 4 && this.status == 200) {
+                document.getElementById('gesamtsumme').innerHTML = this.response + " &euro;";
+
+            }
+        }
+
+    }
+
+
+</script>
 </body>
 
 </html>
