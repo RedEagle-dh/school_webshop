@@ -47,9 +47,9 @@
                             <div class="summary">
                                 <h3>Zusammenfassung</h3>
                                 <div class="summary-item"><span class="text" id="artikelteile"><?= countCartItems(getCurrentUserId()); ?></span><span class="text"> Artikel</span><span class="price" id="artikelpreiss"><?= getCartPrice(getCurrentUserId()) ?>€</span></div>
-                                <div class="summary-item"><span class="text">Rabatt</span><span class="price">$0</span></div>
-                                <div class="summary-item"><span class="text">Lieferkosten</span><span class="price">$0</span></div>
-                                <div class="summary-item"><span class="text">Gesamt</span><span class="price">$360</span></div>
+                                <div class="summary-item"><span class="text">Lieferkosten</span><span class="price" id="delprice"><?= getDeliveryPrice() ?>€</span></div>
+                                <div class="summary-item"><span class="text">Gesamt</span><span class="price" id="totalprice"><?= getTotalPrice() ?>€</span></div>
+                                <br>
                                 <a href="index.php/checkout" type="button" class="btn btn-primary btn-lg btn-block">Kaufen</a>
                             </div>
                         </div>

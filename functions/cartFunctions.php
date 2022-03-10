@@ -1,5 +1,5 @@
  <?php
-
+    
      function addProductToCart($route, $userid) {
          $routeParts = explode('/', $route);
          $productId = (int) $routeParts[3];
@@ -58,8 +58,8 @@
         if ($sum == 0) {
             return "0";
         } else {
-            $erg = number_format($sum, 2);
-            return $erg;
+            
+            return $sum;
         }
     }
 
@@ -81,3 +81,24 @@
 
      return $cartItems;
    }
+
+    function getDeliveryPrice()
+    {
+        $userid = getCurrentUserId();
+        $sql = "SELECT sum(lieferkosten) FROM produkte, cart WHERE cart.productid = produkte.artnr AND userid = $userid;";
+        $result = db_query($sql);
+        $preis = mysqli_fetch_column($result);
+        return $preis;
+    }
+
+    function getTotalPrice()
+    {
+        $userid = getCurrentUserId();
+        $itemprice = preg_replace('/[\@\;\" "]+/', '', getCartPrice($userid));
+        
+        $delprice = (double) getDeliveryPrice();
+        
+        $totalprice = $delprice + $itemprice;
+        
+        return $totalprice;
+    }
