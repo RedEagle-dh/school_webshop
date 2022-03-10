@@ -49,19 +49,28 @@
                             }
 
                             var delpreis = parseFloat(document.getElementById("delprice").textContent);
-                            var cartpreis = parseFloat(document.getElementById("artikelpreiss").textContent);
+                            var cartdelpreis = <?= $cartItem[7] ?>;
+                            
                             document.getElementById("artikelpreiss").textContent = endpreis.fixed(2).replace(/(<([^>]+)>)/gi, "") + "€";
                             document.getElementById("artikelteile").textContent = gesamtteile;
                             document.getElementById("warenkorbanzahl").textContent = "Warenkorb (" + gesamtteile + ")";
-                            document.getElementById("totalprice").textContent = delpreis + cartpreis;
+                            
                             ajax.onreadystatechange = function() {
                                 if (this.readyState == 4 && this.status == 200) {
-                                    if(this.response == "delete") {
+                                    if(this.response.includes("delete")) {
                                         document.getElementById("products").remove();
+                                        var s = this.response;
+                                        var k = s.split(" ");
+                                        
+                                        document.getElementById("delprice").textContent = k[1] + "€";
+                                        if(document.getElementById("delprice").textContent == "0€") {
+                                            document.getElementById("totalprice").textContent = "0€";
+                                        }
                                         
                                     }
                                 }
                             }
+                            document.getElementById("totalprice").textContent = (delpreis + preis).toLocaleString("en-EN") + "€";
                         }
                     </script>
                     <div class="col-md-3 price">

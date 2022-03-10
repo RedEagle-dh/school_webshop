@@ -46,7 +46,13 @@
                         <div class="col-md-12 col-lg-4">
                             <div class="summary">
                                 <h3>Zusammenfassung</h3>
-                                <div class="summary-item"><span class="text" id="artikelteile"><?= countCartItems(getCurrentUserId()); ?></span><span class="text"> Artikel</span><span class="price" id="artikelpreiss"><?= getCartPrice(getCurrentUserId()) ?>€</span></div>
+                                <div class="summary-item"><span class="text" id="artikelteile"><?php 
+                                if(countCartItems(getCurrentUserId()) == 0) {
+                                    echo "0";
+                                } else {
+                                    echo countCartItems(getCurrentUserId());
+                                }
+                                 ?></span><span class="text"> Artikel</span><span class="price" id="artikelpreiss"><?= getCartPrice(getCurrentUserId()) ?>€</span></div>
                                 <div class="summary-item"><span class="text">Lieferkosten</span><span class="price" id="delprice"><?= getDeliveryPrice() ?>€</span></div>
                                 <div class="summary-item"><span class="text">Gesamt</span><span class="price" id="totalprice"><?= getTotalPrice() ?>€</span></div>
                                 <br>

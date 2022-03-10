@@ -51,11 +51,19 @@ $id = $_GET['productid'];
 $amount = $_GET['amount'];
 
 // TODO irgendwie die userid übergeben
+$userid = getCurrentUserId();
+
 
 if ($amount == 0) {
     $sql = "DELETE FROM cart WHERE productid = $id AND userid = 11;";
     db_query($sql);
-    echo "delete";
+    $sql = "SELECT sum(lieferkosten) FROM produkte, cart WHERE cart.productid = produkte.artnr AND userid = 11;";
+$result = db_query($sql);
+$preis = mysqli_fetch_column($result);
+if($preis == 0) {
+    $preis = 0;
+}
+    echo "delete " . $preis;
 } else {
     $sql = "UPDATE cart SET amount = $amount WHERE productid = $id AND userid = 11;";
     db_query($sql);

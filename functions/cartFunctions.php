@@ -28,7 +28,7 @@
 
      function getCartItemsForUser():array {
         $userid = getCurrentUserId();
-        $sql = "SELECT productid, titel, beschreibung, preis, picture, id, amount FROM cart JOIN produkte ON(cart.productid = produkte.artnr) WHERE userid = " . $userid;
+        $sql = "SELECT productid, titel, beschreibung, preis, picture, id, amount, lieferkosten FROM cart JOIN produkte ON(cart.productid = produkte.artnr) WHERE userid = " . $userid;
          $results = db_query($sql);
          if ($results === false) {
              return[];
@@ -88,6 +88,9 @@
         $sql = "SELECT sum(lieferkosten) FROM produkte, cart WHERE cart.productid = produkte.artnr AND userid = $userid;";
         $result = db_query($sql);
         $preis = mysqli_fetch_column($result);
+        if($preis == 0) {
+            $preis = 0;
+        }
         return $preis;
     }
 
