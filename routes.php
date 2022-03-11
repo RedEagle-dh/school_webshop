@@ -391,3 +391,11 @@ if (strpos($route, '/updateprofile') !== false) {
     exit();
 }
 
+
+
+if (strpos($route, '/tos') !== false) {
+    require('sites/tos.php');
+    exit();
+
+
+}

@@ -663,6 +663,15 @@ background-color: #2F3136 !important;
 border: #000000;
 }
 
+.dark-mode .ro {
+  background-color: #3d3e42 !important;
+  border: #000000;
+  }
+
+  .dark-mode .gr {
+    background-color: #99AAB5;
+  }
+
 .custom-switch {
 padding-left: 2.25rem;
 }
@@ -990,7 +999,7 @@ background-color: rgba(78, 115, 223, 0.5);
 
 .shopping-cart .content{
 	box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075);
-	background-color: white;
+	/*background-color: white;*/
 }
 
 .shopping-cart .block-heading{
@@ -1059,7 +1068,7 @@ background-color: rgba(78, 115, 223, 0.5);
 
 .shopping-cart .summary{
 	border-top: 2px solid #5ea4f3;
-    background-color: #f7fbff;
+    /*background-color: #f7fbff;*/
     height: 100%;
     padding: 30px;
 }
@@ -1112,4 +1121,11 @@ background-color: rgba(78, 115, 223, 0.5);
 		padding: 4px 10px;
 		text-align: center; 
 	}
+}
+
+
+.emptycart {
+  padding-top: 8rem;
+  padding-left: 15rem;
+  font-size: 30px;
 }

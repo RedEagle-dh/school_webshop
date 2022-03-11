@@ -38,7 +38,7 @@ include 'templates\navbar.php';
             <p class="mb-1 goingdark">&copy; 2022 Dave's Webshop GmbH</p>
             <ul class="list-inline">
                 <li class="list-inline-item"><a href="#">Privacy</a></li>
-                <li class="list-inline-item"><a href="#">Terms</a></li>
+                <li class="list-inline-item"><a href="index.php/tos">Terms</a></li>
                 <li class="list-inline-item"><a href="#">Support</a></li>
             </ul>
         </footer>

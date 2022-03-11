@@ -8,18 +8,18 @@
                 <div class="row">
                     <div class="col-md-5 product-name">
                         <div class="product-name">
-                            <a href="#"><?= $cartItem[1] ?></a>
+                            <a href="#"class="goingdark"><?= $cartItem[1] ?></a>
                             <div class="product-info">
-                                <div>Display: <span class="value">5 inch</span></div>
-                                <div>RAM: <span class="value">4GB</span></div>
-                                <div>Memory: <span class="value">32GB</span></div>
+                                <div class="goingdark">Display: <span class="value goingdark">5 inch</span></div>
+                                <div class="goingdark">RAM: <span class="value goingdark">4GB</span></div>
+                                <div class="goingdark">Memory: <span class="value goingdark">32GB</span></div>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4 quantity">
-                        <label for="quantity">Anzahl:</label>
+                        <label class="goingdark" for="quantity">Anzahl:</label>
 
-                        <input onchange="aendern(<?= $cartItem[0] ?>, <?= $anzahl ?>)" id="auswahl<?= $anzahl ?>" type="number" value="<?= $cartItem[6] ?>" class="form-control quantity-input artikelpr">
+                        <input onchange="aendern(<?= $cartItem[0] ?>, <?= $anzahl ?>)" id="auswahl<?= $anzahl ?>" type="number" value="<?= $cartItem[6] ?>" class="form-control quantity-input artikelpr row-border-light goingdark">
                     </div>
                     <script>
                         const artikelp = document.getElementsByClassName("artikelp");
@@ -52,6 +52,9 @@
                             var cartdelpreis = <?= $cartItem[7] ?>;
                             
                             document.getElementById("artikelpreiss").textContent = endpreis.fixed(2).replace(/(<([^>]+)>)/gi, "") + "€";
+                            if(document.getElementById("artikelpreiss").textContent == "0€") {
+                                document.getElementById("artikelpreiss").textContent = "0.00€";
+                            }
                             document.getElementById("artikelteile").textContent = gesamtteile;
                             document.getElementById("warenkorbanzahl").textContent = "Warenkorb (" + gesamtteile + ")";
                             
@@ -63,8 +66,11 @@
                                         var k = s.split(" ");
                                         
                                         document.getElementById("delprice").textContent = k[1] + "€";
+                                        // Bei der Funktion ist die Bedingung, dass alle Produkte Lieferkosten haben.
                                         if(document.getElementById("delprice").textContent == "0€") {
-                                            document.getElementById("totalprice").textContent = "0€";
+                                            document.getElementById("totalprice").textContent = "0.00€";
+                                            document.getElementById("emptycartjs").classList = "container emptycart goingdark";
+                                            document.getElementById("emptycartjs").innerHTML = "Ups, dein Warenkorb ist leer!";
                                         }
                                         
                                     }
@@ -74,7 +80,7 @@
                         }
                     </script>
                     <div class="col-md-3 price">
-                        <span class="artikelp"><?php
+                        <span class="artikelp goingdark"><?php
                                                 $cost = number_format($cartItem[3], 2);
                                                 echo "$cost";
 

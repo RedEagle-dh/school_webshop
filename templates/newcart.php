@@ -16,45 +16,55 @@
 
 <body>
     <main class="page">
-        <section class="shopping-cart dark">
+        <section class="shopping-cart dark-card">
             <div class="container">
                 <div class="block-heading">
                     <h2>Warenkorb</h2>
 
                 </div>
-                <div class="content">
+                <div class="content ro">
                     <div class="row">
                         <div class="col-md-12 col-lg-8">
                             <div class="items">
 
 
-                                <?php 
-                                $anzahl = countCartItemsWithoutAmount();
-                                foreach ($cartItems as $cartItem) : ?>
-                                    <div class="row">
-                                        <?php include 'templates/cartcard.php';
-                    
-                                        $anzahl = $anzahl -1;
-
-                                        ?>
+                                <?php
+                                if ($cartItems == null) {
+                                    include 'emptycart.html';
+                                } else {
+                                ?>
+                                    <div id="emptycartjs">
                                     </div>
-                                <?php endforeach; ?>
+                                    <?php
+                                    $anzahl = countCartItemsWithoutAmount();
+
+                                    foreach ($cartItems as $cartItem) : ?>
+                                        <div class="row">
+                                            <?php include 'templates/cartcard.php';
+
+                                            $anzahl = $anzahl - 1;
+
+                                            ?>
+                                        </div>
+                                <?php endforeach;
+                                }
+                                ?>
 
 
                             </div>
                         </div>
                         <div class="col-md-12 col-lg-4">
                             <div class="summary">
-                                <h3>Zusammenfassung</h3>
-                                <div class="summary-item"><span class="text" id="artikelteile"><?php 
-                                if(countCartItems(getCurrentUserId()) == 0) {
-                                    echo "0";
-                                } else {
-                                    echo countCartItems(getCurrentUserId());
-                                }
-                                 ?></span><span class="text"> Artikel</span><span class="price" id="artikelpreiss"><?= getCartPrice(getCurrentUserId()) ?>€</span></div>
-                                <div class="summary-item"><span class="text">Lieferkosten</span><span class="price" id="delprice"><?= getDeliveryPrice() ?>€</span></div>
-                                <div class="summary-item"><span class="text">Gesamt</span><span class="price" id="totalprice"><?= getTotalPrice() ?>€</span></div>
+                                <h3 class="goingdark">Zusammenfassung</h3>
+                                <div class="summary-item"><span class="text goingdark" id="artikelteile"><?php
+                                                                                                            if (countCartItems(getCurrentUserId()) == 0) {
+                                                                                                                echo "0";
+                                                                                                            } else {
+                                                                                                                echo countCartItems(getCurrentUserId());
+                                                                                                            }
+                                                                                                            ?></span><span class="text goingdark"> Artikel</span><span class="price goingdark" id="artikelpreiss"><?= number_format(getCartPrice(getCurrentUserId()),2) ?>€</span></div>
+                                <div class="summary-item"><span class="text goingdark">Lieferkosten</span><span class="price goingdark" id="delprice"><?= getDeliveryPrice() ?>€</span></div>
+                                <div class="summary-item"><span class="text goingdark">Gesamt</span><span class="price goingdark" id="totalprice"><?= number_format(getTotalPrice(),2) ?>€</span></div>
                                 <br>
                                 <a href="index.php/checkout" type="button" class="btn btn-primary btn-lg btn-block">Kaufen</a>
                             </div>
