@@ -66,7 +66,7 @@
                                 <div class="summary-item"><span class="text goingdark">Lieferkosten</span><span class="price goingdark" id="delprice"><?= getDeliveryPrice() ?>€</span></div>
                                 <div class="summary-item"><span class="text goingdark">Gesamt</span><span class="price goingdark" id="totalprice"><?= number_format(getTotalPrice(),2) ?>€</span></div>
                                 <br>
-                                <a href="index.php/checkout" type="button" class="btn btn-primary btn-lg btn-block">Kaufen</a>
+                                <a href="index.php/checkout" id="buybutton" type="button" class="btn btn-secondary btn-lg btn-block disabled">Kaufen</a>
                             </div>
                         </div>
                     </div>
@@ -77,7 +77,23 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-
+<script>
+    window.onload = function() {
+        var hasItems = parseInt(<?= countCartItems() ?>);
+        if (hasItems > 0) {
+            document.getElementById("buybutton").classList.remove("disabled");
+            document.getElementById("buybutton").classList.add("btn-success");
+        } else {
+            
+            
+        }
+    }
+    
+        
+        
+        
+    
+</script>
 </body>
 
 </html>

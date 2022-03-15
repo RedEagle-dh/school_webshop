@@ -12,11 +12,7 @@
                     <li>
                         
 
-                        <div class="custom-control custom-switch"> &nbsp;&nbsp;
-                            <input type="checkbox" class="custom-control-input" id="ChangeTheme">
-                            
-                            <label class="custom-control-label mr-2 text-gray-600 goingdark" for="ChangeTheme">Darkmode</label>
-                        </div>
+                        
                         
 
                         

@@ -467,7 +467,7 @@ padding-left: 1350px;
 
 }
 .green {
-color:#4ab74a
+  color: #198754;
 }
 
 
@@ -1023,7 +1023,7 @@ background-color: rgba(78, 115, 223, 0.5);
 .shopping-cart .block-heading h2,
 .shopping-cart .block-heading h3 {
 	margin-bottom:1.2rem;
-	color: #3b99e0;
+	color: #198754;
 }
 
 .shopping-cart .items{
@@ -1067,7 +1067,7 @@ background-color: rgba(78, 115, 223, 0.5);
  }
 
 .shopping-cart .summary{
-	border-top: 2px solid #5ea4f3;
+	border-top: 2px solid #198754;
     /*background-color: #f7fbff;*/
     height: 100%;
     padding: 30px;
@@ -1129,3 +1129,24 @@ background-color: rgba(78, 115, 223, 0.5);
   padding-left: 15rem;
   font-size: 30px;
 }
+
+
+
+.darkmodetoggle {
+  padding-top: 1.5rem;
+  padding-right: -2rem;
+  margin-right: -4.3rem;
+}
+
+.moont {
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  
+}
+
+.sunt {
+  
+  padding-top: 0.5rem;
+  
+}
+

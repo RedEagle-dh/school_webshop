@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="de">
 <?php
-    include 'templates\navbar.php';
-    $sql = "SELECT titel, beschreibung, preis, picture FROM produkte WHERE artnr = '" . $_GET['id'] . "';";
-    $result = db_query($sql);
+include 'templates\navbar.php';
+$sql = "SELECT titel, beschreibung, preis, picture, artnr FROM produkte WHERE artnr = '" . $_GET['id'] . "';";
+$result = db_query($sql);
 
-    $row = mysqli_fetch_row($result);?>
+$row = mysqli_fetch_row($result); ?>
+
 <head>
     <meta charset="utf-8">
     <title>Dave's Webshop | <?= $row[0] ?></title>
@@ -18,7 +19,7 @@
 <body data-menu="vertical-menu" class="vertical-layout vertical-menu content-right-sidebar menu-expanded">
 
 
-    
+
 
     <br><br><br>
 
@@ -55,70 +56,26 @@
                         </ul>
                     </div>
                     <div class="col-lg-12 col-md-12 col-sm-12">
-                        <h3 class="box-title mt-5">General Info</h3>
+                        <h3 class="box-title mt-5">Technische Daten</h3>
                         <div class="table-responsive">
                             <table class="table table-striped table-product">
                                 <tbody>
-                                    <tr>
-                                        <td width="390">Brand</td>
-                                        <td>Stellar</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Delivery Condition</td>
-                                        <td>Knock Down</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Seat Lock Included</td>
-                                        <td>Yes</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Type</td>
-                                        <td>Office Chair</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Style</td>
-                                        <td>Contemporary&amp;Modern</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Wheels Included</td>
-                                        <td>Yes</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Upholstery Included</td>
-                                        <td>Yes</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Upholstery Type</td>
-                                        <td>Cushion</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Head Support</td>
-                                        <td>No</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Suitable For</td>
-                                        <td>Study&amp;Home Office</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Adjustable Height</td>
-                                        <td>Yes</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Model Number</td>
-                                        <td>F01020701-00HT744A06</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Armrest Included</td>
-                                        <td>Yes</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Care Instructions</td>
-                                        <td>Handle With Care,Keep In Dry Place,Do Not Apply Any Chemical For Cleaning.</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Finish Type</td>
-                                        <td>Matte</td>
-                                    </tr>
+
+                                    <?php
+                                    var_dump(getDescriptionValue("1")[0]);
+                                    $desc = getDescriptionName();
+                                    $arr = getArrayKeyValue();
+                                    foreach($arr as $key => $value) : ?>
+                                        <tr>
+                                            <td width="390"><?= $key ?></td>
+                                            
+                                            <td><?= $value ?></td>
+                                            
+                                        </tr>
+                                    <?php endforeach; ?>
+
+
+
                                 </tbody>
                             </table>
                         </div>
@@ -140,8 +97,8 @@
 <footer class="my-5 pt-5 text-muted text-center text-small">
     <p class="mb-1">&copy; 2022 Dave's Webshop GmbH</p>
     <ul class="list-inline">
-        <li class="list-inline-item"><a href="#">Privacy</a></li>
-        <li class="list-inline-item"><a href="#">Terms</a></li>
+        <li class="list-inline-item"><a href="index.php/impressum">Impressum</a></li>
+        <li class="list-inline-item"><a href="index.php/tos">AGB</a></li>
         <li class="list-inline-item"><a href="#">Support</a></li>
     </ul>
 </footer>

@@ -29,7 +29,7 @@
         <div class="row">
             <div class="col-md-4 order-md-2 mb-4">
                 <h4 class="d-flex justify-content-between align-items-center mb-3">
-                    <span class="text-muted">Warenkorb</span>
+                    <span class="text-muted goingdark">Warenkorb</span>
                     <span class="badge badge-secondary badge-pill"><?php $items = countCartItems(getCurrentUserId());
                                                                     echo $items; ?></span>
                 </h4>
@@ -41,25 +41,25 @@
 
                     <?php endforeach; ?>
 
-                    <li class="list-group-item d-flex justify-content-between bg-light">
+                    <li class="list-group-item d-flex justify-content-between bg-light darkcard">
                         <div class="text-success">
                             <h6 class="my-0">Promo code</h6>
                             <small>EXAMPLECODE</small>
                         </div>
                         <span class="text-success">-5€</span>
                     </li>
-                    <li class="list-group-item d-flex justify-content-between">
-                        <span>Total (EUR)</span>
-                        <strong><?= getCartPrice(getCurrentUserId()) ?>€</strong>
+                    <li class="list-group-item d-flex justify-content-between darkcard">
+                        <span class="goingdark">Total (EUR)</span>
+                        <strong class="goingdark"><?= getCartPrice(getCurrentUserId()) ?>€</strong>
                     </li>
                 </ul>
 
 
 
 
-                <form class="card p-2">
+                <form class="card p-2 darkcard">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Promo code" name="testinput" id="testinput">
+                        <input type="text" class="form-control goingdark searchbar" placeholder="Promo code" name="testinput" id="testinput">
                         <div class="input-group-append">
                             <button type="submit" class="btn btn-secondary">Einlösen
                             </button>
@@ -77,14 +77,14 @@
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="firstName" class="goingdark">Vorname</label>
-                            <input type="text" class="form-control" id="firstName" placeholder="" value="" name="dfname" required>
+                            <input type="text" class="form-control searchbar goingdark" id="firstName" placeholder="" value="" name="dfname" required>
                             <div class="invalid-feedback">
                                 Ein richtiger Vorname wird benötigt.
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="lastName" class="goingdark">Nachname</label>
-                            <input type="text" class="form-control" id="lastName" placeholder="" value="" name="dlname" required>
+                            <input type="text" class="form-control searchbar goingdark" id="lastName" placeholder="" value="" name="dlname" required>
                             <div class="invalid-feedback">
                                 Ein richtiger Nachname wird benötigt.
                             </div>
@@ -95,7 +95,7 @@
 
                     <div class="mb-3">
                         <label for="email" class="goingdark">Email <span class="text-muted goingdark">(Optional)</span></label>
-                        <input type="email" class="form-control" id="email" name="demail" placeholder="du@beispiel.com">
+                        <input type="email" class="form-control searchbar goingdark" id="email" name="demail" placeholder="du@beispiel.com">
                         <div class="invalid-feedback">
                             Bitte gib eine korrekte Emailadresse an um Lieferupdates zu erhalten.
                         </div>
@@ -103,14 +103,14 @@
                     <div class="row">
                         <div class="col-md-9 mb-3">
                             <label class="goingdark" for="address">Straße</label>
-                            <input type="text" class="form-control" id="address" placeholder="Birkenweg" name="dstreet" required>
+                            <input type="text" class="form-control searchbar goingdark" id="address" placeholder="Birkenweg" name="dstreet" required>
                             <div class="invalid-feedback">
                                 Bitte gib deine Straße an.
                             </div>
                         </div>
                         <div class="col-md-3 mb-3">
-                            <label class="goingdark" for="address">No.</label>
-                            <input type="text" class="form-control" id="address" placeholder="24a" name="dno" required>
+                            <label class="goingdark" for="nod">No.</label>
+                            <input type="text" class="form-control searchbar goingdark" id="nod" placeholder="24a" name="dno" required>
                             <div class="invalid-feedback">
                                 Bitte gib deine Hausnummer an.
                             </div>
@@ -118,7 +118,7 @@
                     </div>
                     <div class="mb-3">
                         <label class="goingdark" for="address2">Adresszusatz <span class="text-muted goingdark">(Optional)</span></label>
-                        <input type="text" class="form-control" id="address2" placeholder="Stockwerk o. Wohnung" name="daddress2">
+                        <input type="text" class="form-control searchbar goingdark" id="address2" placeholder="Stockwerk o. Wohnung" name="daddress2">
                     </div>
 
                     <div class="row">
@@ -130,15 +130,15 @@
 
                         </div>
                         <div class="col-md-4 mb-3">
-                            <label for="address" class="goingdark">Stadt</label>
-                            <input type="text" class="form-control" id="address" placeholder="Hessen" name="dstate" required>
+                            <label for="sd"class="goingdark">Stadt</label>
+                            <input type="text" class="form-control searchbar goingdark" id="sd" placeholder="Frankfurt a.M." name="dstate" required>
                             <div class="invalid-feedback">
                                 Bitte gib deine Stadt an.
                             </div>
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="zip" class="goingdark">PLZ</label>
-                            <input type="text" class="form-control" id="zip" placeholder="36110" name="dzip" required>
+                            <input type="text" class="form-control searchbar goingdark" id="zip" placeholder="36110" name="dzip" required>
                             <div class="invalid-feedback">
                                 Bitte gib deine Postleitzahl an.
                             </div>
@@ -159,13 +159,13 @@
 
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label for="firstName" class="goingdark">Vorname</label>
-                                <input type="text" class="form-control" id="firstName" placeholder="" value="" name="rfname">
+                                <label for="firstNamer" class="goingdark">Vorname</label>
+                                <input type="text" class="form-control searchbar goingdark" id="firstNamer" placeholder="" value="" name="rfname">
 
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="lastName" class="goingdark">Nachname</label>
-                                <input type="text" class="form-control" id="lastName" placeholder="" value="" name="rlname">
+                                <label for="lastNamer" class="goingdark">Nachname</label>
+                                <input type="text" class="form-control searchbar goingdark" id="lastNamer" placeholder="" value="" name="rlname">
 
                             </div>
                         </div>
@@ -173,37 +173,37 @@
 
                         <div class="row">
                             <div class="col-md-9 mb-3">
-                                <label for="address" class="goingdark">Straße</label>
-                                <input type="text" class="form-control" id="address" placeholder="Birkenweg" name="rstreet">
+                                <label for="addressr" class="goingdark">Straße</label>
+                                <input type="text" class="form-control searchbar goingdark" id="addressr" placeholder="Birkenweg" name="rstreet">
 
                             </div>
                             <div class="col-md-3 mb-3">
-                                <label for="address" class="goingdark">No.</label>
-                                <input type="text" class="form-control" id="address" placeholder="24a" name="rno">
+                                <label for="rno" class="goingdark">No.</label>
+                                <input type="text" class="form-control searchbar goingdark" id="rno" placeholder="24a" name="rno">
 
                             </div>
                         </div>
                         <div class="mb-3">
-                            <label for="address2" class="goingdark">Adresszusatz <span class="text-muted goingdark">(Optional)</span></label>
-                            <input type="text" class="form-control" id="address2" placeholder="Stockwerk o. Wohnung" name="raddress2">
+                            <label for="address2r" class="goingdark">Adresszusatz <span class="text-muted goingdark">(Optional)</span></label>
+                            <input type="text" class="form-control searchbar goingdark" id="address2r" placeholder="Stockwerk o. Wohnung" name="raddress2">
                         </div>
 
                         <div class="row">
                             <div class="col-md-5 mb-3">
-                                <label for="country" class="goingdark">Land</label>
+                                <label for="countryr" class="goingdark">Land</label>
 
                                 <?php include 'countries/allcountriesr.php' ?>
 
 
                             </div>
                             <div class="col-md-4 mb-3">
-                                <label for="address" class="goingdark">Stadt</label>
-                                <input type="text" class="form-control" id="address" placeholder="Hessen" name="rstate">
+                                <label for="cityr" class="goingdark">Stadt</label>
+                                <input type="text" class="form-control searchbar goingdark" id="cityr" placeholder="Frankfurt a.M." name="rstate">
 
                             </div>
                             <div class="col-md-3 mb-3">
-                                <label for="zip" class="goingdark">PLZ</label>
-                                <input type="text" class="form-control" id="zip" placeholder="36110" name="rzip">
+                                <label for="zipr" class="goingdark">PLZ</label>
+                                <input type="text" class="form-control searchbar goingdark" id="zipr" placeholder="36110" name="rzip">
 
                             </div>
                         </div>
@@ -211,33 +211,28 @@
                     </div>
 
 
-
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="save-info">
-                        <label class="custom-control-label goingdark" for="save-info"><nobr>Speichere die Infos für nächstes Mal</nobr></label>
-                    </div>
                     <hr class="mb-4">
 
                     <h4 class="mb-3 goingdark">Zahlungsart</h4>
 
                     <div class="d-block my-3">
                         <div class="custom-control custom-radio">
-                            <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked required>
+                            <input id="credit" name="paymentMethod" type="radio" class="custom-control-input searchbar goingdark" checked required>
                             <label class="custom-control-label goingdark" for="credit">Kreditkarte</label>
                         </div>
                         <div class="custom-control custom-radio">
-                            <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required>
+                            <input id="debit" name="paymentMethod" type="radio" class="custom-control-input searchbar goingdark" required>
                             <label class="custom-control-label goingdark" for="debit">Debitkarte</label>
                         </div>
                         <div class="custom-control custom-radio">
-                            <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required>
+                            <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input searchbar goingdark" required>
                             <label class="custom-control-label goingdark" for="paypal">PayPal</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="cc-name" class="goingdark">Karteninhaber</label>
-                            <input type="text" class="form-control" id="cc-name" placeholder="" required>
+                            <input type="text" class="form-control searchbar goingdark" id="cc-name" placeholder="" required>
                             <small class="text-muted goingdark">Auf der Karte zu finden</small>
                             <div class="invalid-feedback">
                                 Name benötigt
@@ -245,7 +240,7 @@
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="cc-number" class="goingdark">Kartennummer</label>
-                            <input type="text" class="form-control" id="cc-number" placeholder="" required>
+                            <input type="text" class="form-control searchbar goingdark" id="cc-number" placeholder="" required>
                             <div class="invalid-feedback">
                                 Kartennummer benötigt
                             </div>
@@ -254,14 +249,14 @@
                     <div class="row">
                         <div class="col-md-3 mb-3">
                             <label for="cc-expiration" class="goingdark">Ablaufdatum</label>
-                            <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
+                            <input type="text" class="form-control searchbar goingdark" id="cc-expiration" placeholder="" required>
                             <div class="invalid-feedback">
                                 Ablaufdatum benötigt
                             </div>
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="cc-cvv" class="goingdark">CVV</label>
-                            <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
+                            <input type="text" class="form-control searchbar goingdark" id="cc-cvv" placeholder="" required>
                             <div class="invalid-feedback">
                                 Sicherheitscode benötigt
                             </div>
@@ -276,8 +271,8 @@
         <footer class="my-5 pt-5 text-muted text-center text-small">
             <p class="mb-1">&copy; 2022 Dave's Webshop GmbH</p>
             <ul class="list-inline">
-                <li class="list-inline-item"><a href="#">Privacy</a></li>
-                <li class="list-inline-item"><a href="#">Terms</a></li>
+                <li class="list-inline-item"><a href="index.php/impressum">Impressum</a></li>
+                <li class="list-inline-item"><a href="index.php/tos">AGB</a></li>
                 <li class="list-inline-item"><a href="#">Support</a></li>
             </ul>
         </footer>

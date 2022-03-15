@@ -1,4 +1,4 @@
-<select class="custom-select d-block w-100" id="country" name="rcountry" required>
+<select class="custom-select d-block w-100 searchbar goingdark" id="countryr" name="rcountry" required>
     <option value="AF">Afghanistan</option>
     <option value="AX">Aland Islands</option>
     <option value="AL">Albania</option>

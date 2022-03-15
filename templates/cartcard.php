@@ -8,7 +8,7 @@
                 <div class="row">
                     <div class="col-md-5 product-name">
                         <div class="product-name">
-                            <a href="#"class="goingdark"><?= $cartItem[1] ?></a>
+                            <a href="#" class="goingdark"><?= $cartItem[1] ?></a>
                             <div class="product-info">
                                 <div class="goingdark">Display: <span class="value goingdark">5 inch</span></div>
                                 <div class="goingdark">RAM: <span class="value goingdark">4GB</span></div>
@@ -50,29 +50,35 @@
 
                             var delpreis = parseFloat(document.getElementById("delprice").textContent);
                             var cartdelpreis = <?= $cartItem[7] ?>;
-                            
+
                             document.getElementById("artikelpreiss").textContent = endpreis.fixed(2).replace(/(<([^>]+)>)/gi, "") + "€";
-                            if(document.getElementById("artikelpreiss").textContent == "0€") {
+                            if (document.getElementById("artikelpreiss").textContent == "0€") {
                                 document.getElementById("artikelpreiss").textContent = "0.00€";
                             }
                             document.getElementById("artikelteile").textContent = gesamtteile;
                             document.getElementById("warenkorbanzahl").textContent = "Warenkorb (" + gesamtteile + ")";
-                            
+
                             ajax.onreadystatechange = function() {
                                 if (this.readyState == 4 && this.status == 200) {
-                                    if(this.response.includes("delete")) {
+                                    if (this.response.includes("delete")) {
                                         document.getElementById("products").remove();
                                         var s = this.response;
                                         var k = s.split(" ");
-                                        
+
                                         document.getElementById("delprice").textContent = k[1] + "€";
                                         // Bei der Funktion ist die Bedingung, dass alle Produkte Lieferkosten haben.
-                                        if(document.getElementById("delprice").textContent == "0€") {
+                                        if (document.getElementById("delprice").textContent == "0€") {
                                             document.getElementById("totalprice").textContent = "0.00€";
                                             document.getElementById("emptycartjs").classList = "container emptycart goingdark";
                                             document.getElementById("emptycartjs").innerHTML = "Ups, dein Warenkorb ist leer!";
+
+
+                                            document.getElementById("buybutton").classList.add("disabled");
+                                            document.getElementById("buybutton").classList.remove("btn-success");
+                                            document.getElementById("buybutton").classList.add("btn-secondary");
+
                                         }
-                                        
+
                                     }
                                 }
                             }
@@ -81,11 +87,11 @@
                     </script>
                     <div class="col-md-3 price">
                         <span class="artikelp goingdark"><?php
-                                                $cost = number_format($cartItem[3], 2);
-                                                echo "$cost";
+                                                            $cost = number_format($cartItem[3], 2);
+                                                            echo "$cost";
 
 
-                                                ?>€</span>
+                                                            ?>€</span>
                     </div>
                 </div>
             </div>

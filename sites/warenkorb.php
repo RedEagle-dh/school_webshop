@@ -33,8 +33,8 @@
     <footer class="my-5 pt-5 text-muted text-center text-small">
         <p class="mb-1" id="tesst">&copy; 2022 Dave's Webshop GmbH</p>
         <ul class="list-inline">
-            <li class="list-inline-item"><a href="#">Privacy</a></li>
-            <li class="list-inline-item"><a href="#">Terms</a></li>
+            <li class="list-inline-item"><a href="index.php/impressum">Impressum</a></li>
+            <li class="list-inline-item"><a href="index.php/tos">AGB</a></li>
             <li class="list-inline-item"><a href="#">Support</a></li>
         </ul>
     </footer>

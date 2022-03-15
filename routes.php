@@ -112,10 +112,10 @@ if (strpos($route, '/login') !== false) {
 
 if (strpos($route, '/checkout') !== false) {
 
-    if(!isLoggedIn()) {
-        $_SESSION['redirectTarget'] = 'Webshop/index.php/checkout';
-        header("Location: /Webshop/index.php/login");
-        exit();
+    if(getCartItemsForUser($userid) == null) {
+        
+
+        
     } else {
         $cartItems = getCartItemsForUser($userid);
         require 'sites/checkout.php';
@@ -395,6 +395,13 @@ if (strpos($route, '/updateprofile') !== false) {
 
 if (strpos($route, '/tos') !== false) {
     require('sites/tos.php');
+    exit();
+
+
+}
+
+if (strpos($route, '/impressum') !== false) {
+    require('sites/impressum.php');
     exit();
 
 

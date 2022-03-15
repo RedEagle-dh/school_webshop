@@ -5,10 +5,12 @@
     <meta charset="utf-8">
     <title>Dave's Webshop | Settings</title>
     <base href="/Webshop/">
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
+
+
     <link rel="icon" href="https://lh3.googleusercontent.com/jUoaTIlBn5ibfQcND2n5OMD6Z7xoqNj-ShHlFR6QuLffLXD5pS8V2eNg1rGlrsRrnDkoQ28O8UHzqzBQKAGY4l1CS2NQSq2SkRScK6FOjl82jppyohK-">
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 
 <body data-menu="vertical-menu" class="vertical-layout vertical-menu content-right-sidebar menu-expanded">
@@ -29,10 +31,10 @@
                 <div class="row no-gutters row-bordered row-border-light">
                     <div class="col-md-3 pt-0">
                         <div class="list-group list-group-flush account-settings-links">
-                            <a class="list-group-item list-group-item-action active goingdark" data-toggle="list" href="#account-general">Allgemein</a>
-                            <a class="list-group-item list-group-item-action goingdark" data-toggle="list" href="#account-change-password">Passwort ändern</a>
+                            <a class="list-group-item list-group-item-action active goingdark darkcard" data-toggle="list" href="#account-general">Allgemein</a>
+                            <a class="list-group-item list-group-item-action goingdark darkcard" data-toggle="list" href="#account-change-password">Passwort ändern</a>
 
-                            <a class="list-group-item list-group-item-action goingdark" data-toggle="list" href="#account-invoices">Rechnungen</a>
+                            <a class="list-group-item list-group-item-action goingdark darkcard" data-toggle="list" href="#account-invoices">Rechnungen</a>
                         </div>
                     </div>
                     <div class="col-md-9">
@@ -66,17 +68,17 @@
                                     <div class="form-group">
                                         <label class="form-label goingdark">
                                             <nobr>Handynummer</nobr>
-                                        </label>
+                                        </label><br>
                                         <input name="handynummer" type="text" class="form-control goingdark searchbar" value="<?= $data[5] ?>">
                                     </div>
                                     <div class="row">
                                         <div class="col-md-9 mb-3">
-                                            <label for="form-label" class=" goingdark">Straße</label>
+                                            <br><label for="form-label" class=" goingdark">Straße</label><br>
                                             <input name="street" type="text" class="form-control goingdark searchbar" value="<?= $data[6] ?>">
 
                                         </div>
                                         <div class="col-md-3 mb-3">
-                                            <label for="form-label" class=" goingdark">No.</label>
+                                            <br><label for="form-label" class=" goingdark">No.</label><br>
                                             <input name="hausnr" type="text" class="form-control goingdark searchbar" value="<?= $data[7] ?>">
 
                                         </div>
@@ -84,25 +86,25 @@
                                     <div class="mb-3">
                                         <label for="form-label" class=" goingdark">
                                             <nobr>Adresszusatz <span class="text-muted goingdark">(Optional)</span></nobr>
-                                        </label>
+                                        </label><br>
                                         <input name="addinfo" type="text" class="form-control goingdark searchbar" value="<?= $data[8] ?>">
                                     </div>
 
                                     <div class="row">
                                         <div class="col-md-5 mb-3">
-                                            <label for="form-label" class="goingdark">Land</label>
+                                            <label for="form-label" class="goingdark">Land</label> <br>
 
                                             <?php include 'countries/allcountriessettings.php' ?>
 
 
                                         </div>
                                         <div class="col-md-4 mb-3">
-                                            <label for="form-label" class=" goingdark">Stadt</label>
+                                            <label for="form-label" class=" goingdark">Stadt</label><br>
                                             <input name="city" type="text" class="form-control goingdark searchbar" value="<?= $data[10] ?>">
 
                                         </div>
                                         <div class="col-md-3 mb-3">
-                                            <label for="form-label " class=" goingdark">PLZ</label>
+                                            <label for="form-label " class=" goingdark">PLZ</label><br>
                                             <input name="zip" type="text" class="form-control goingdark searchbar" value="<?= $data[11] ?>">
 
                                         </div>
@@ -121,21 +123,21 @@
                                         <label class="form-label goingdark">
                                             <nobr>Aktuelles Passwort</nobr>
                                         </label>
-                                        <input type="password" class="form-control">
+                                        <input type="password" class="form-control searchbar goingdark">
                                     </div>
 
                                     <div class="form-group">
                                         <label class="form-label goingdark">
                                             <nobr>Neues Passwort</nobr>
                                         </label>
-                                        <input type="password" class="form-control" name="firstpw">
+                                        <input type="password" class="form-control searchbar goingdark" name="firstpw">
                                     </div>
 
                                     <div class="form-group">
                                         <label class="form-label goingdark">
                                             <nobr>Wiederhole das neue Passwort</nobr>
                                         </label>
-                                        <input type="password" class="form-control" name="secondpw">
+                                        <input type="password" class="form-control searchbar goingdark" name="secondpw">
                                     </div>
 
                                 </div>
@@ -157,27 +159,30 @@
                         </div>
                     </div>
                 </div>
+                
             </div>
 
             <div class="text-right mt-3">
-                <button type="submit" class="btn btn-primary">Save changes</button>&nbsp;
+            
+
+                <button type="submit" class="btn btn-success">Save changes</button>&nbsp;
                 <button type="button" class="btn btn-default goingdark">Cancel</button>
-            </div>
+            </div> <br>
         </form>
     </div>
 
 
 
 
-    
-    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+
+
 
 </body>
 <footer class="my-5 pt-5 text-muted text-center text-small">
     <p class="mb-1">&copy; 2022 Dave's Webshop GmbH</p>
     <ul class="list-inline">
-        <li class="list-inline-item"><a href="#">Privacy</a></li>
-        <li class="list-inline-item"><a href="#">Terms</a></li>
+        <li class="list-inline-item"><a href="index.php/impressum">Impressum</a></li>
+        <li class="list-inline-item"><a href="index.php/tos">AGB</a></li>
         <li class="list-inline-item"><a href="#">Support</a></li>
     </ul>
 </footer>

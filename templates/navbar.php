@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <a class="navbar-brand goingdark" href="#">Dave's Webshop</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            
+
             <span class="navbar-toggler-icon"></span>
         </button>
         <!-- Dropdown Menü -->
@@ -46,6 +46,18 @@
                     <a class="nav-link disabled goingdark">Coming Soon</a>
                 </li>
             </ul>
+            <i class="fi fi-rr-sun sunt goingdark"></i>
+            <div class="custom-control custom-switch">
+                <div class="darkmodetoggle">
+
+                    <input type="checkbox" class="custom-control-input" id="ChangeTheme">
+
+                    <label class="custom-control-label" for="ChangeTheme"></label>
+
+                </div>
+
+            </div>
+            <i class="fi fi-rr-moon moont goingdark"></i>
             <form class="d-flex" id="onetwo" action="index.php/search" method="POST">
                 <input class="form-control me-2 searchbar" type="search" placeholder="Name/ArtNr" aria-label="Search" name="searchproduct">
                 <button class="btn btn-outline-success" type="submit">Suche</button>
@@ -55,6 +67,8 @@
                     margin-right: 10px;
                 }
             </style>
+
+            
 
 
 
@@ -94,5 +108,9 @@
 
         </div>
     </div>
+
 </nav>
+
+
+
 <!-- Navigationsbar Ende -->

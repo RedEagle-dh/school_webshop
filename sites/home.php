@@ -5,10 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Dave's Webshop</title>
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
+    
     <link rel="icon" href="https://lh3.googleusercontent.com/jUoaTIlBn5ibfQcND2n5OMD6Z7xoqNj-ShHlFR6QuLffLXD5pS8V2eNg1rGlrsRrnDkoQ28O8UHzqzBQKAGY4l1CS2NQSq2SkRScK6FOjl82jppyohK-">
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
     
+		
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body data-menu="vertical-menu" class="vertical-layout vertical-menu content-right-sidebar menu-expanded">
 
@@ -32,20 +36,23 @@ include 'templates\navbar.php';
             <?php endforeach;
         } ?>
     </div>
-
+    
+						
 </section>
+
 <footer class="my-5 pt-5 text-muted text-center text-small">
             <p class="mb-1 goingdark">&copy; 2022 Dave's Webshop GmbH</p>
             <ul class="list-inline">
-                <li class="list-inline-item"><a href="#">Privacy</a></li>
-                <li class="list-inline-item"><a href="index.php/tos">Terms</a></li>
+                <li class="list-inline-item"><a href="index.php/impressum">Impressum</a></li>
+                <li class="list-inline-item"><a href="index.php/tos">AGB</a></li>
                 <li class="list-inline-item"><a href="#">Support</a></li>
             </ul>
         </footer>
 
 <script src="assets/js/bootstrap.bundle.js">
     
+    
 
-</script><script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+</script><script src="assets\js\main.js"></script><script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 </body>
 </html>

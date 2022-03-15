@@ -29,20 +29,20 @@
         <h1>Danke für Ihren Einkauf!</h1>
     </div>
     <div class="_body">
-        <div class="_box">
+        <div class="_box darkcard">
             <h2>
                 <strong>Überprüfen Sie Ihr Postfach</strong> um Ihre Rechnung zu erhalten.
                 <div class="righthandside"><a class="green" href="index.php/bought?download=1"><i class="fi fi-rr-download"></i></a></div>
                 
             </h2>
             
-            <p>
+            <p class="goingdark">
                 Sie können Ihre Rechnungen in den Profileinstellungen herunterladen.
             </p>
         </div>
     </div>
     <div class="_footer">
-        <p>Probleme? <a href="">Kontaktieren Sie Uns</a> </p>
+        <p class="goingdark">Probleme? <a href="">Kontaktieren Sie Uns</a> </p>
         <a class="btn btn-success" href="#">Zurück zur Startseite</a>
     </div>
 </div>
