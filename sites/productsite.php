@@ -62,17 +62,20 @@ $row = mysqli_fetch_row($result); ?>
                                 <tbody>
 
                                     <?php
-                                    var_dump(getDescriptionValue("1")[0]);
+                                    
                                     $desc = getDescriptionName();
-                                    $arr = getArrayKeyValue();
-                                    foreach($arr as $key => $value) : ?>
+                                    $val = getDescriptionValue($row[4]);
+                                    
+                                    for($i = 0; $i < count($desc)-2; $i++) : ?>
                                         <tr>
-                                            <td width="390"><?= $key ?></td>
+                                            <td width="390"><?= $desc[$i][0] ?></td>
                                             
-                                            <td><?= $value ?></td>
+                                            <td><?= 
+                                            
+                                            $val[$i] ?></td>
                                             
                                         </tr>
-                                    <?php endforeach; ?>
+                                    <?php endfor; ?>
 
 
 

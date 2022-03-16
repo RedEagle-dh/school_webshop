@@ -2,17 +2,11 @@
 
 function getDescriptionValue($productid)
 {
-    $sql = "SELECT * FROM description_cpu WHERE id = $productid;";
+    $sql = "SELECT * FROM description_cpu, produkte WHERE description_cpu.productid = produkte.artnr AND produkte.artnr = $productid;";
     $result = db_query($sql);
-    $descval = [];
-    $arr = array();
-    $i = 0;
-    while ($row = mysqli_fetch_row($result)) {
-             
-        $descval[] = $row[1];
-    }
+    $row = mysqli_fetch_array($result);
     
-    return $descval;
+    return $row;
 }
 
 function getDescriptionName()
@@ -28,13 +22,4 @@ function getDescriptionName()
     
 
     return $desc;
-}
-
-
-function getArrayKeyValue() {
-    $arr = array();
-    $arr["id"] = 1;
-    $arr["prozessorserie"] = getDescriptionValue("1");
-
-    return $arr;
 }
