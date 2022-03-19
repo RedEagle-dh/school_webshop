@@ -64,7 +64,7 @@ $row = mysqli_fetch_row($result); ?>
                                     <?php
                                     
                                     $desc = getDescriptionName();
-                                    $val = getDescriptionValue($row[4]);
+                                    $val = getDescriptioncpuValue($row[4]);
                                     
                                     for($i = 0; $i < count($desc)-2; $i++) : ?>
                                         <tr>
