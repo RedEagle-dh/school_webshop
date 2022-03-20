@@ -2,7 +2,7 @@
 
 function getAllProducts() {
 
-    $sql = "SELECT artnr, titel, beschreibung, preis, picture FROM produkte";
+    $sql = "SELECT artnr, titel, beschreibung, preis, picture, auflager FROM produkte";
     $result = db_query($sql);
 
     if (!$result) {
@@ -79,7 +79,7 @@ function searchProduct()
 {
     $searchword = $_POST['searchproduct'];
 
-    $sql = "SELECT artnr, titel, beschreibung, preis, picture FROM produkte WHERE titel LIKE '%" . $searchword . "%';";
+    $sql = "SELECT artnr, titel, beschreibung, preis, picture, auflager FROM produkte WHERE titel LIKE '%" . $searchword . "%';";
     $result = db_query($sql);
     if (!$result) {
         return [];
@@ -96,7 +96,7 @@ function searchProduct()
 
 function getCat()
 {
-    $sql = "SELECT artnr, titel, beschreibung, preis, picture, produkte.katid FROM produkte, kategorien WHERE produkte.katid = kategorien.katid AND kategorien.katid = '" . $_GET['cat'] . "'";
+    $sql = "SELECT artnr, titel, beschreibung, preis, picture, auflager FROM produkte, kategorien WHERE produkte.katid = kategorien.katid AND kategorien.katid = '" . $_GET['cat'] . "' AND auflager > 0";
     $result = db_query($sql);
     if (!$result) {
         return [];
@@ -107,4 +107,39 @@ function getCat()
     }
 
     return $products;
+}
+
+function getSoldOutProducts() {
+    $sql = "SELECT artnr, titel, beschreibung, preis, picture, auflager FROM produkte WHERE auflager = 0";
+    $result = db_query($sql);
+
+    if (!$result) {
+        return [];
+    }
+    $soutt = mysqli_fetch_array($result);
+
+    return $soutt;
+}
+
+function getProductCount() {
+    $sql = "SELECT count(artnr) FROM produkte";
+    $result = db_query($sql);
+    $r = mysqli_fetch_column($result);
+
+    return $r;
+}
+
+function getProductCountSoldOut() {
+    $sql = "SELECT count(artnr) FROM produkte WHERE auflager = 0";
+    $result = db_query($sql);
+    $r = mysqli_fetch_column($result);
+
+    return $r;
+}
+
+function getProductPercentegeOfCat($prodid) {
+    $sql = "SELECT count(artnr) FROM produkte WHERE katid = $prodid;";
+    $result = db_query($sql);
+    $r = mysqli_fetch_column($result);
+    return $r;
 }

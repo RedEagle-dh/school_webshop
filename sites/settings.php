@@ -79,7 +79,7 @@
                                         </div>
                                         <div class="col-md-3 mb-3">
                                             <br><label for="form-label" class=" goingdark">No.</label><br>
-                                            <input name="hausnr" type="text" class="form-control goingdark searchbar" value="<?= $data[7] ?>">
+                                            <input name="hnr" type="text" class="form-control goingdark searchbar" value="<?= $data[7] ?>">
 
                                         </div>
                                     </div>
@@ -123,21 +123,21 @@
                                         <label class="form-label goingdark">
                                             <nobr>Aktuelles Passwort</nobr>
                                         </label>
-                                        <input type="password" class="form-control searchbar goingdark">
+                                        <input type="password" class="form-control searchbar goingdark" name="actualpw">
                                     </div>
 
                                     <div class="form-group">
                                         <label class="form-label goingdark">
                                             <nobr>Neues Passwort</nobr>
                                         </label>
-                                        <input type="password" class="form-control searchbar goingdark" name="firstpw">
+                                        <input type="password" class="form-control searchbar goingdark" name="firstnewpw">
                                     </div>
 
                                     <div class="form-group">
                                         <label class="form-label goingdark">
                                             <nobr>Wiederhole das neue Passwort</nobr>
                                         </label>
-                                        <input type="password" class="form-control searchbar goingdark" name="secondpw">
+                                        <input type="password" class="form-control searchbar goingdark" name="secondnewpw">
                                     </div>
 
                                 </div>

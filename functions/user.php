@@ -78,3 +78,19 @@ function getCurrentUserName() {
     $rname = $name . " " . $lname;
     return $rname;
 }
+
+
+function getEmail() {
+    $userid = getCurrentUserId();
+    $sql = "SELECT email FROM kunde WHERE kundenid = '".$userid."';";
+    $result = db_query($sql);
+    $rname = mysqli_fetch_array($result);
+    return $rname;
+}
+
+function getUserCount() {
+    $sql = "SELECT count(kundenid) FROM kunde";
+    $result = db_query($sql);
+    $r = mysqli_fetch_column($result);
+    return $r;
+}

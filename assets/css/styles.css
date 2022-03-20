@@ -1,4 +1,4 @@
-#test {
+#productimage {
   height: 70%;
   width: 70%;
 
@@ -624,7 +624,8 @@ transform: translatex(40px);
 }
 /* if dark-mode class is added set this background */
 body.dark-mode {
-background: #36393F;
+background-color: #36393F !important;
+
 }
 .dark-mode .txt p:nth-child(1) {
 color: #000;
@@ -662,7 +663,9 @@ border: #000000;
 background-color: #2F3136 !important;
 border: #000000;
 }
-
+.dark-mode .adminback {
+  background-color: #36393F !important;
+}
 .dark-mode .ro {
   background-color: #3d3e42 !important;
   border: #000000;
@@ -1149,4 +1152,20 @@ background-color: rgba(78, 115, 223, 0.5);
   padding-top: 0.5rem;
   
 }
+
+.imageoutoforder {
+  
+  filter: grayscale(100%);
+-webkit-filter: grayscale(100%);
+-moz-filter: grayscale(100%);
+-ms-filter: grayscale(100%);
+-o-filter: grayscale(100%);
+filter: url(desaturate.svg#greyscale);
+filter: gray;
+-webkit-filter: grayscale(1);
+
+}
+
+
+
 

@@ -1,16 +1,34 @@
-<div class="card shadow darkcard" style="width: 18rem;">
+<div class="card shadow darkcard" style="width: 18rem">
     <div class="card-title">
+        <?php 
+        $price = "<p class='card-text goingdark pricesoldout' style='color:green' id='picesoldout'>".$product[3] . "€";
+        $img = "<img src='$product[4]' class='card-img-top center productimage' id='productimage' alt='$product[4]'>";
+        $btn = "<a href='index.php/cart/add/$product[0]' class='btn btn-success' id='addtocartbtn'><i class='fa fa-shopping-cart addtocartbtn'></i> Hinzufügen</a>";
+        if ($product[5] == 0) {
+            $price = "<p class='card-text' style='color: red'>Sold Out!</p>";
+            $img = "<img src='$product[4]' class='card-img-top center  imageoutoforder productimage' id='productimage' alt='$product[4]'>";
+            $btn = "<a href='index.php/cart/add/<?= $product[0] ?>' class='btn btn-success disabled' id='addtocartbtn'><i class='fa fa-shopping-cart addtocartbtn'></i> Hinzufügen</a>";
+        }
+        $sql = "SELECT artnr, titel, beschreibung, preis, picture, auflager FROM produkte WHERE auflager = 0";
+        $result = db_query($sql);
+    
+        $soutt = mysqli_fetch_array($result);
+        echo "$img";
+        ?>
 
-
-        <img src="<?= $product[4] ?>" class="card-img-top center" id='test' alt="...">
+        
         <div class="card-body">
             <h5 class="card-title goingdark"><?= $product[1] ?></h5>
-            <p class="card-text goingdark"><?= $product[2] ?></div>
+            <?php echo "$price" ?>
+        </div>
     </div>
     <div class="card-footer darkcardfooter">
-        <a href="index.php/cart/add/<?= $product[0] ?>" class="btn btn-success">Add to cart</a>
+        <?php 
+        echo "$btn";
+        ?>
 
 
-        <a href="index.php/productsite.php?id=<?= $product[0] ?>" class="btn btn-secondary">More</a>
+        <a href="index.php/productsite.php?id=<?= $product[0] ?>" class="btn btn-secondary"><i class="fi fi-rr-info"></i> Info</a>
     </div>
+    
 </div>

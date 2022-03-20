@@ -9,6 +9,7 @@ $route = str_replace('index.php', '', $route);
 if (!$route) {
     $products = getAllProducts();
     $cartItemsCount = countCartItems($userid);
+    $soldoutprod = getSoldOutProducts();
     require __DIR__ . '/sites/home.php';
     exit();
 }
@@ -20,23 +21,15 @@ if (strpos($route, '/cart/add/') !== false) {
         exit();
     }
 
-    $sql = "SELECT auflager FROM produkte WHERE artnr = '".$productid."';";
-            $result = db_query($sql);
-            $r = (int) mysqli_fetch_column($result);
+    
 
-    if ($r == 0) {
-        
-        header("Location: /Webshop/index.php");
-        $message = "Dieser Artikel ist ausverkauft!";
-        echo "<script type='text/javascript'>alert('$message');</script>";
-        exit();
-    } else {
+    
         if (getProduct($productid) == 0) {
             addProductToCart($route, $userid);
         } else {
             updateAmount($productid, +1);
         }
-    }
+    
 
     
 
@@ -103,7 +96,7 @@ if (strpos($route, '/login') !== false) {
     }
     $hasError = count($errors) > 0;
     
-    var_dump($errors);
+    
     require 'sites/login.php';
     exit();
 }
@@ -292,7 +285,7 @@ if (strpos($route, '/bought') !== false) {
     $rzip = filter_input(INPUT_POST, 'rzip');
     
     $cartItems = getCartItemsForUser();
-
+    $cartP = 0;
     $contentpdf = include 'functions/erstelleRechnung.php';
 
     if (isset($_GET['download'])) {
@@ -320,7 +313,7 @@ if (strpos($route, '/bought') !== false) {
             db_query($sql);
         }
 
-        //var_dump($cartItems);
+        
         
         //$sql = "UPDATE produkte SET auflager = '49' WHERE (`artnr` = '1');";
         foreach ($cartItems as $cartItem) {
@@ -328,13 +321,25 @@ if (strpos($route, '/bought') !== false) {
             $result = db_query($sql);
             $r = (int) mysqli_fetch_column($result);
             
-            $r = $r -1;
+            
+            $r = $r - $cartItem[6];
             
             $sql = "UPDATE produkte SET auflager = '".$r."' WHERE (artnr = '".$cartItem[0]."');";
             db_query($sql);
+            $cartP = (double) getCartPrice();
+            $sql = "DELETE FROM cart WHERE userid = $userid AND productid = $cartItem[0];";
+            db_query($sql);
         }
+
+        
+        
         
     }
+    $month = getActualMonth();
+    $endprice = $cartP + (double) getMonthlyEarnings(getActualMonth());
+    $sql = "UPDATE analytics SET $month = $endprice WHERE analyticid = 1";
+    db_query($sql);
+    
 
 
     require('sites/finishbuy.php');
@@ -364,10 +369,6 @@ if (strpos($route, '/updateprofile') !== false) {
         $land  = "";
 
         $emailadress = filter_input(INPUT_POST, 'emailadress');
-        $password1 = filter_input(INPUT_POST, 'firstpw');
-        $password2 = filter_input(INPUT_POST, 'secondpw');
-        $password1h = password_hash($password1, PASSWORD_DEFAULT);
-        $password2h = password_hash($password2, PASSWORD_DEFAULT);
         $vname = filter_input(INPUT_POST, 'fname');
         $nname = filter_input(INPUT_POST, 'lname');
         $stadt = filter_input(INPUT_POST, 'city');
@@ -378,12 +379,49 @@ if (strpos($route, '/updateprofile') !== false) {
         $zusatzinf = filter_input(INPUT_POST, 'addinfo');
         $land = filter_input(INPUT_POST, 'country');
 
-        $sql = "UPDATE adressen, kunde SET strasse = '" . $strasse . "', hausnummer = '" . $hausnr . "', plz = '" . $plz . "', ort = '" . $stadt . "', land = '" . $land . "', addinfo = '" . $zusatzinf . "', vorname = '" . $vname . "', nachname = '" . $nname . "', email = '" . $emailadress . "', telefonnummer = '" . $handy . "' WHERE adressen.adresseid = kunde.adresseid AND kunde.kundenid = '" . $userid . "';";
-        db_query($sql);
 
-        header("Location: Webshop/index.php/settings?update=1");
+        
+        
+
+        // update pw
+        $secondnewpw = filter_input(INPUT_POST, 'secondnewpw');
+        $firstnewpw = filter_input(INPUT_POST, 'firstnewpw');
+        $actualpw = filter_input(INPUT_POST, 'actualpw');
+
+        if ($secondnewpw == null && $firstnewpw == null && $actualpw == null) {
+            $sql = "UPDATE adressen, kunde SET strasse = '" . $strasse . "', hausnummer = '" . $hausnr . "', plz = '" . $plz . "', ort = '" . $stadt . "', land = '" . $land . "', addinfo = '" . $zusatzinf . "', vorname = '" . $vname . "', nachname = '" . $nname . "', email = '" . $emailadress . "', telefonnummer = '" . $handy . "' WHERE adressen.adresseid = kunde.adresseid AND kunde.kundenid = '" . $userid . "';";
+            db_query($sql);
+            header("Location: Webshop/index.php/settings?update=1");
 
         exit();
+        } else {
+            $errors = [];
+
+            $userData = getUserData(getEmail());
+            
+
+            if ($actualpw && isset($userData[1]) && false === password_verify($actualpw, $userData[1])) {
+                $errors[] = "Passwort stimmt nicht";
+            }
+            if ($firstnewpw != $secondnewpw) {
+                $errors[] = "Passwörter stimmen nicht überein!";
+            }
+            if (0 === count($errors)) {
+                $password = password_hash($secondnewpw, PASSWORD_DEFAULT);
+                
+                $sql = "UPDATE adressen, kunde SET strasse = '" . $strasse . "', hausnummer = '" . $hausnr . "', plz = '" . $plz . "', ort = '" . $stadt . "', land = '" . $land . "', addinfo = '" . $zusatzinf . "', vorname = '" . $vname . "', nachname = '" . $nname . "', email = '" . $emailadress . "', passwort = '".$password."', telefonnummer = '" . $handy . "' WHERE adressen.adresseid = kunde.adresseid AND kunde.kundenid = '" . $userid . "';";
+                db_query($sql);
+                header("Location: Webshop/index.php/settings?update=2");
+
+            exit();
+            }
+        }
+        
+        
+        
+        
+        
+        
     }
 
 
