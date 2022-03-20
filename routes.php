@@ -444,3 +444,23 @@ if (strpos($route, '/impressum') !== false) {
 
 
 }
+
+if (strpos($route, '/addproduct') !== false) {
+    require('adminstuff/addproduct.php');
+    exit();
+
+
+} 
+
+if (strpos($route, '/removeproduct') !== false) {
+    require('adminstuff/removeproduct.php');
+    exit();
+}
+
+
+if (strpos($route, '/uploadimage') !== false) {
+    require('adminstuff/uploadimage.php');
+    exit();
+
+
+}

@@ -38,7 +38,7 @@ $row = mysqli_fetch_row($result); ?>
                 <div class="row">
                     <div class="col-lg-5 col-md-5 col-sm-6">
                         <div class="white-box text-center">
-                            <img src="<?= $row[3] ?>" class="img-responsive">
+                            <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row[3]) ?>" class="img-responsive">
                         </div>
                     </div>
                     <div class="col-lg-7 col-md-7 col-sm-6">

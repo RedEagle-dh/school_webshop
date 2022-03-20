@@ -1,7 +1,7 @@
 <div class="product" id="products">
     <div class="row">
         <div class="col-md-3">
-            <img class="img-fluid mx-auto d-block image" src="<?= $cartItem[4] ?>">
+            <img class="img-fluid mx-auto d-block image" src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($cartItem[4]) ?>">
         </div>
         <div class="col-md-8">
             <div class="info">

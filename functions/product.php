@@ -143,3 +143,16 @@ function getProductPercentegeOfCat($prodid) {
     $r = mysqli_fetch_column($result);
     return $r;
 }
+
+
+function getNewProductID() {
+    $sql = "SELECT artnr FROM produkte ORDER BY artnr DESC limit 0,1";
+    $r = db_query($sql);
+    
+    $ret = 1;
+    if($r) {
+        $ret = (int) mysqli_fetch_column($r) + 1;
+    }
+
+    return $ret;
+}

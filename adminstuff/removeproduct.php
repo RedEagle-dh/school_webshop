@@ -30,7 +30,7 @@
 
 
     <?php
-    include 'dashboardwrapper.php';
+    include 'removeproductwrapper.php';
 
     ?>
 
