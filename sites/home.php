@@ -14,6 +14,7 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/styles.css">
+
 </head>
 
 <body data-menu="vertical-menu" class="vertical-layout vertical-menu content-right-sidebar menu-expanded">
@@ -35,8 +36,13 @@
                         <?php include 'templates\card.php' ?>
                         <br>
                     </div>
-            <?php endforeach;
-            } ?>
+                <?php endforeach;
+            } else { ?>
+                <div class="my-5 pt-5 text-muted text-center text-small">
+                    <h1 class="mb-1 goingdark">Scheint, als gäbe es hier noch nicht viel...</h1>
+                    
+            </div>
+            <?php } ?>
         </div>
 
 
@@ -58,7 +64,8 @@
     </script>
     <script src="assets\js\main.js"></script>
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    
+
+
 
 </body>
 

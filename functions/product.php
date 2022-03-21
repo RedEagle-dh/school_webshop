@@ -2,7 +2,7 @@
 
 function getAllProducts() {
 
-    $sql = "SELECT artnr, titel, beschreibung, preis, picture, auflager FROM produkte";
+    $sql = "SELECT artnr, titel, beschreibung, preis, picture, auflager, datum FROM produkte";
     $result = db_query($sql);
 
     if (!$result) {

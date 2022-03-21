@@ -237,10 +237,15 @@
                                         <div class="card shadow mb-4 darkcard row-border-light">
                                             <!-- Card Header - Dropdown -->
                                             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between  darkcard row-border-light">
-                                                <h6 class="m-0 font-weight-bold text-success">Produkt Entfernen</h6>
+                                                <h6 class="m-0 font-weight-bold text-success">Produktliste</h6>
+
+
+                                                <input class="form-control me-2 searchbar goingdark col-xl-8 align-items-right justify-content-right" type="text" placeholder="Name/ArtNr" aria-label="Search" id="myInput" onkeydown="searchTable()" onkeyup='searchTable()'>
+
+
                                                 <div class="dropdown no-arrow">
                                                     <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-bs-haspopup="true" aria-bs-expanded="false">
-                                                        <i class="fi fi-rr-add text-gray-400"></i>
+                                                        <i class="fi fi-rr-trash text-gray-400"></i>
                                                     </a>
                                                     <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
                                                         <div class="dropdown-header">Dropdown Header:</div>
@@ -257,93 +262,62 @@
                                                     <div class="col-12">
                                                         <div class="row">
                                                             <div class="col-lg-12 darkcard">
-                                                                <div class="p-5">
-                                                                    <div class="mb-4 pb-2">
-                                                                        <select class="form-select goingdark searchbar" aria-label="Kategorie" name="kategorie">
-                                                                            <option selected>Kategorie</option>
-                                                                            <option value="1">Mainboard</option>
-                                                                            <option value="2">CPU</option>
-                                                                            <option value="4">GPU</option>
-                                                                            <option value="5">Gehäuse</option>
-                                                                            <option value="3">Laptops</option>
-                                                                        </select>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <div class="col-md-12 mb-4 pb-2">
-                                                                            <div class="form-outline">
-                                                                                <input type="text" id="form3Examplev2" class="form-control form-control-lg searchbar goingdark" name="produktname" />
-                                                                                <label class="form-label goingdark" for="form3Examplev2">
-                                                                                    <nobr>Produktname</nobr>
-                                                                                </label>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <div class="col-md-12 mb-4 pb-2">
-                                                                            <div class="form-outline">
-                                                                                <textarea type="text" class="form-control form-control-lg searchbar goingdark" id="form3Examplev3" rows="3" name="beschreibung"></textarea>
-                                                                                <label class="form-label goingdark" for="form3Examplev3">
-                                                                                    <nobr>Produktbeschreibung</nobr>
-                                                                                </label>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <div class="col-md-2 mb-4 pb-2 mb-md-0 pb-md-0">
-                                                                            <div class="form-outline">
-                                                                                <input type="text" id="form3Examplev5" class="form-control form-control-lg searchbar goingdark" name="preis" />
-                                                                                <label class="form-label goingdark" for="form3Examplev5">
-                                                                                    <nobr>Preis</nobr>
-                                                                                </label>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-md-2 mb-4 pb-2 mb-md-0 pb-md-0">
-                                                                            <div class="form-outline">
-                                                                                <input type="password" id="form3Examplev5" class="form-control form-control-lg searchbar goingdark" name="anzahl" />
-                                                                                <label class="form-label goingdark" for="form3Examplev5">
-                                                                                    <nobr>Anzahl</nobr>
-                                                                                </label>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-md-2 mb-4 pb-2 mb-md-0 pb-md-0">
-                                                                            <div class="form-outline">
-                                                                                <input type="password" id="form3Examplev5" class="form-control form-control-lg searchbar goingdark" name="lieferkosten" />
-                                                                                <label class="form-label goingdark" for="form3Examplev5">
-                                                                                    <nobr>Lieferkosten</nobr>
-                                                                                </label>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
+
+                                                                <table class="table table-bordered" id="producttable">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th scope="col">ArtNr</th>
+                                                                            <th scope="col">Produktname</th>
+                                                                            <th scope="col">Hinzugefügt Am</th>
+                                                                            <th scope="col">Im Lager</th>
+                                                                            <th scope="col">Auswählen</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <?php
+                                                                        foreach (getAllProducts() as $row) : ?>
+                                                                            <tr class="<?php
+                                                                                        if ($row[5] == 0) {
+                                                                                            echo "table-danger";
+                                                                                        } else if ($row[5] > 0 && $row[5] < 10) {
+                                                                                            echo "table-warning";
+                                                                                        } else {
+                                                                                            echo "table-success";
+                                                                                        }
+
+
+                                                                                        ?>">
+                                                                                <th scope="row"><?= $row[0] ?></th>
+                                                                                <td><?= $row[1] ?></td>
+                                                                                <td><?= $row[6] ?></td>
+                                                                                <td><?= $row[5] ?></td>
+                                                                                <td for="flexCheckDefault">
+                                                                                    <div class="form-check d-flex justify-content-center">
+                                                                                        <input onchange="hakenAusgewaehlt(<?= $row[0] ?>);" name="<?= $row[0] ?>" class="form-check-input" type="checkbox" value="" id="<?= $row[0] ?>">
+                                                                                    </div>
+                                                                                </td>
+                                                                            </tr>
+                                                                        <?php endforeach; ?>
+                                                                    </tbody>
+                                                                </table>
                                                             </div>
+
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <script>
-                                                    function previewImage() {
-                                                        var file = document.getElementById("customFile").files;
-                                                        if (file.length > 0) {
-                                                            var fileReader = new FileReader();
-                                                            fileReader.onload = function(event) {
-                                                                document.getElementById("preview").setAttribute("src", event.target.result);
-                                                            };
-                                                            fileReader.readAsDataURL(file[0]);
-                                                        }
-                                                    }
-                                                </script>
+
                                             </div>
                                         </div>
                                     </div>
-
                                     <!-- Pie Chart -->
                                     <div class="col-xl-4 col-lg-5">
                                         <div class="card shadow mb-4 darkcard row-border-light">
                                             <!-- Card Header - Dropdown -->
                                             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between  darkcard row-border-light">
-                                                <h6 class="m-0 font-weight-bold text-primary">Produktbild</h6>
+                                                <h6 class="m-0 font-weight-bold text-primary">Produktauswahl</h6>
                                                 <div class="dropdown no-arrow">
                                                     <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        <i class="fi fi-rr-portrait text-gray-400"></i>
+                                                        <i class="fi fi-rr-filter text-gray-400"></i>
                                                     </a>
                                                     <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
                                                         <div class="dropdown-header">Dropdown Header:</div>
@@ -361,35 +335,12 @@
 
 
                                                 <div class="col-md-12 mb-4 pb-2 mb-md-0 pb-md-0">
-                                                    <?php
-                                                    include 'uploadimage.php';
-                                                    ?>
-                                                    <img id="preview">
-                                                    <input type="file" class="form-control" name="image" id="customFile" onchange="previewImage();" />
-                                                    <br>
-                                                    <input type="submit" name="submit" class="btn btn-success" value="Hochladen">
-
-                                                    <?php
-                                                    if (!empty($statusMsg)) { ?>
-                                                        <p class="status <?php echo $status; ?>"><?php echo "<br>" . $statusMsg; ?></p>
-
-
-                                                    <?php } ?>
-
+                                                    <p id="anzahlhaken">0 Artikel ausgewählt</p>
+                                                    <button class="btn btn-danger disabled" id="buttonremoveproduct" onclick="removeProductsOnButtonClick(document.getElementById('anzahlhaken').textContent); return false">Entfernen</button>
                                                 </div>
-
-
                                             </div>
-
-
-
-
-
                                         </div>
-
                                     </div>
-
-
                                 </div>
                             </form>
 
@@ -419,4 +370,108 @@
                     </div>
                 </div>
             </div>
+            <script>
+                function searchTable() {
+                    var input, filter, found, table, tr, td, i, j;
+                    input = document.getElementById("myInput");
+                    filter = input.value.toUpperCase();
+                    table = document.getElementById("producttable");
+                    tr = table.getElementsByTagName("tr");
+                    for (i = 1; i < tr.length; i++) {
+                        td = tr[i].getElementsByTagName("td");
+                        for (j = 0; j < td.length; j++) {
+                            if (td[j].innerHTML.toUpperCase().indexOf(filter) > -1) {
+                                found = true;
+                            }
+                        }
+                        if (found) {
+                            tr[i].style.display = "";
+                            found = false;
+                        } else {
+                            tr[i].style.display = "none";
+
+                        }
+                    }
+                }
+
+
+                const haken = document.getElementsByClassName("form-check-input");
+
+                function removeProductsOnButtonClick(message) {
+                    
+                    if (message.trim() === "0 Artikel ausgewählt".trim()) {
+                        
+                    } else {
+                        var ajax = new XMLHttpRequest();
+                        var ids = [];
+                        var pids = [];
+                        var k = 0;
+                        for (let i = 0; i < haken.length; i++) {
+                            if (haken[i].checked) {
+
+                                ids.push(i + 1);
+                                pids.push(haken[i].id);
+                                
+                            }
+                        }
+                        
+                        ajax.open("GET", "templates/ajax.php?removeid=" + ids + "&pid=" + pids, true);
+                        ajax.send();
+                        ajax.onreadystatechange = function() {
+                            if (this.readyState == 4 && this.status == 200) {
+                                
+                                var ind = this.response;
+                                var indsp = ind.split(',');
+
+
+                                var k = 1;
+
+
+                                for (let b = 0; b < indsp.length; b++) {
+                                    if (b > 0) {
+                                        document.getElementById("producttable").deleteRow(indsp[b] - k);
+                                        k++;
+                                    } else if (b == 0) {
+                                        document.getElementById("producttable").deleteRow(indsp[b]);
+                                    }
+                                }
+
+                            }
+
+                        }
+                        
+                    }
+
+                }
+
+
+
+
+
+                function hakenAusgewaehlt(message) {
+
+                    var k = 0;
+                    for (let i = 0; i < haken.length; i++) {
+
+                        if (haken[i].checked) {
+                            k++;
+                        }
+                    }
+                    var ajax = new XMLHttpRequest();
+
+                    ajax.open("GET", "templates/ajax.php?check=" + k, true);
+                    ajax.send();
+
+                    ajax.onreadystatechange = function() {
+                        if (this.readyState == 4 && this.status == 200) {
+                            document.getElementById("anzahlhaken").textContent = this.response + " Artikel ausgewählt";
+                            if (this.response == 0) {
+                                document.getElementById("buttonremoveproduct").classList.add("disabled");
+                            } else {
+                                document.getElementById("buttonremoveproduct").classList.remove("disabled");
+                            }
+                        }
+                    }
+                }
+            </script>
             <!-- End of Page Wrapper -->

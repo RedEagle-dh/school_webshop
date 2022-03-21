@@ -45,30 +45,50 @@ function getCartPrice()
     }
 }
 
+if (isset($_GET['productid'])) {
+    $id = $_GET['productid'];
+    $amount = $_GET['amount'];
+    // TODO irgendwie die userid übergeben
+    $userid = getCurrentUserId();
 
 
-$id = $_GET['productid'];
-$amount = $_GET['amount'];
-
-// TODO irgendwie die userid übergeben
-$userid = getCurrentUserId();
-
-
-if ($amount == 0) {
-    $sql = "DELETE FROM cart WHERE productid = $id AND userid = 11;";
-    db_query($sql);
-    $sql = "SELECT sum(lieferkosten) FROM produkte, cart WHERE cart.productid = produkte.artnr AND userid = 11;";
-$result = db_query($sql);
-$preis = mysqli_fetch_column($result);
-if($preis == 0) {
-    $preis = 0;
+    if ($amount == 0) {
+        $sql = "DELETE FROM cart WHERE productid = $id AND userid = 11;";
+        db_query($sql);
+        $sql = "SELECT sum(lieferkosten) FROM produkte, cart WHERE cart.productid = produkte.artnr AND userid = 11;";
+        $result = db_query($sql);
+        $preis = mysqli_fetch_column($result);
+        if ($preis == 0) {
+            $preis = 0;
+        }
+        echo "delete " . $preis;
+    } else {
+        $sql = "UPDATE cart SET amount = $amount WHERE productid = $id AND userid = 11;";
+        db_query($sql);
+    }
+} else if (isset($_GET["check"]) & !isset($_GET["removeid"])) {
+    checkBoxAdminPanel($_GET["check"]);
+} else if (isset($_GET["removeid"])) {
+    removeProductsById($_GET["removeid"], $_GET["pid"]);
 }
-    echo "delete " . $preis;
-} else {
-    $sql = "UPDATE cart SET amount = $amount WHERE productid = $id AND userid = 11;";
-    db_query($sql);
+
+
+function checkBoxAdminPanel($anzahl)
+{
+    echo $anzahl;
 }
 
-
-
-
+function removeProductsById($id, $pids)
+{
+    
+    // for schleife, zahlen aus id mit komma trennen und solange produkte aus datenbank entfernen
+    
+    $y = explode(',', $pids);
+    
+    for($i = 0; $i < count($y); $i++) {
+        $sql = "DELETE FROM produkte WHERE artnr = '".$y[$i]."';";
+        db_query($sql);
+    }
+    
+    echo $id;
+}
