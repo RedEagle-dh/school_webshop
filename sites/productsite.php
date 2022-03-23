@@ -48,7 +48,7 @@ $row = mysqli_fetch_row($result); ?>
                             <?php echo number_format($row[2], 2);  ?>€ <small class="text-success">(36%off)</small>
                         </h2>
                         <?php
-                        
+
                         if ($row[6] == 0) {
                             echo "<a href='index.php/cart/add/$row[4]' class='btn btn-danger mr-1 disabled' data-toggle='tooltip' data-original-title='Add to cart'>
                             <i class='fi fi-rr-cross-circle'></i> Ausverkauft
@@ -61,7 +61,7 @@ $row = mysqli_fetch_row($result); ?>
 
 
                         ?>
-                        
+
 
 
                     </div>
@@ -98,8 +98,39 @@ $row = mysqli_fetch_row($result); ?>
 
                                 </tbody>
                             </table>
+                        </div>
 
-                            Test
+                        <!-- Hier ist die Funktion für die Kundenbewertung -->
+                        <h3 class="box-title mt-5 goingdark">Kundenbewertung</h3>
+                        <div class="noborder">
+                            <div class="card-body darkcard">
+                                <div class="card-title goingdark">
+
+                                    <div class="row">
+                                        <div class="col-lg-8 col-md-8 col-sm-8">
+                                            <div class="stars">
+                                                <form action="">
+                                                    <input class="star star-5" id="star-5" type="radio" name="star" /> <label class="star star-5" for="star-5"></label>
+                                                    <input class="star star-4" id="star-4" type="radio" name="star" /> <label class="star star-4" for="star-4"></label>
+                                                    <input class="star star-3" id="star-3" type="radio" name="star" /> <label class="star star-3" for="star-3"></label>
+                                                    <input class="star star-2" id="star-2" type="radio" name="star" /> <label class="star star-2" for="star-2"></label>
+                                                    <input class="star star-1" id="star-1" type="radio" name="star" /> <label class="star star-1" for="star-1"></label>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-lg-8 col-md-8 col-sm-8">
+
+
+                                            <br>
+                                            <textarea class="form-control searchbar goingdark" id="exampleFormControlTextarea1" rows="4" placeholder="Dein Feedback..."></textarea>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -115,6 +146,8 @@ $row = mysqli_fetch_row($result); ?>
 
 
     <script src="assets/js/bootstrap.bundle.js"></script>
+
+
 </body>
 <footer class="my-5 pt-5 text-muted text-center text-small">
     <p class="mb-1">&copy; 2022 Dave's Webshop GmbH</p>

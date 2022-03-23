@@ -47,19 +47,13 @@
 
 
     </section>
-    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
-        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="toast-header">
-            <i class="fi fi-rr-add rounded me-2"></i>
-                <strong class="me-auto">Produkt hinzugefügt!</strong>
-                <small>Jetzt gerade</small>
-                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
-            <div class="toast-body" id="toastbody">
-                
-            </div>
-        </div>
-    </div>
+
+
+    <?php include 'templates/popupaddcart.php' ?>
+
+
+
+
     <footer class="my-5 pt-5 text-muted text-center text-small">
         <p class="mb-1 goingdark">&copy; 2022 Dave's Webshop GmbH</p>
         <ul class="list-inline">
