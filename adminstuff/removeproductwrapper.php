@@ -321,9 +321,9 @@
                 function removeProductsOnButtonClick(message) {
 
                     if (message.trim() === "0 Artikel ausgewählt".trim()) {
-
+                        alert("Bitte mindestens ein Produkt auswählen!");
                     } else {
-                        var ajax = new XMLHttpRequest();
+                        
                         var ids = [];
                         var pids = [];
                         var k = 0;
@@ -335,12 +335,12 @@
 
                             }
                         }
-
+                        var ajax = new XMLHttpRequest();
                         ajax.open("GET", "templates/ajax.php?removeid=" + ids + "&pid=" + pids, true);
                         ajax.send();
                         ajax.onreadystatechange = function() {
                             if (this.readyState == 4 && this.status == 200) {
-                                alert(this.result);
+                                alert(this.response);
                                 var ind = this.response;
                                 var indsp = ind.split(',');
 

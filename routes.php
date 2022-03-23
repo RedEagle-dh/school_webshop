@@ -285,6 +285,7 @@ if (strpos($route, '/bought') !== false) {
         $result = db_query($sql);
         $c = mysqli_fetch_row($result);
         getInvoice($c[0]);
+        
     } else if (isset($_GET['create'])) {
         $data = getUserData(getEmailAdress());
         $year = date('Y');

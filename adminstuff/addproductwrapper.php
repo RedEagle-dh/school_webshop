@@ -231,7 +231,7 @@
                                                                         <div class="col-md-2 mb-4 pb-2 mb-md-0 pb-md-0">
                                                                             <div class="form-outline">
                                                                                 <label class="form-label goingdark" for="form3Examplev5">
-                                                                                    <nobr>Lieferkosten</nobr>
+                                                                                    <nobr>Versandkosten</nobr>
                                                                                 </label>
                                                                                 <input type="text" id="form3Examplev5" class="form-control form-control-lg searchbar goingdark" name="lieferkosten" />
 
@@ -358,7 +358,7 @@
                 function sendReq(kat) {
                     var ajax = new XMLHttpRequest();
 
-                    ajax.open("GET", "adminstuff/addproductajax.php?kategorie=" + kat, true);
+                    ajax.open("GET", "templates/ajax.php?kategorie=" + kat, true);
                     ajax.send();
 
                     ajax.onreadystatechange = function() {

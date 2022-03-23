@@ -57,6 +57,7 @@
     <script src="assets/js/chart-area-demo.js"></script>
     <script src="assets/js/chart-pie-demo.js"></script>
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    
 </body>
 
 </html>

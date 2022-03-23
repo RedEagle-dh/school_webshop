@@ -67,9 +67,10 @@ if(isset($_POST["submit"])) {
                 if(!empty($_POST["preis"])) {
                     $image = $_FILES['image']['tmp_name'];
                     $imgContent = addslashes(file_get_contents($image));
+                    $datum = new DateTime();
+                    $datetime = $datum -> format('Y-m-d H:i:s');
                     
-                    
-                    $sql = "INSERT INTO produkte (artnr, titel, beschreibung, preis, katid, picture, auflager, lieferkosten) VALUES ($newPID, '".$titel."', '".$beschreibung."', '".$preis."', '".$kategorie."', '".$imgContent."', '".$auflager."', '".$lieferkosten."');";
+                    $sql = "INSERT INTO produkte (artnr, titel, beschreibung, preis, katid, picture, auflager, lieferkosten, datum) VALUES ($newPID, '".$titel."', '".$beschreibung."', '".$preis."', '".$kategorie."', '".$imgContent."', '".$auflager."', '".$lieferkosten."', '".$datetime."');";
                     $insert = db_query($sql);
                     $earlystmt = "INSERT INTO " . $tablename . " VALUES (" . $earlystr . ", null);";
                     

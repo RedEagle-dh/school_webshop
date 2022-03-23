@@ -48,11 +48,16 @@
                             <h6 class="my-0">Promo code</h6>
                             <small>EXAMPLECODE</small>
                         </div>
+                        
                         <span class="text-success">-5€</span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between darkcard">
-                        <span class="goingdark">Total (EUR)</span>
-                        <strong class="goingdark"><?= getCartPrice(getCurrentUserId()) ?>€</strong>
+                        <span class="goingdark">Versandkosten</span>
+                        <strong class="goingdark"><?= getDeliveryPrice() ?>€</strong>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between darkcard">
+                        <strong class="goingdark">Gesamt (EUR)</strong>
+                        <strong class="goingdark"><?= number_format(getTotalPrice(), 2) ?>€</strong>
                     </li>
                 </ul>
 

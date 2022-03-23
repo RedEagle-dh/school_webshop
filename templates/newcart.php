@@ -56,15 +56,16 @@
                         <div class="col-md-12 col-lg-4">
                             <div class="summary">
                                 <h3 class="goingdark">Zusammenfassung</h3>
-                                <div class="summary-item"><span class="text goingdark" id="artikelteile"><?php
-                                                                                                            if (countCartItems(getCurrentUserId()) == 0) {
-                                                                                                                echo "0";
-                                                                                                            } else {
-                                                                                                                echo countCartItems(getCurrentUserId());
-                                                                                                            }
-                                                                                                            ?></span><span class="text goingdark"> Artikel</span><span class="price goingdark" id="artikelpreiss"><?= number_format(getCartPrice(getCurrentUserId()),2) ?>€</span></div>
-                                <div class="summary-item"><span class="text goingdark">Lieferkosten</span><span class="price goingdark" id="delprice"><?= getDeliveryPrice() ?>€</span></div>
-                                <div class="summary-item"><span class="text goingdark">Gesamt</span><span class="price goingdark" id="totalprice"><?= number_format(getTotalPrice(),2) ?>€</span></div>
+                                <div class="summary-item"><span class="text goingdark" id="artikelteile">
+                                        <?php
+                                        if (countCartItems(getCurrentUserId()) == 0) {
+                                            echo "0";
+                                        } else {
+                                            echo countCartItems(getCurrentUserId());
+                                        }
+                                        ?></span><span class="text goingdark"> Artikel</span><span class="price goingdark" id="artikelpreiss"><?= number_format(getCartPrice(getCurrentUserId()), 2) ?>€</span></div>
+                                <div class="summary-item"><span class="text goingdark">Versandkosten</span><span class="price goingdark" id="delprice"><?= getDeliveryPrice() ?>€</span></div>
+                                <div class="summary-item"><span class="text goingdark">Gesamt</span><span class="price goingdark" id="totalprice"><?= number_format(getTotalPrice(), 2) ?>€</span></div>
                                 <br>
                                 <a href="index.php/checkout" id="buybutton" type="button" class="btn btn-secondary btn-lg btn-block disabled">Kaufen</a>
                             </div>
@@ -79,20 +80,15 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script>
     window.onload = function() {
-        var hasItems = parseInt(<?= countCartItems() ?>);
+        var hasItems = parseInt(<?= countCartItems(getCurrentUserId()) ?>);
         if (hasItems > 0) {
             document.getElementById("buybutton").classList.remove("disabled");
             document.getElementById("buybutton").classList.add("btn-success");
         } else {
-            
-            
+
+
         }
     }
-    
-        
-        
-        
-    
 </script>
 </body>
 

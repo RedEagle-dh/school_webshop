@@ -1,4 +1,5 @@
 <?php
+if (!empty($cartItems)) {
 /*A4 width : 219mm*/
 define('EURO',chr(128));
 $pdf = new FPDF('P', 'mm', 'A4');
@@ -23,15 +24,15 @@ $pdf->Cell(59, 5, 'Details', 0, 1);
 $pdf->SetFont('Arial', '', 10);
 
 $pdf->Cell(130, 5, "Dave's Webshop GmbH", 0, 0);
-$pdf->Cell(25, 5, 'Customer ID:', 0, 0);
+    $pdf->Cell(25, 5, 'Kundennummer:', 0, 0);
 $pdf->Cell(34, 5, $userid, 0, 1);
 
 $pdf->Cell(130, 5, 'Eichenzell, 36124', 0, 0);
-$pdf->Cell(25, 5, 'Invoice Date:', 0, 0);
+    $pdf->Cell(25, 5, 'Rechnungsdatum:', 0, 0);
 $pdf->Cell(34, 5, $invoicedate, 0, 1);
 
 $pdf->Cell(130, 5, 'Rheinstr. 20', 0, 0);
-$pdf->Cell(25, 5, 'Invoice No:', 0, 0);
+    $pdf->Cell(25, 5, 'Rechnungsnummer:', 0, 0);
 $pdf->Cell(34, 5, 'ORD001', 0, 1);
 
 $pdf->Cell(130, 5, " ", 0, 0);
@@ -39,7 +40,7 @@ $pdf->Cell(25, 5, " ", 0, 0);
 $pdf->Cell(34, 5, " ", 0, 1);
 
 $pdf->SetFont('Arial', 'B', 15);
-$pdf->Cell(130, 5, 'Bill To', 0, 0);
+    $pdf->Cell(130, 5, 'Vertragspartner', 0, 0);
 $pdf->Cell(59, 5, '', 0, 0);
 $pdf->SetFont('Arial', 'B', 10);
 $pdf->Cell(189, 10, '', 0, 1);
@@ -71,13 +72,13 @@ $pdf->Cell(189, 10, '', 0, 1);
 $pdf->Cell(50, 10, '', 0, 1);
 
 $pdf->SetFont('Arial', 'B', 10);
-/*Heading Of the table*/
-$pdf->Cell(10, 6, 'Sl', 1, 0, 'C');
-$pdf->Cell(80, 6, 'Description', 1, 0, 'C');
-$pdf->Cell(23, 6, 'Qty', 1, 0, 'C');
-$pdf->Cell(30, 6, 'Unit Price', 1, 0, 'C');
+    /*Heading Of the table*/
+    $pdf->Cell(10, 6, 'No.', 1, 0, 'C');
+    $pdf->Cell(80, 6, 'Produktname', 1, 0, 'C');
+    $pdf->Cell(23, 6, 'Anzahl', 1, 0, 'C');
+    $pdf->Cell(30, 6, 'Einzelpreis', 1, 0, 'C');
 $pdf->Cell(20, 6, '19% MwSt.', 1, 0, 'C');
-$pdf->Cell(25, 6, 'Total', 1, 1, 'C');/*end of line*/
+    $pdf->Cell(25, 6, 'Preis', 1, 1, 'C');/*end of line*/
 /*Heading Of the table end*/
 $pdf->SetFont('Arial', '', 10);
 
@@ -95,11 +96,19 @@ foreach ($cartItems as $cartItem) {
 }
 
 
-
 $pdf->Cell(118, 6, '', 0, 0);
-$pdf->Cell(25, 6, 'Subtotal', 0, 0);
-$pdf->Cell(45, 6, getCartPrice().EURO, 1, 1, 'R');
+    $pdf->Cell(25, 6, 'Shipping costs', 0, 0);
+    $pdf->Cell(45, 6, getDeliveryPrice() . EURO, 1, 1, 'R');
+    $pdf->Cell(118, 6, '',
+        0,
+        0
+    );
+    $pdf->Cell(25, 6, 'Gesamtpreis', 0, 0);
+    $pdf->Cell(45, 6, number_format(getTotalPrice(), 2) . EURO, 1, 1, 'R');
 
 
 $content = $pdf->Output("", "S");
 return $content;
+} else {
+    return "noitems";
+}

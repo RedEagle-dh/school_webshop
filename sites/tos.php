@@ -36,7 +36,7 @@
                                     <strong>Geltungsbereich</strong>
                                     <ol>
                                         <li>
-                                            Für alle Lieferungen von Dave's Webshop GmbH (nachfolgend Dave's Webshop) an Verbraucher gelten diese Allgemeinen Geschäftsbedingungen (AGB).
+                                            Für alle Versandungen von Dave's Webshop GmbH (nachfolgend Dave's Webshop) an Verbraucher gelten diese Allgemeinen Geschäftsbedingungen (AGB).
                                             Verbraucher ist jede natürliche Person, die ein Rechtsgeschäft zu einem Zwecke abschließt, der überwiegend weder ihrer gewerblichen noch ihrer selbstständigen beruflichen Tätigkeit zugerechnet werden kann.
                                         </li>
                                     </ol>

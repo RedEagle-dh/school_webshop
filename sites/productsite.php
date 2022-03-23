@@ -2,7 +2,7 @@
 <html lang="de">
 <?php
 include 'templates\navbar.php';
-$sql = "SELECT titel, beschreibung, preis, picture, artnr, katid FROM produkte WHERE artnr = '" . $_GET['id'] . "';";
+$sql = "SELECT titel, beschreibung, preis, picture, artnr, katid, auflager FROM produkte WHERE artnr = '" . $_GET['id'] . "';";
 $result = db_query($sql);
 
 $row = mysqli_fetch_row($result); ?>
@@ -38,19 +38,31 @@ $row = mysqli_fetch_row($result); ?>
                 <div class="row">
                     <div class="col-lg-5 col-md-5 col-sm-6">
                         <div class="white-box text-center">
-                            <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row[3]) ?>" class="img-responsive" style="width:100%;max-width:500px">
+                            <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row[3]) ?>" class="img-responsive" style="width:100%;max-width:300px">
                         </div>
                     </div>
                     <div class="col-lg-7 col-md-7 col-sm-6">
                         <h4 class="box-title mt-5 goingdark">Produktbeschreibung</h4>
                         <p class="goingdark"><?= $row[1] ?></p>
                         <h2 class="mt-5 goingdark">
-                            <?= $row[2] ?>€ <small class="text-success">(36%off)</small>
+                            <?php echo number_format($row[2], 2);  ?>€ <small class="text-success">(36%off)</small>
                         </h2>
-                        <a href='index.php/cart/add/<?= $row[4] ?>' class="btn btn-success mr-1" data-toggle="tooltip" title="" data-original-title="Add to cart">
-                            <i class="fa fa-shopping-cart"></i> Hinzufügen
-                        </a>
+                        <?php
                         
+                        if ($row[6] == 0) {
+                            echo "<a href='index.php/cart/add/$row[4]' class='btn btn-danger mr-1 disabled' data-toggle='tooltip' data-original-title='Add to cart'>
+                            <i class='fi fi-rr-cross-circle'></i> Ausverkauft
+                        </a>";
+                        } else {
+                            echo "<a href='index.php/cart/add/$row[4]' class='btn btn-success mr-1' data-toggle='tooltip' data-original-title='Add to cart'>
+                            <i class='fa fa-shopping-cart'></i> Hinzufügen
+                        </a>";
+                        }
+
+
+                        ?>
+                        
+
 
                     </div>
                     <div class="col-lg-12 col-md-12 col-sm-12">
@@ -86,6 +98,8 @@ $row = mysqli_fetch_row($result); ?>
 
                                 </tbody>
                             </table>
+
+                            Test
                         </div>
                     </div>
                 </div>

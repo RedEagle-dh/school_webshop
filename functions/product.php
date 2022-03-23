@@ -200,3 +200,14 @@ function getCatNameFromID($katid) {
     
     return mysqli_fetch_column($r);
 }
+
+function getCatNameFromProdId($prodid) {
+    $sql = "SELECT katname FROM produkte, kategorien WHERE produkte.katid = kategorien.katid AND produkte.artnr = $prodid;";
+    $r = db_query($sql);
+    
+    if(!$r) {
+        return [];
+    }
+    
+    return mysqli_fetch_column($r);
+}

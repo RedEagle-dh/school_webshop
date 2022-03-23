@@ -65,7 +65,7 @@
                                         var s = this.response;
                                         var k = s.split(" ");
 
-                                        document.getElementById("delprice").textContent = k[1] + "€";
+                                        document.getElementById("delprice").textContent = k[2] + "€";
                                         // Bei der Funktion ist die Bedingung, dass alle Produkte Lieferkosten haben.
                                         if (document.getElementById("delprice").textContent == "0€") {
                                             document.getElementById("totalprice").textContent = "0.00€";
