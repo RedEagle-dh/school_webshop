@@ -1,8 +1,7 @@
-// Set new default font family and font color to mimic Bootstrap's default styling
 Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#858796';
 
-// Pie Chart Example
+
 var ctx = document.getElementById("myPieChart");
 var myPieChart = new Chart(ctx, {
   type: 'doughnut',
@@ -10,7 +9,7 @@ var myPieChart = new Chart(ctx, {
     labels: ["CPU", "GPU", "Laptops", "Gehäuse", "Mainboards"],
     datasets: [{
       data: [cpu, gpu, lapi, geh, mb],
-      backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc', '#e179a3'],
+      backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc', '#e179a3', '#FDDA0D'],
       hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf', '#e18ca6'],
       hoverBorderColor: "rgba(234, 236, 244, 1)",
     }],

@@ -1,8 +1,8 @@
  <?php
     
-     function addProductToCart($route, $userid) {
-         $routeParts = explode('/', $route);
-         $productId = (int) $routeParts[3];
+     function addProductToCart($productId, $userid) {
+         /*$routeParts = explode('/', $route);
+         $productId = (int) $routeParts[3];*/
          $sql = "INSERT INTO cart SET userid = $userid, productid = $productId, amount = 1, created = time(now())";
          $result = db_query($sql);
          return $result;
@@ -15,8 +15,7 @@
         return $productId;
      }
 
-     function countCartItems() {
-         $userid = getCurrentUserId();
+     function countCartItems($userid) {
         $sql = "SELECT sum(amount) from cart where userid = $userid;";
          
          $cartResult = db_query($sql);
@@ -63,10 +62,10 @@
         }
     }
 
-    function updateAmount($productid, $aum)
+    function updateAmount($productid, $aum, $userid)
     {
-        $userid = getCurrentUserId();
-        $anzahl = getProduct($productid) + $aum;
+        
+        $anzahl = getProduct($productid, $userid) + $aum;
         $sql = "UPDATE cart SET amount = $anzahl WHERE productid = $productid AND userid = $userid;";
         db_query($sql);
     }

@@ -12,8 +12,8 @@ $row = mysqli_fetch_row($result); ?>
     <title>Dave's Webshop | <?= $row[0] ?></title>
     <base href="/Webshop/">
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
-    	
-		
+
+
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/styles.css">
 
@@ -38,7 +38,7 @@ $row = mysqli_fetch_row($result); ?>
                 <div class="row">
                     <div class="col-lg-5 col-md-5 col-sm-6">
                         <div class="white-box text-center">
-                            <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row[3]) ?>" class="img-responsive">
+                            <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row[3]) ?>" class="img-responsive" style="width:100%;max-width:500px">
                         </div>
                     </div>
                     <div class="col-lg-7 col-md-7 col-sm-6">
@@ -47,10 +47,10 @@ $row = mysqli_fetch_row($result); ?>
                         <h2 class="mt-5 goingdark">
                             <?= $row[2] ?>€ <small class="text-success">(36%off)</small>
                         </h2>
-                        <button class="btn btn-dark btn-rounded mr-1" data-toggle="tooltip" title="" data-original-title="Add to cart">
-                            <i class="fa fa-shopping-cart"></i>
-                        </button>
-                        <button class="btn btn-primary btn-rounded">Jetzt Kaufen</button>
+                        <a href='index.php/cart/add/<?= $row[4] ?>' class="btn btn-success mr-1" data-toggle="tooltip" title="" data-original-title="Add to cart">
+                            <i class="fa fa-shopping-cart"></i> Hinzufügen
+                        </a>
+                        
 
                     </div>
                     <div class="col-lg-12 col-md-12 col-sm-12">
@@ -60,20 +60,27 @@ $row = mysqli_fetch_row($result); ?>
                                 <tbody>
 
                                     <?php
-                                    $desc = getDescriptionName($row[5]);
-
                                     $val = getDescriptionValue($row[4], $row[5]);
-                                    
-                                    for ($i = 0; $i < count($desc) - 2; $i++) : ?>
-                                        <tr>
-                                            <td width="390" class="goingdark"><?= $desc[$i][0] ?></td>
+                                    if ($val == null) {
+                                        echo '<p class="goingdark"> Noch keine vorhanden... </p>';
+                                    } else {
+                                        $desc = getDescriptionName($row[5]);
+                                        for ($i = 0; $i < count($desc) - 2; $i++) : ?>
+                                            <tr>
+                                                <td width="390" class="goingdark"><?= $desc[$i][0] ?></td>
 
-                                            <td class="goingdark"><?=
+                                                <td class="goingdark"><?=
 
-                                                $val[$i] ?></td>
+                                                                        $val[$i] ?></td>
 
-                                        </tr>
-                                    <?php endfor; ?>
+                                            </tr>
+                                    <?php endfor;
+                                    } ?>
+
+
+
+
+
 
 
 

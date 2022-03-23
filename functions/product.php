@@ -17,7 +17,16 @@ function getAllProducts() {
 
 
 }
+function getProductNameForAlert($prodid) {
 
+    $sql = "SELECT titel FROM produkte WHERE artnr = $prodid";
+    $result = db_query($sql);
+
+
+    return mysqli_fetch_column($result);
+
+
+}
 function getProductFromCategory()
 {
 
@@ -34,13 +43,14 @@ function getProductFromCategory()
     return $products;
 }
 
-function getProduct(int $productid)
+function getProduct(int $productid, $userid)
 {
-    $userid = getCurrentUserId();
+    
     $sql = "SELECT amount FROM cart WHERE userid = $userid AND productid = $productid;";
     $result = db_query($sql);
     $i = 0;
     $amount = 0;
+    
     if (!$result) {
         return $i;
     } else {
@@ -49,7 +59,7 @@ function getProduct(int $productid)
             $amount = $row[0];
             $i++;
         }
-
+        
         return $amount;
     }
 }
@@ -109,6 +119,15 @@ function getCat()
     return $products;
 }
 
+function getCatCount() {
+    $sql = "SELECT count(katid) FROM kategorien;";
+    $result = db_query($sql);
+    return mysqli_fetch_column($result);
+
+}
+
+
+
 function getSoldOutProducts() {
     $sql = "SELECT artnr, titel, beschreibung, preis, picture, auflager FROM produkte WHERE auflager = 0";
     $result = db_query($sql);
@@ -155,4 +174,29 @@ function getNewProductID() {
     }
 
     return $ret;
+}
+
+function getCatIdAndName() {
+    $sql = "SELECT katid, katname FROM kategorien";
+    $r = db_query($sql);
+    
+    if(!$r) {
+        return [];
+    }
+    $res = [];
+    while ($row = mysqli_fetch_row($r)) {
+        $res[] = $row;
+    }
+    return $res;
+}
+
+function getCatNameFromID($katid) {
+    $sql = "SELECT katname FROM kategorien WHERE katid = $katid;";
+    $r = db_query($sql);
+    
+    if(!$r) {
+        return [];
+    }
+    
+    return mysqli_fetch_column($r);
 }

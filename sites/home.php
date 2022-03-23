@@ -40,14 +40,26 @@
             } else { ?>
                 <div class="my-5 pt-5 text-muted text-center text-small">
                     <h1 class="mb-1 goingdark">Scheint, als gäbe es hier noch nicht viel...</h1>
-                    
-            </div>
+
+                </div>
             <?php } ?>
         </div>
 
 
     </section>
-
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+            <i class="fi fi-rr-add rounded me-2"></i>
+                <strong class="me-auto">Produkt hinzugefügt!</strong>
+                <small>Jetzt gerade</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body" id="toastbody">
+                
+            </div>
+        </div>
+    </div>
     <footer class="my-5 pt-5 text-muted text-center text-small">
         <p class="mb-1 goingdark">&copy; 2022 Dave's Webshop GmbH</p>
         <ul class="list-inline">
@@ -64,7 +76,37 @@
     </script>
     <script src="assets\js\main.js"></script>
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script>
+        function sendReq(id, userid, bool) {
+            var ajax = new XMLHttpRequest();
 
+            ajax.open("GET", "templates/ajax.php?addtocartid=" + id + "&userid=" + userid + "&loggedin=" + bool, true);
+            ajax.send();
+
+            ajax.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+
+                    if (this.response.includes("redtologin")) {
+                        location.href = "/Webshop/index.php/login";
+                    } else {
+                        var resp = this.response.trim();
+                        const responsee = resp.split("*");
+                        document.getElementById("warenkorbanzahl").textContent = "Warenkorb (" + responsee[0] + ")";
+
+                        var toastLiveExample = document.getElementById('liveToast')
+                        document.getElementById("toastbody").textContent = "Sie haben " + responsee[1] + " erfolgreich zum Warenkorb hinzugefügt"
+
+                        var toast = new bootstrap.Toast(toastLiveExample)
+
+                        toast.show()
+
+                    }
+
+
+                }
+            }
+        }
+    </script>
 
 
 </body>

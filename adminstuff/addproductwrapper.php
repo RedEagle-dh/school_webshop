@@ -8,7 +8,7 @@
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
-                
+
                 <div class="sidebar-brand-text mx-3 goingdark">Dave's Webshop</div>
             </a>
 
@@ -146,87 +146,7 @@
 
                             </div>
 
-                            <!-- Content Row -->
-                            <div class="row">
-
-                                <!-- Earnings (Monthly) Card Example -->
-                                <div class="col-xl-3 col-md-6 mb-4">
-                                    <div class="card border-left-primary shadow h-100 py-2 darkcard row-border-light">
-                                        <div class="card-body">
-                                            <div class="row no-gutters align-items-center">
-                                                <div class="col mr-2">
-                                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                        Earnings (Monthly)</div>
-                                                    <div class="h5 mb-0 font-weight-bold text-gray-800 goingdark"><?= getMonthlyEarnings(getActualMonth()) ?>€</div>
-                                                </div>
-                                                <div class="col-auto">
-                                                    <i class="fi fi-br-euro fa-2x text-gray-300"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Earnings (Monthly) Card Example -->
-                                <div class="col-xl-3 col-md-6 mb-4">
-                                    <div class="card border-left-success shadow h-100 py-2 darkcard row-border-light">
-                                        <div class="card-body">
-                                            <div class="row no-gutters align-items-center">
-                                                <div class="col mr-2">
-                                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                        Earnings (All Time)</div>
-                                                    <div class="h5 mb-0 font-weight-bold text-gray-800 goingdark"><?= getAlltimeEarnings() ?>€</div>
-                                                </div>
-                                                <div class="col-auto">
-
-                                                    <i class="fi fi-br-bank fa-2x text-gray-300"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Earnings (Monthly) Card Example -->
-                                <div class="col-xl-3 col-md-6 mb-4">
-                                    <div class="card border-left-info shadow h-100 py-2 darkcard row-border-light">
-                                        <div class="card-body">
-                                            <div class="row no-gutters align-items-center">
-                                                <div class="col mr-2">
-                                                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Kunden
-                                                    </div>
-                                                    <div class="row no-gutters align-items-center">
-                                                        <div class="col-auto">
-                                                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800 goingdark"><?= getUserCount() ?></div>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                                <div class="col-auto">
-                                                    <i class="fi fi-sr-user fa-2x text-gray-300"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Pending Requests Card Example -->
-                                <div class="col-xl-3 col-md-6 mb-4">
-                                    <div class="card border-left-warning shadow h-100 py-2 darkcard row-border-light">
-                                        <div class="card-body">
-                                            <div class="row no-gutters align-items-center">
-                                                <div class="col mr-2">
-                                                    <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                        Anzahl Produkte im Sortiment</div>
-                                                    <div class="h5 mb-0 font-weight-bold text-gray-800 goingdark"><?= getProductCount() - getProductCountSoldOut() ?> (<?= getProductCount() ?> insg.)</div>
-                                                </div>
-                                                <div class="col-auto">
-                                                    <i class="fi fi-sr-shopping-cart-add fa-2x text-gray-300"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <?php include 'adminstuff\cardheaders.php'; ?>
 
                             <!-- Content Row -->
                             <form action="" method="POST" enctype="multipart/form-data">
@@ -259,78 +179,75 @@
                                                             <div class="col-lg-12 darkcard">
                                                                 <div class="p-5">
                                                                     <div class="mb-4 pb-2">
-                                                                        <select class="form-select goingdark searchbar" aria-label="Kategorie" name="kategorie">
-                                                                            <option selected>Kategorie</option>
-                                                                            <option value="1">Mainboard</option>
-                                                                            <option value="2">CPU</option>
-                                                                            <option value="4">GPU</option>
-                                                                            <option value="5">Gehäuse</option>
-                                                                            <option value="3">Laptops</option>
+                                                                        <select class="form-select goingdark searchbar" aria-label="Kategorie" name="kategorie" id="katselector" onchange="watchKatSelector(); sendReq(this.value); return false;">
+                                                                            <option disabled selected>Kategorie</option>
+                                                                            <?php foreach (getCatIdAndName() as $catitandname) : ?>
+                                                                                <option value="<?= $catitandname[0] ?>"><?= $catitandname[1] ?></option>
+                                                                            <?php endforeach; ?>
                                                                         </select>
+                                                                        
                                                                     </div>
                                                                     <div class="row">
                                                                         <div class="col-md-12 mb-4 pb-2">
                                                                             <div class="form-outline">
-                                                                                <input type="text" id="form3Examplev2" class="form-control form-control-lg searchbar goingdark" name="produktname" />
                                                                                 <label class="form-label goingdark" for="form3Examplev2">
-                                                                                    <nobr>Produktname</nobr>
+                                                                                    <nobr>Produktname*</nobr>
                                                                                 </label>
+                                                                                <input type="text" id="form3Examplev2" class="form-control form-control-lg searchbar goingdark" name="produktname" />
+
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                     <div class="row">
                                                                         <div class="col-md-12 mb-4 pb-2">
                                                                             <div class="form-outline">
-                                                                                <textarea type="text" class="form-control form-control-lg searchbar goingdark" id="form3Examplev3" rows="3" name="beschreibung"></textarea>
                                                                                 <label class="form-label goingdark" for="form3Examplev3">
                                                                                     <nobr>Produktbeschreibung</nobr>
                                                                                 </label>
+                                                                                <textarea type="text" class="form-control form-control-lg searchbar goingdark" id="form3Examplev3" rows="3" name="beschreibung"></textarea>
+
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                     <div class="row">
                                                                         <div class="col-md-2 mb-4 pb-2 mb-md-0 pb-md-0">
                                                                             <div class="form-outline">
-                                                                                <input type="text" id="form3Examplev5" class="form-control form-control-lg searchbar goingdark" name="preis" />
                                                                                 <label class="form-label goingdark" for="form3Examplev5">
-                                                                                    <nobr>Preis</nobr>
+                                                                                    <nobr>Preis*</nobr>
                                                                                 </label>
+                                                                                <input type="text" id="form3Examplev5" class="form-control form-control-lg searchbar goingdark" name="preis" />
+
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-2 mb-4 pb-2 mb-md-0 pb-md-0">
                                                                             <div class="form-outline">
-                                                                                <input type="password" id="form3Examplev5" class="form-control form-control-lg searchbar goingdark" name="anzahl" />
                                                                                 <label class="form-label goingdark" for="form3Examplev5">
                                                                                     <nobr>Anzahl</nobr>
                                                                                 </label>
+                                                                                <input type="text" id="form3Examplev5" class="form-control form-control-lg searchbar goingdark" name="anzahl" />
+
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-2 mb-4 pb-2 mb-md-0 pb-md-0">
                                                                             <div class="form-outline">
-                                                                                <input type="password" id="form3Examplev5" class="form-control form-control-lg searchbar goingdark" name="lieferkosten" />
                                                                                 <label class="form-label goingdark" for="form3Examplev5">
                                                                                     <nobr>Lieferkosten</nobr>
                                                                                 </label>
+                                                                                <input type="text" id="form3Examplev5" class="form-control form-control-lg searchbar goingdark" name="lieferkosten" />
+
                                                                             </div>
                                                                         </div>
+                                                                    </div>
+                                                                    <br>
+                                                                    <div id="techdetails">
+
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <script>
-                                                    function previewImage() {
-                                                        var file = document.getElementById("customFile").files;
-                                                        if (file.length > 0) {
-                                                            var fileReader = new FileReader();
-                                                            fileReader.onload = function(event) {
-                                                                document.getElementById("preview").setAttribute("src", event.target.result);
-                                                            };
-                                                            fileReader.readAsDataURL(file[0]);
-                                                        }
-                                                    }
-                                                </script>
+
                                             </div>
                                         </div>
                                     </div>
@@ -359,34 +276,35 @@
 
 
 
-                                            
-                                                    <div class="col-md-12 mb-4 pb-2 mb-md-0 pb-md-0">
-                                                        <?php
-                                                        include 'uploadimage.php';
-                                                        ?>
-                                                        <img id="preview">
-                                                        <input type="file" class="form-control" name="image" id="customFile" onchange="previewImage();"/>
-                                                        <br>
-                                                        <input type="submit" name="submit" class="btn btn-success" value="Hochladen">
 
-                                                        <?php
-                                                        if (!empty($statusMsg)) { ?>
-                                                            <p class="status <?php echo $status; ?>"><?php echo "<br>".$statusMsg; ?></p>
-
-
-                                                        <?php } ?>
-
-                                                    </div>
-
+                                                <div class="col-md-12 mb-4 pb-2 mb-md-0 pb-md-0">
+                                                    <?php
+                                                    include 'uploadimage.php';
                                                     
+                                                    ?>
+                                                    <img id="preview">
+                                                    <input type="file" class="form-control" name="image" id="customFile" onchange="previewImage();" />
+                                                    <br>
+                                                    <input type="submit" name="submit" id="uploadbtn" class="btn btn-success disabled" value="Hochladen">
+
+                                                    <?php
+                                                    if (!empty($statusMsg)) { ?>
+                                                        <p><?php echo "<br>" . $statusMsg; ?></p>
+
+
+                                                    <?php } ?>
+
                                                 </div>
 
 
-
-
-
                                             </div>
-                                        
+
+
+
+
+
+                                        </div>
+
                                     </div>
 
 
@@ -419,4 +337,35 @@
                     </div>
                 </div>
             </div>
+
+            <script>
+                function watchKatSelector() {
+                    document.getElementById("uploadbtn").classList.remove("disabled");
+                }
+
+                function previewImage() {
+                    var file = document.getElementById("customFile").files;
+                    if (file.length > 0) {
+                        var fileReader = new FileReader();
+                        fileReader.onload = function(event) {
+                            document.getElementById("preview").setAttribute("src", event.target.result);
+                        };
+                        fileReader.readAsDataURL(file[0]);
+                    }
+                }
+
+
+                function sendReq(kat) {
+                    var ajax = new XMLHttpRequest();
+
+                    ajax.open("GET", "adminstuff/addproductajax.php?kategorie=" + kat, true);
+                    ajax.send();
+
+                    ajax.onreadystatechange = function() {
+                        if (this.readyState == 4 && this.status == 200) {
+                            document.getElementById("techdetails").innerHTML = this.response;
+                        }
+                    }
+                }
+            </script>
             <!-- End of Page Wrapper -->

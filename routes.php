@@ -21,19 +21,12 @@ if (strpos($route, '/cart/add/') !== false) {
         exit();
     }
 
-    
-
-    
-        if (getProduct($productid) == 0) {
+        if (getProduct($productid, $userid) == 0) {
             addProductToCart($route, $userid);
         } else {
-            updateAmount($productid, +1);
+            updateAmount($productid, +1, $userid);
         }
     
-
-    
-
-
     header("Location: /Webshop/index.php");
     exit();
 }
@@ -106,9 +99,8 @@ if (strpos($route, '/login') !== false) {
 if (strpos($route, '/checkout') !== false) {
 
     if(getCartItemsForUser($userid) == null) {
-        
-
-        
+        header("Location: /Webshop/404");
+        exit();
     } else {
         $cartItems = getCartItemsForUser($userid);
         require 'sites/checkout.php';

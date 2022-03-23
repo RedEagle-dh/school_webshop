@@ -31,14 +31,10 @@ function getEmailAdress() {
 }
 
 
-function getUserData($username):array {
-
-    // Änderung, falls irgendwas nicht mehr klappt:
-    // vorher:  Attribut im Methodenkopf $username
-    //          in $sql statt "kundenid" und "$userid" -> "email" und "username"
+function getUserData($email):array {
 
     
-    $sql = "SELECT kundenid, passwort, vorname, nachname, email, telefonnummer, strasse, hausnummer, addinfo, land, ort, plz FROM kunde, adressen WHERE kunde.adresseid = adressen.adresseid AND email = '".$username."'";
+    $sql = "SELECT kundenid, passwort, vorname, nachname, email, telefonnummer, strasse, hausnummer, addinfo, land, ort, plz FROM kunde, adressen WHERE kunde.adresseid = adressen.adresseid AND email = '".$email."'";
     $stmt = db_query($sql);
     if (false === $stmt) {
         return [];

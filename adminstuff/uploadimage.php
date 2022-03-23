@@ -18,6 +18,42 @@ if(isset($_POST["submit"])) {
     $auflager = (int) $_POST["anzahl"];
     $preis = (double) $_POST["preis"];
     $kategorie = (int) $_POST["kategorie"];
+    
+    $descriptionNames = getDescriptionName($kategorie);
+    
+
+    $descspaltenpost = [];
+    $k = 0;
+    foreach ($descriptionNames as $name) {
+        if ($k == (count($descriptionNames) - 2)) {
+            break;
+        } else {
+            $end = str_replace(" ", "_", $name[0]);
+            $end2 = str_replace(":", "", $end);
+            $end3 = str_replace(".", "_", $end2);
+            array_push($descspaltenpost, $_POST[$end3]);
+            $k++;
+        }
+    }
+
+    $earlystr = "";
+    for ($i = 0; $i < count($descspaltenpost); $i++) {
+
+
+        if (empty($earlystr)) {
+            $earlystr = $earlystr . "'" . $descspaltenpost[$i] . "'";
+        } else {
+            $earlystr = $earlystr . ", " .  "'" . $descspaltenpost[$i] . "'";
+        }
+    }
+    $newPID = getNewProductID();
+    $earlystr = $earlystr . ", $newPID";
+
+
+    $tablename = getDescriptionTableName(getCatNameFromID($kategorie));
+    
+    
+    
     $lieferkosten = (double) $_POST["lieferkosten"];
     $status = 'error';
 
@@ -27,24 +63,41 @@ if(isset($_POST["submit"])) {
 
         $allowTypes = array('jpg', 'png', 'jpeg');
         if(in_array($fileType, $allowTypes)) {
-            $image = $_FILES['image']['tmp_name'];
-            $imgContent = addslashes(file_get_contents($image));
-            $newPID = getNewProductID();
-            $sql = "INSERT INTO produkte (artnr, titel, beschreibung, preis, katid, picture, auflager, lieferkosten) VALUES ($newPID, '".$titel."', '".$beschreibung."', '".$preis."', '".$kategorie."', '".$imgContent."', '".$auflager."', '".$lieferkosten."');";
-            $insert = db_query($sql);
-            if($insert) {
-                $status = 'success';
-                $statusMsg = 'Erfolgreich hochgeladen!';
+            if(!empty($_POST["produktname"])) {
+                if(!empty($_POST["preis"])) {
+                    $image = $_FILES['image']['tmp_name'];
+                    $imgContent = addslashes(file_get_contents($image));
+                    
+                    
+                    $sql = "INSERT INTO produkte (artnr, titel, beschreibung, preis, katid, picture, auflager, lieferkosten) VALUES ($newPID, '".$titel."', '".$beschreibung."', '".$preis."', '".$kategorie."', '".$imgContent."', '".$auflager."', '".$lieferkosten."');";
+                    $insert = db_query($sql);
+                    $earlystmt = "INSERT INTO " . $tablename . " VALUES (" . $earlystr . ", null);";
+                    
+                    db_query($earlystmt);
+                    //$sql = "INSERT INTO ".getDescriptionTableName()." VALUES (". $values .")";
+                    if($insert) {
+                        $status = 'success';
+                        $statusMsg = 'Erfolgreich hochgeladen!';
+                    } else {
+                        $statusMsg = 'Nicht hochgeladen, probiere es erneut!';
+        
+                    }
+                } else {
+                    $statusMsg = "Bitte einen Preis wählen!";
+                }
+                
             } else {
-                $statusMsg = 'Nicht hochgeladen, probiere es erneut!';
-
+                $statusMsg = "Bitte einen Namen wählen!";
             }
+            
         } else {
             $statusMsg = 'Sorry, nur JPG, JPEG oder PNG Dateien sind erlaubt!';
 
         }
 
     } else {
-        $statusMsg = 'Bitte wähle eine Bilddatei zum hochladen aus.';
+        $statusMsg = "Bitte ein richtiges Bild hochladen.";
     }
 }
+
+

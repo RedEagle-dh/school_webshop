@@ -6,20 +6,22 @@
     <title>Dave's Webshop | Bezahlvorgang</title>
     <base href="/Webshop/">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
+
 
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-bold-rounded/css/uicons-bold-rounded.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css'>
+
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link href="assets\css\bootstrap.css" rel="stylesheet">
 
 </head>
 
 <body>
-    <?php include 'templates/navbar.php'; ?>
+    <?php include 'templates/navbar.php'; 
+    $data = getUserData(getEmailAdress()); 
+    ?>
     <br><br><br>
 
 
@@ -77,14 +79,14 @@
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="firstName" class="goingdark">Vorname</label>
-                            <input type="text" class="form-control searchbar goingdark" id="firstName" placeholder="" value="" name="dfname" required>
+                            <input type="text" class="form-control searchbar goingdark" id="firstName" placeholder="" value="<?= $data[2] ?>" name="dfname" required>
                             <div class="invalid-feedback">
                                 Ein richtiger Vorname wird benötigt.
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="lastName" class="goingdark">Nachname</label>
-                            <input type="text" class="form-control searchbar goingdark" id="lastName" placeholder="" value="" name="dlname" required>
+                            <input type="text" class="form-control searchbar goingdark" id="lastName" placeholder="" value="<?= $data[3] ?>" name="dlname" required>
                             <div class="invalid-feedback">
                                 Ein richtiger Nachname wird benötigt.
                             </div>
@@ -95,7 +97,7 @@
 
                     <div class="mb-3">
                         <label for="email" class="goingdark">Email <span class="text-muted goingdark">(Optional)</span></label>
-                        <input type="email" class="form-control searchbar goingdark" id="email" name="demail" placeholder="du@beispiel.com">
+                        <input type="email" class="form-control searchbar goingdark" id="email" name="demail" placeholder="du@beispiel.com" value="<?= $data[4] ?>">
                         <div class="invalid-feedback">
                             Bitte gib eine korrekte Emailadresse an um Lieferupdates zu erhalten.
                         </div>
@@ -103,14 +105,14 @@
                     <div class="row">
                         <div class="col-md-9 mb-3">
                             <label class="goingdark" for="address">Straße</label>
-                            <input type="text" class="form-control searchbar goingdark" id="address" placeholder="Birkenweg" name="dstreet" required>
+                            <input type="text" class="form-control searchbar goingdark" id="address" placeholder="Birkenweg" name="dstreet" value="<?= $data[6] ?>" required>
                             <div class="invalid-feedback">
                                 Bitte gib deine Straße an.
                             </div>
                         </div>
                         <div class="col-md-3 mb-3">
                             <label class="goingdark" for="nod">No.</label>
-                            <input type="text" class="form-control searchbar goingdark" id="nod" placeholder="24a" name="dno" required>
+                            <input type="text" class="form-control searchbar goingdark" id="nod" placeholder="24a" name="dno" value="<?= $data[7] ?>" required>
                             <div class="invalid-feedback">
                                 Bitte gib deine Hausnummer an.
                             </div>
@@ -118,7 +120,7 @@
                     </div>
                     <div class="mb-3">
                         <label class="goingdark" for="address2">Adresszusatz <span class="text-muted goingdark">(Optional)</span></label>
-                        <input type="text" class="form-control searchbar goingdark" id="address2" placeholder="Stockwerk o. Wohnung" name="daddress2">
+                        <input type="text" class="form-control searchbar goingdark" id="address2" placeholder="Stockwerk o. Wohnung" name="daddress2" value="<?= $data[8] ?>">
                     </div>
 
                     <div class="row">
@@ -130,15 +132,15 @@
 
                         </div>
                         <div class="col-md-4 mb-3">
-                            <label for="sd"class="goingdark">Stadt</label>
-                            <input type="text" class="form-control searchbar goingdark" id="sd" placeholder="Frankfurt a.M." name="dstate" required>
+                            <label for="sd" class="goingdark">Stadt</label>
+                            <input type="text" class="form-control searchbar goingdark" id="sd" placeholder="Frankfurt a.M." name="dstate" value="<?= $data[10] ?>" required>
                             <div class="invalid-feedback">
                                 Bitte gib deine Stadt an.
                             </div>
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="zip" class="goingdark">PLZ</label>
-                            <input type="text" class="form-control searchbar goingdark" id="zip" placeholder="36110" name="dzip" required>
+                            <input type="text" class="form-control searchbar goingdark" id="zip" placeholder="36110" name="dzip" value="<?= $data[11] ?>" required>
                             <div class="invalid-feedback">
                                 Bitte gib deine Postleitzahl an.
                             </div>
@@ -149,10 +151,12 @@
                     <hr class="mb-4">
                     <div class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input" id="same-address" onclick="SetBilling(this.checked);" checked="checked" />
-                        <label class="custom-control-label goingdark" for="same-address"><nobr>Die Rechnungsadresse entspricht meiner Lieferadresse</nobr></label>
+                        <label class="custom-control-label goingdark" for="same-address">
+                            <nobr>Die Rechnungsadresse entspricht meiner Lieferadresse</nobr>
+                        </label>
                     </div>
 
-                    <div id="rechnungsadressediv" class="shipping_address" style="display:none;">
+                    <div id="rechnungsadressediv" class="shipping_address animated--grow-in" style="display:none;">
 
 
                         <br>
@@ -214,7 +218,7 @@
                     <hr class="mb-4">
 
                     <h4 class="mb-3 goingdark">Zahlungsart</h4>
-
+                    <br>
                     <div class="d-block my-3">
                         <div class="custom-control custom-radio">
                             <input id="credit" name="paymentMethod" type="radio" class="custom-control-input searchbar goingdark" checked required>
@@ -263,7 +267,7 @@
                         </div>
                     </div>
                     <hr class="mb-4">
-                    <button class="btn btn-success btn-lg btn-block" type="submit" onclick="Watch();">Buy</button>
+                    <button class="btn btn-success btn-lg btn-block" type="submit" onclick="Watch();">Kostenpflichtig bestellen</button>
                 </form>
             </div>
         </div>
@@ -338,12 +342,10 @@
     <!-- Custom scripts for all pages-->
     <script src="assets/js/sb-admin-2.min.js"></script>
 
-    <!-- Page level plugins -->
-    <script src="assets/js/Chart.min.js"></script>
 
-    <!-- Page level custom scripts -->
-    <script src="assets/js/chart-area-demo.js"></script>
-    <script src="assets/js/chart-pie-demo.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 </body>
 
 </html>

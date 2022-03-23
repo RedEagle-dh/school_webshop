@@ -1,4 +1,4 @@
-<select class="custom-select d-block w-100 searchbar goingdark" id="country" name="country">
+<select class="form-select d-block w-100 searchbar goingdark" id="country" name="country">
     <option selected><?php $data = getUserData(getEmailAdress());
                         echo $data[9];  ?></option>
     <option value="Afghanistan">Afghanistan</option>

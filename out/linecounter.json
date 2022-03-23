@@ -1,0 +1,1438 @@
+{
+    "extension": "linecounter",
+    "version": "0.2.7",
+    "workspace": "c:\\xampp\\htdocs\\Webshop",
+    "linecount": [
+        {
+            "version": "0.2.7",
+            "counttime": "2022-03-22 00:47:32",
+            "filesum": 229,
+            "codesum": 88208,
+            "commentsum": 2622,
+            "blanksum": 18784,
+            "statistics": {
+                ".html": {
+                    "code": 158,
+                    "comment": 8,
+                    "blank": 56
+                },
+                ".php": {
+                    "code": 6068,
+                    "comment": 412,
+                    "blank": 1054
+                },
+                "": {
+                    "code": 106,
+                    "comment": 0,
+                    "blank": 6
+                },
+                ".htm": {
+                    "code": 2715,
+                    "comment": 74,
+                    "blank": 38
+                },
+                ".txt": {
+                    "code": 123,
+                    "comment": 1,
+                    "blank": 27
+                },
+                ".css": {
+                    "code": 62331,
+                    "comment": 200,
+                    "blank": 14172
+                },
+                ".map": {
+                    "code": 5018,
+                    "comment": 0,
+                    "blank": 0
+                },
+                ".js": {
+                    "code": 11689,
+                    "comment": 1927,
+                    "blank": 3431
+                }
+            },
+            "filelist": [
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": ".htaccess"
+                },
+                {
+                    "blank": 13,
+                    "code": 32,
+                    "comment": 8,
+                    "filename": "404error.html"
+                },
+                {
+                    "blank": 19,
+                    "code": 27,
+                    "comment": 1,
+                    "filename": "adminstuff\\addproduct.php"
+                },
+                {
+                    "blank": 8,
+                    "code": 23,
+                    "comment": 0,
+                    "filename": "adminstuff\\addproductwrapper.php"
+                },
+                {
+                    "blank": 19,
+                    "code": 27,
+                    "comment": 1,
+                    "filename": "adminstuff\\admindashboard.php"
+                },
+                {
+                    "blank": 12,
+                    "code": 23,
+                    "comment": 0,
+                    "filename": "adminstuff\\dashboardwrapper.php"
+                },
+                {
+                    "blank": 19,
+                    "code": 28,
+                    "comment": 1,
+                    "filename": "adminstuff\\removeproduct.php"
+                },
+                {
+                    "blank": 35,
+                    "code": 100,
+                    "comment": 0,
+                    "filename": "adminstuff\\removeproductwrapper.php"
+                },
+                {
+                    "blank": 10,
+                    "code": 40,
+                    "comment": 0,
+                    "filename": "adminstuff\\uploadimage.php"
+                },
+                {
+                    "blank": 1,
+                    "code": 2,
+                    "comment": 0,
+                    "filename": "ajax\\cartBuyButton.php"
+                },
+                {
+                    "blank": 39,
+                    "code": 215,
+                    "comment": 0,
+                    "filename": "assets\\checkout.css"
+                },
+                {
+                    "blank": 1501,
+                    "code": 3112,
+                    "comment": 6,
+                    "filename": "assets\\css\\all.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 4,
+                    "filename": "assets\\css\\all.min.css"
+                },
+                {
+                    "blank": 1136,
+                    "code": 3908,
+                    "comment": 7,
+                    "filename": "assets\\css\\bootstrap-grid.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "assets\\css\\bootstrap-grid.css.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 7,
+                    "filename": "assets\\css\\bootstrap-grid.min.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "assets\\css\\bootstrap-grid.min.css.map"
+                },
+                {
+                    "blank": 1135,
+                    "code": 3908,
+                    "comment": 7,
+                    "filename": "assets\\css\\bootstrap-grid.rtl.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "assets\\css\\bootstrap-grid.rtl.css.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 7,
+                    "filename": "assets\\css\\bootstrap-grid.rtl.min.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "assets\\css\\bootstrap-grid.rtl.min.css.map"
+                },
+                {
+                    "blank": 66,
+                    "code": 403,
+                    "comment": 16,
+                    "filename": "assets\\css\\bootstrap-reboot.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "assets\\css\\bootstrap-reboot.css.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 8,
+                    "filename": "assets\\css\\bootstrap-reboot.min.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "assets\\css\\bootstrap-reboot.min.css.map"
+                },
+                {
+                    "blank": 65,
+                    "code": 409,
+                    "comment": 8,
+                    "filename": "assets\\css\\bootstrap-reboot.rtl.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "assets\\css\\bootstrap-reboot.rtl.css.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 8,
+                    "filename": "assets\\css\\bootstrap-reboot.rtl.min.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "assets\\css\\bootstrap-reboot.rtl.min.css.map"
+                },
+                {
+                    "blank": 1128,
+                    "code": 3729,
+                    "comment": 9,
+                    "filename": "assets\\css\\bootstrap-utilities.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "assets\\css\\bootstrap-utilities.css.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 7,
+                    "filename": "assets\\css\\bootstrap-utilities.min.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "assets\\css\\bootstrap-utilities.min.css.map"
+                },
+                {
+                    "blank": 1125,
+                    "code": 3725,
+                    "comment": 7,
+                    "filename": "assets\\css\\bootstrap-utilities.rtl.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "assets\\css\\bootstrap-utilities.rtl.css.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 7,
+                    "filename": "assets\\css\\bootstrap-utilities.rtl.min.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "assets\\css\\bootstrap-utilities.rtl.min.css.map"
+                },
+                {
+                    "blank": 1742,
+                    "code": 9497,
+                    "comment": 27,
+                    "filename": "assets\\css\\bootstrap.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "assets\\css\\bootstrap.css.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 2,
+                    "comment": 6,
+                    "filename": "assets\\css\\bootstrap.min.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "assets\\css\\bootstrap.min.css.map"
+                },
+                {
+                    "blank": 1736,
+                    "code": 9499,
+                    "comment": 7,
+                    "filename": "assets\\css\\bootstrap.rtl.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "assets\\css\\bootstrap.rtl.css.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 2,
+                    "comment": 6,
+                    "filename": "assets\\css\\bootstrap.rtl.min.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "assets\\css\\bootstrap.rtl.min.css.map"
+                },
+                {
+                    "blank": 1418,
+                    "code": 9819,
+                    "comment": 11,
+                    "filename": "assets\\css\\dashboard.css"
+                },
+                {
+                    "blank": 1498,
+                    "code": 3081,
+                    "comment": 6,
+                    "filename": "assets\\css\\fontawesome.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 4,
+                    "filename": "assets\\css\\fontawesome.min.css"
+                },
+                {
+                    "blank": 10,
+                    "code": 33,
+                    "comment": 0,
+                    "filename": "assets\\css\\ratingstars.css"
+                },
+                {
+                    "blank": 1418,
+                    "code": 9852,
+                    "comment": 11,
+                    "filename": "assets\\css\\sb-admin-2.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 6,
+                    "comment": 8,
+                    "filename": "assets\\css\\sb-admin-2.min.css"
+                },
+                {
+                    "blank": 12,
+                    "code": 88,
+                    "comment": 0,
+                    "filename": "assets\\css\\settings.css"
+                },
+                {
+                    "blank": 143,
+                    "code": 1014,
+                    "comment": 6,
+                    "filename": "assets\\css\\styles.css"
+                },
+                {
+                    "blank": 1331,
+                    "code": 4783,
+                    "comment": 741,
+                    "filename": "assets\\js\\bootstrap.bundle.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "assets\\js\\bootstrap.bundle.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 7,
+                    "filename": "assets\\js\\bootstrap.bundle.min.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "assets\\js\\bootstrap.bundle.min.js.map"
+                },
+                {
+                    "blank": 1046,
+                    "code": 3360,
+                    "comment": 569,
+                    "filename": "assets\\js\\bootstrap.esm.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "assets\\js\\bootstrap.esm.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 7,
+                    "filename": "assets\\js\\bootstrap.esm.min.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "assets\\js\\bootstrap.esm.min.js.map"
+                },
+                {
+                    "blank": 1050,
+                    "code": 3397,
+                    "comment": 575,
+                    "filename": "assets\\js\\bootstrap.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "assets\\js\\bootstrap.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 7,
+                    "filename": "assets\\js\\bootstrap.min.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "assets\\js\\bootstrap.min.js.map"
+                },
+                {
+                    "blank": 2,
+                    "code": 110,
+                    "comment": 6,
+                    "filename": "assets\\js\\chart-area-demo.js"
+                },
+                {
+                    "blank": 1,
+                    "code": 32,
+                    "comment": 2,
+                    "filename": "assets\\js\\chart-pie-demo.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 6,
+                    "filename": "assets\\js\\Chart.min.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "assets\\js\\jquery.easing.min.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 2,
+                    "filename": "assets\\js\\jquery.min.js"
+                },
+                {
+                    "blank": 1,
+                    "code": 1,
+                    "comment": 5,
+                    "filename": "assets\\js\\sb-admin-2.min.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 5,
+                    "comment": 1,
+                    "filename": "config\\dbconfig.php"
+                },
+                {
+                    "blank": 0,
+                    "code": 61,
+                    "comment": 0,
+                    "filename": "countries\\allcountriesd.php"
+                },
+                {
+                    "blank": 0,
+                    "code": 61,
+                    "comment": 0,
+                    "filename": "countries\\allcountriesr.php"
+                },
+                {
+                    "blank": 0,
+                    "code": 182,
+                    "comment": 0,
+                    "filename": "countries\\allcountriessettings.php"
+                },
+                {
+                    "blank": 6,
+                    "code": 105,
+                    "comment": 0,
+                    "filename": "databaseinserts"
+                },
+                {
+                    "blank": 0,
+                    "code": 87,
+                    "comment": 0,
+                    "filename": "fpdf\\changelog.htm"
+                },
+                {
+                    "blank": 0,
+                    "code": 63,
+                    "comment": 0,
+                    "filename": "fpdf\\doc\\__construct.htm"
+                },
+                {
+                    "blank": 3,
+                    "code": 57,
+                    "comment": 3,
+                    "filename": "fpdf\\doc\\acceptpagebreak.htm"
+                },
+                {
+                    "blank": 0,
+                    "code": 55,
+                    "comment": 0,
+                    "filename": "fpdf\\doc\\addfont.htm"
+                },
+                {
+                    "blank": 0,
+                    "code": 26,
+                    "comment": 0,
+                    "filename": "fpdf\\doc\\addlink.htm"
+                },
+                {
+                    "blank": 0,
+                    "code": 61,
+                    "comment": 0,
+                    "filename": "fpdf\\doc\\addpage.htm"
+                },
+                {
+                    "blank": 1,
+                    "code": 41,
+                    "comment": 3,
+                    "filename": "fpdf\\doc\\aliasnbpages.htm"
+                },
+                {
+                    "blank": 0,
+                    "code": 102,
+                    "comment": 3,
+                    "filename": "fpdf\\doc\\cell.htm"
+                },
+                {
+                    "blank": 0,
+                    "code": 21,
+                    "comment": 0,
+                    "filename": "fpdf\\doc\\close.htm"
+                },
+                {
+                    "blank": 0,
+                    "code": 26,
+                    "comment": 0,
+                    "filename": "fpdf\\doc\\error.htm"
+                },
+                {
+                    "blank": 0,
+                    "code": 32,
+                    "comment": 3,
+                    "filename": "fpdf\\doc\\footer.htm"
+                },
+                {
+                    "blank": 0,
+                    "code": 18,
+                    "comment": 0,
+                    "filename": "fpdf\\doc\\getpageheight.htm"
+                },
+                {
+                    "blank": 0,
+                    "code": 18,
+                    "comment": 0,
+                    "filename": "fpdf\\doc\\getpagewidth.htm"
+                },
+                {
+                    "blank": 0,
+                    "code": 23,
+                    "comment": 0,
+                    "filename": "fpdf\\doc\\getstringwidth.htm"
+                },
+                {
+                    "blank": 0,
+                    "code": 20,
+                    "comment": 0,
+                    "filename": "fpdf\\doc\\getx.htm"
+                },
+                {
+                    "blank": 0,
+                    "code": 20,
+                    "comment": 0,
+                    "filename": "fpdf\\doc\\gety.htm"
+                },
+                {
+                    "blank": 0,
+                    "code": 33,
+                    "comment": 4,
+                    "filename": "fpdf\\doc\\header.htm"
+                },
+                {
+                    "blank": 0,
+                    "code": 98,
+                    "comment": 2,
+                    "filename": "fpdf\\doc\\image.htm"
+                },
+                {
+                    "blank": 0,
+                    "code": 59,
+                    "comment": 0,
+                    "filename": "fpdf\\doc\\index.htm"
+                },
+                {
+                    "blank": 0,
+                    "code": 38,
+                    "comment": 0,
+                    "filename": "fpdf\\doc\\line.htm"
+                },
+                {
+                    "blank": 0,
+                    "code": 46,
+                    "comment": 0,
+                    "filename": "fpdf\\doc\\link.htm"
+                },
+                {
+                    "blank": 0,
+                    "code": 28,
+                    "comment": 0,
+                    "filename": "fpdf\\doc\\ln.htm"
+                },
+                {
+                    "blank": 0,
+                    "code": 76,
+                    "comment": 0,
+                    "filename": "fpdf\\doc\\multicell.htm"
+                },
+                {
+                    "blank": 0,
+                    "code": 46,
+                    "comment": 0,
+                    "filename": "fpdf\\doc\\output.htm"
+                },
+                {
+                    "blank": 0,
+                    "code": 18,
+                    "comment": 0,
+                    "filename": "fpdf\\doc\\pageno.htm"
+                },
+                {
+                    "blank": 0,
+                    "code": 48,
+                    "comment": 0,
+                    "filename": "fpdf\\doc\\rect.htm"
+                },
+                {
+                    "blank": 0,
+                    "code": 33,
+                    "comment": 0,
+                    "filename": "fpdf\\doc\\setauthor.htm"
+                },
+                {
+                    "blank": 0,
+                    "code": 33,
+                    "comment": 0,
+                    "filename": "fpdf\\doc\\setautopagebreak.htm"
+                },
+                {
+                    "blank": 0,
+                    "code": 31,
+                    "comment": 0,
+                    "filename": "fpdf\\doc\\setcompression.htm"
+                },
+                {
+                    "blank": 0,
+                    "code": 34,
+                    "comment": 0,
+                    "filename": "fpdf\\doc\\setcreator.htm"
+                },
+                {
+                    "blank": 0,
+                    "code": 45,
+                    "comment": 0,
+                    "filename": "fpdf\\doc\\setdisplaymode.htm"
+                },
+                {
+                    "blank": 0,
+                    "code": 41,
+                    "comment": 0,
+                    "filename": "fpdf\\doc\\setdrawcolor.htm"
+                },
+                {
+                    "blank": 0,
+                    "code": 40,
+                    "comment": 0,
+                    "filename": "fpdf\\doc\\setfillcolor.htm"
+                },
+                {
+                    "blank": 0,
+                    "code": 88,
+                    "comment": 4,
+                    "filename": "fpdf\\doc\\setfont.htm"
+                },
+                {
+                    "blank": 0,
+                    "code": 25,
+                    "comment": 0,
+                    "filename": "fpdf\\doc\\setfontsize.htm"
+                },
+                {
+                    "blank": 0,
+                    "code": 33,
+                    "comment": 0,
+                    "filename": "fpdf\\doc\\setkeywords.htm"
+                },
+                {
+                    "blank": 0,
+                    "code": 30,
+                    "comment": 0,
+                    "filename": "fpdf\\doc\\setleftmargin.htm"
+                },
+                {
+                    "blank": 0,
+                    "code": 29,
+                    "comment": 0,
+                    "filename": "fpdf\\doc\\setlinewidth.htm"
+                },
+                {
+                    "blank": 0,
+                    "code": 34,
+                    "comment": 0,
+                    "filename": "fpdf\\doc\\setlink.htm"
+                },
+                {
+                    "blank": 0,
+                    "code": 37,
+                    "comment": 0,
+                    "filename": "fpdf\\doc\\setmargins.htm"
+                },
+                {
+                    "blank": 0,
+                    "code": 28,
+                    "comment": 0,
+                    "filename": "fpdf\\doc\\setrightmargin.htm"
+                },
+                {
+                    "blank": 0,
+                    "code": 33,
+                    "comment": 0,
+                    "filename": "fpdf\\doc\\setsubject.htm"
+                },
+                {
+                    "blank": 0,
+                    "code": 40,
+                    "comment": 0,
+                    "filename": "fpdf\\doc\\settextcolor.htm"
+                },
+                {
+                    "blank": 0,
+                    "code": 33,
+                    "comment": 0,
+                    "filename": "fpdf\\doc\\settitle.htm"
+                },
+                {
+                    "blank": 0,
+                    "code": 28,
+                    "comment": 0,
+                    "filename": "fpdf\\doc\\settopmargin.htm"
+                },
+                {
+                    "blank": 0,
+                    "code": 29,
+                    "comment": 0,
+                    "filename": "fpdf\\doc\\setx.htm"
+                },
+                {
+                    "blank": 0,
+                    "code": 31,
+                    "comment": 0,
+                    "filename": "fpdf\\doc\\setxy.htm"
+                },
+                {
+                    "blank": 0,
+                    "code": 33,
+                    "comment": 0,
+                    "filename": "fpdf\\doc\\sety.htm"
+                },
+                {
+                    "blank": 0,
+                    "code": 39,
+                    "comment": 0,
+                    "filename": "fpdf\\doc\\text.htm"
+                },
+                {
+                    "blank": 0,
+                    "code": 50,
+                    "comment": 2,
+                    "filename": "fpdf\\doc\\write.htm"
+                },
+                {
+                    "blank": 7,
+                    "code": 102,
+                    "comment": 2,
+                    "filename": "fpdf\\FAQ.htm"
+                },
+                {
+                    "blank": 0,
+                    "code": 10,
+                    "comment": 0,
+                    "filename": "fpdf\\font\\courier.php"
+                },
+                {
+                    "blank": 0,
+                    "code": 10,
+                    "comment": 0,
+                    "filename": "fpdf\\font\\courierb.php"
+                },
+                {
+                    "blank": 0,
+                    "code": 10,
+                    "comment": 0,
+                    "filename": "fpdf\\font\\courierbi.php"
+                },
+                {
+                    "blank": 0,
+                    "code": 10,
+                    "comment": 0,
+                    "filename": "fpdf\\font\\courieri.php"
+                },
+                {
+                    "blank": 0,
+                    "code": 21,
+                    "comment": 0,
+                    "filename": "fpdf\\font\\helvetica.php"
+                },
+                {
+                    "blank": 0,
+                    "code": 21,
+                    "comment": 0,
+                    "filename": "fpdf\\font\\helveticab.php"
+                },
+                {
+                    "blank": 0,
+                    "code": 21,
+                    "comment": 0,
+                    "filename": "fpdf\\font\\helveticabi.php"
+                },
+                {
+                    "blank": 0,
+                    "code": 21,
+                    "comment": 0,
+                    "filename": "fpdf\\font\\helveticai.php"
+                },
+                {
+                    "blank": 0,
+                    "code": 20,
+                    "comment": 0,
+                    "filename": "fpdf\\font\\symbol.php"
+                },
+                {
+                    "blank": 0,
+                    "code": 21,
+                    "comment": 0,
+                    "filename": "fpdf\\font\\times.php"
+                },
+                {
+                    "blank": 0,
+                    "code": 21,
+                    "comment": 0,
+                    "filename": "fpdf\\font\\timesb.php"
+                },
+                {
+                    "blank": 0,
+                    "code": 21,
+                    "comment": 0,
+                    "filename": "fpdf\\font\\timesbi.php"
+                },
+                {
+                    "blank": 0,
+                    "code": 21,
+                    "comment": 0,
+                    "filename": "fpdf\\font\\timesi.php"
+                },
+                {
+                    "blank": 0,
+                    "code": 20,
+                    "comment": 0,
+                    "filename": "fpdf\\font\\zapfdingbats.php"
+                },
+                {
+                    "blank": 0,
+                    "code": 21,
+                    "comment": 0,
+                    "filename": "fpdf\\fpdf.css"
+                },
+                {
+                    "blank": 96,
+                    "code": 1648,
+                    "comment": 221,
+                    "filename": "fpdf\\fpdf.php"
+                },
+                {
+                    "blank": 6,
+                    "code": 9,
+                    "comment": 0,
+                    "filename": "fpdf\\install.txt"
+                },
+                {
+                    "blank": 1,
+                    "code": 5,
+                    "comment": 0,
+                    "filename": "fpdf\\license.txt"
+                },
+                {
+                    "blank": 0,
+                    "code": 251,
+                    "comment": 0,
+                    "filename": "fpdf\\makefont\\cp1250.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 255,
+                    "comment": 0,
+                    "filename": "fpdf\\makefont\\cp1251.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 251,
+                    "comment": 0,
+                    "filename": "fpdf\\makefont\\cp1252.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 239,
+                    "comment": 0,
+                    "filename": "fpdf\\makefont\\cp1253.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 249,
+                    "comment": 0,
+                    "filename": "fpdf\\makefont\\cp1254.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 233,
+                    "comment": 0,
+                    "filename": "fpdf\\makefont\\cp1255.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 244,
+                    "comment": 0,
+                    "filename": "fpdf\\makefont\\cp1257.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 247,
+                    "comment": 0,
+                    "filename": "fpdf\\makefont\\cp1258.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 225,
+                    "comment": 0,
+                    "filename": "fpdf\\makefont\\cp874.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 256,
+                    "comment": 0,
+                    "filename": "fpdf\\makefont\\iso-8859-1.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 248,
+                    "comment": 0,
+                    "filename": "fpdf\\makefont\\iso-8859-11.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 256,
+                    "comment": 0,
+                    "filename": "fpdf\\makefont\\iso-8859-15.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 256,
+                    "comment": 0,
+                    "filename": "fpdf\\makefont\\iso-8859-16.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 256,
+                    "comment": 0,
+                    "filename": "fpdf\\makefont\\iso-8859-2.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 256,
+                    "comment": 0,
+                    "filename": "fpdf\\makefont\\iso-8859-4.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 256,
+                    "comment": 0,
+                    "filename": "fpdf\\makefont\\iso-8859-5.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 250,
+                    "comment": 0,
+                    "filename": "fpdf\\makefont\\iso-8859-7.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 256,
+                    "comment": 0,
+                    "filename": "fpdf\\makefont\\iso-8859-9.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 256,
+                    "comment": 0,
+                    "filename": "fpdf\\makefont\\koi8-r.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 256,
+                    "comment": 0,
+                    "filename": "fpdf\\makefont\\koi8-u.map"
+                },
+                {
+                    "blank": 23,
+                    "code": 401,
+                    "comment": 23,
+                    "filename": "fpdf\\makefont\\makefont.php"
+                },
+                {
+                    "blank": 45,
+                    "code": 648,
+                    "comment": 47,
+                    "filename": "fpdf\\makefont\\ttfparser.php"
+                },
+                {
+                    "blank": 0,
+                    "code": 9,
+                    "comment": 0,
+                    "filename": "fpdf\\tutorial\\20k_c1.txt"
+                },
+                {
+                    "blank": 2,
+                    "code": 9,
+                    "comment": 0,
+                    "filename": "fpdf\\tutorial\\20k_c2.txt"
+                },
+                {
+                    "blank": 18,
+                    "code": 76,
+                    "comment": 1,
+                    "filename": "fpdf\\tutorial\\CevicheOne-Regular-Licence.txt"
+                },
+                {
+                    "blank": 0,
+                    "code": 25,
+                    "comment": 0,
+                    "filename": "fpdf\\tutorial\\CevicheOne-Regular.php"
+                },
+                {
+                    "filename": "fpdf\\tutorial\\CevicheOne-Regular.ttf",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "fpdf\\tutorial\\CevicheOne-Regular.z",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 15,
+                    "comment": 0,
+                    "filename": "fpdf\\tutorial\\countries.txt"
+                },
+                {
+                    "blank": 0,
+                    "code": 20,
+                    "comment": 0,
+                    "filename": "fpdf\\tutorial\\index.htm"
+                },
+                {
+                    "filename": "fpdf\\tutorial\\logo.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 1,
+                    "code": 4,
+                    "comment": 1,
+                    "filename": "fpdf\\tutorial\\makefont.php"
+                },
+                {
+                    "blank": 0,
+                    "code": 22,
+                    "comment": 0,
+                    "filename": "fpdf\\tutorial\\tuto1.htm"
+                },
+                {
+                    "blank": 1,
+                    "code": 8,
+                    "comment": 0,
+                    "filename": "fpdf\\tutorial\\tuto1.php"
+                },
+                {
+                    "blank": 0,
+                    "code": 24,
+                    "comment": 0,
+                    "filename": "fpdf\\tutorial\\tuto2.htm"
+                },
+                {
+                    "blank": 3,
+                    "code": 27,
+                    "comment": 11,
+                    "filename": "fpdf\\tutorial\\tuto2.php"
+                },
+                {
+                    "blank": 0,
+                    "code": 10,
+                    "comment": 0,
+                    "filename": "fpdf\\tutorial\\tuto3.htm"
+                },
+                {
+                    "blank": 7,
+                    "code": 55,
+                    "comment": 19,
+                    "filename": "fpdf\\tutorial\\tuto3.php"
+                },
+                {
+                    "blank": 10,
+                    "code": 122,
+                    "comment": 20,
+                    "filename": "fpdf\\tutorial\\tuto4.htm"
+                },
+                {
+                    "blank": 10,
+                    "code": 81,
+                    "comment": 20,
+                    "filename": "fpdf\\tutorial\\tuto4.php"
+                },
+                {
+                    "blank": 5,
+                    "code": 111,
+                    "comment": 18,
+                    "filename": "fpdf\\tutorial\\tuto5.htm"
+                },
+                {
+                    "blank": 5,
+                    "code": 79,
+                    "comment": 18,
+                    "filename": "fpdf\\tutorial\\tuto5.php"
+                },
+                {
+                    "blank": 8,
+                    "code": 128,
+                    "comment": 10,
+                    "filename": "fpdf\\tutorial\\tuto6.htm"
+                },
+                {
+                    "blank": 8,
+                    "code": 93,
+                    "comment": 10,
+                    "filename": "fpdf\\tutorial\\tuto6.php"
+                },
+                {
+                    "blank": 4,
+                    "code": 139,
+                    "comment": 0,
+                    "filename": "fpdf\\tutorial\\tuto7.htm"
+                },
+                {
+                    "blank": 1,
+                    "code": 10,
+                    "comment": 0,
+                    "filename": "fpdf\\tutorial\\tuto7.php"
+                },
+                {
+                    "blank": 3,
+                    "code": 45,
+                    "comment": 0,
+                    "filename": "functions\\analytics.php"
+                },
+                {
+                    "blank": 22,
+                    "code": 85,
+                    "comment": 0,
+                    "filename": "functions\\cartFunctions.php"
+                },
+                {
+                    "blank": 26,
+                    "code": 44,
+                    "comment": 6,
+                    "filename": "functions\\db_funktionen.php"
+                },
+                {
+                    "blank": 30,
+                    "code": 74,
+                    "comment": 1,
+                    "filename": "functions\\description.php"
+                },
+                {
+                    "blank": 30,
+                    "code": 69,
+                    "comment": 6,
+                    "filename": "functions\\erstelleRechnung.php"
+                },
+                {
+                    "blank": 4,
+                    "code": 26,
+                    "comment": 0,
+                    "filename": "functions\\invoicefunctions.php"
+                },
+                {
+                    "blank": 35,
+                    "code": 123,
+                    "comment": 0,
+                    "filename": "functions\\product.php"
+                },
+                {
+                    "blank": 22,
+                    "code": 71,
+                    "comment": 3,
+                    "filename": "functions\\user.php"
+                },
+                {
+                    "blank": 0,
+                    "code": 9,
+                    "comment": 0,
+                    "filename": "includes.php"
+                },
+                {
+                    "blank": 8,
+                    "code": 11,
+                    "comment": 0,
+                    "filename": "index.php"
+                },
+                {
+                    "filename": "mull.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 142,
+                    "code": 321,
+                    "comment": 3,
+                    "filename": "routes.php"
+                },
+                {
+                    "blank": 27,
+                    "code": 31,
+                    "comment": 1,
+                    "filename": "sites\\category.php"
+                },
+                {
+                    "blank": 50,
+                    "code": 217,
+                    "comment": 1,
+                    "filename": "sites\\checkout.php"
+                },
+                {
+                    "blank": 14,
+                    "code": 52,
+                    "comment": 1,
+                    "filename": "sites\\finishbuy.php"
+                },
+                {
+                    "blank": 15,
+                    "code": 33,
+                    "comment": 1,
+                    "filename": "sites\\home.php"
+                },
+                {
+                    "blank": 1,
+                    "code": 5,
+                    "comment": 0,
+                    "filename": "sites\\impressum.php"
+                },
+                {
+                    "blank": 15,
+                    "code": 44,
+                    "comment": 1,
+                    "filename": "sites\\invoice.php"
+                },
+                {
+                    "blank": 24,
+                    "code": 73,
+                    "comment": 1,
+                    "filename": "sites\\login.php"
+                },
+                {
+                    "blank": 31,
+                    "code": 66,
+                    "comment": 1,
+                    "filename": "sites\\productsite.php"
+                },
+                {
+                    "blank": 8,
+                    "code": 21,
+                    "comment": 1,
+                    "filename": "sites\\register.php"
+                },
+                {
+                    "blank": 25,
+                    "code": 29,
+                    "comment": 1,
+                    "filename": "sites\\searchsite.php"
+                },
+                {
+                    "blank": 52,
+                    "code": 125,
+                    "comment": 1,
+                    "filename": "sites\\settings.php"
+                },
+                {
+                    "blank": 14,
+                    "code": 110,
+                    "comment": 2,
+                    "filename": "sites\\tos.php"
+                },
+                {
+                    "blank": 16,
+                    "code": 13,
+                    "comment": 1,
+                    "filename": "sites\\warenkorb.php"
+                },
+                {
+                    "blank": 2,
+                    "code": 8,
+                    "comment": 0,
+                    "filename": "templates\\adminpanel.php"
+                },
+                {
+                    "blank": 19,
+                    "code": 70,
+                    "comment": 5,
+                    "filename": "templates\\ajax.php"
+                },
+                {
+                    "blank": 8,
+                    "code": 29,
+                    "comment": 0,
+                    "filename": "templates\\card.php"
+                },
+                {
+                    "blank": 18,
+                    "code": 81,
+                    "comment": 1,
+                    "filename": "templates\\cartcard.php"
+                },
+                {
+                    "blank": 2,
+                    "code": 10,
+                    "comment": 0,
+                    "filename": "templates\\cartcardcheckout.php"
+                },
+                {
+                    "blank": 11,
+                    "code": 32,
+                    "comment": 0,
+                    "filename": "templates\\cartItem.php"
+                },
+                {
+                    "blank": 4,
+                    "code": 3,
+                    "comment": 0,
+                    "filename": "templates\\emptycart.html"
+                },
+                {
+                    "blank": 4,
+                    "code": 9,
+                    "comment": 0,
+                    "filename": "templates\\navbar.php"
+                },
+                {
+                    "blank": 19,
+                    "code": 113,
+                    "comment": 0,
+                    "filename": "templates\\navbaradminpanel.php"
+                },
+                {
+                    "blank": 19,
+                    "code": 80,
+                    "comment": 0,
+                    "filename": "templates\\newcart.php"
+                },
+                {
+                    "blank": 39,
+                    "code": 123,
+                    "comment": 0,
+                    "filename": "templates\\registrationForm.html"
+                },
+                {
+                    "blank": 15,
+                    "code": 33,
+                    "comment": 0,
+                    "filename": "templates\\usericon.php"
+                },
+                {
+                    "filename": "usericon.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                }
+            ]
+        }
+    ]
+}

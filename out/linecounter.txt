@@ -1,0 +1,253 @@
+===============================================================================
+EXTENSION NAME : linecounter
+EXTENSION VERSION : 0.2.7
+-------------------------------------------------------------------------------
+count time : 2022-03-22 00:47:32
+count workspace : c:\xampp\htdocs\Webshop
+total files : 229
+total code lines : 88208
+total comment lines : 2622
+total blank lines : 18784
+
+    statistics
+   |      extension|     total code|  total comment|    total blank|percent|
+   -------------------------------------------------------------------------
+   |          .html|            158|              8|             56|   0.18|
+   |           .php|           6068|            412|           1054|    6.9|
+   |               |            106|              0|              6|   0.12|
+   |           .htm|           2715|             74|             38|    3.1|
+   |           .txt|            123|              1|             27|   0.14|
+   |           .css|          62331|            200|          14172|     71|
+   |           .map|           5018|              0|              0|    5.7|
+   |            .js|          11689|           1927|           3431|     13|
+   -------------------------------------------------------------------------
+.htaccess, code is 1, comment is 0, blank is 0.
+404error.html, code is 32, comment is 8, blank is 13.
+adminstuff\addproduct.php, code is 27, comment is 1, blank is 19.
+adminstuff\addproductwrapper.php, code is 23, comment is 0, blank is 8.
+adminstuff\admindashboard.php, code is 27, comment is 1, blank is 19.
+adminstuff\dashboardwrapper.php, code is 23, comment is 0, blank is 12.
+adminstuff\removeproduct.php, code is 28, comment is 1, blank is 19.
+adminstuff\removeproductwrapper.php, code is 100, comment is 0, blank is 35.
+adminstuff\uploadimage.php, code is 40, comment is 0, blank is 10.
+ajax\cartBuyButton.php, code is 2, comment is 0, blank is 1.
+assets\checkout.css, code is 215, comment is 0, blank is 39.
+assets\css\all.css, code is 3112, comment is 6, blank is 1501.
+assets\css\all.min.css, code is 1, comment is 4, blank is 0.
+assets\css\bootstrap-grid.css, code is 3908, comment is 7, blank is 1136.
+assets\css\bootstrap-grid.css.map, code is 1, comment is 0, blank is 0.
+assets\css\bootstrap-grid.min.css, code is 1, comment is 7, blank is 0.
+assets\css\bootstrap-grid.min.css.map, code is 1, comment is 0, blank is 0.
+assets\css\bootstrap-grid.rtl.css, code is 3908, comment is 7, blank is 1135.
+assets\css\bootstrap-grid.rtl.css.map, code is 1, comment is 0, blank is 0.
+assets\css\bootstrap-grid.rtl.min.css, code is 1, comment is 7, blank is 0.
+assets\css\bootstrap-grid.rtl.min.css.map, code is 1, comment is 0, blank is 0.
+assets\css\bootstrap-reboot.css, code is 403, comment is 16, blank is 66.
+assets\css\bootstrap-reboot.css.map, code is 1, comment is 0, blank is 0.
+assets\css\bootstrap-reboot.min.css, code is 1, comment is 8, blank is 0.
+assets\css\bootstrap-reboot.min.css.map, code is 1, comment is 0, blank is 0.
+assets\css\bootstrap-reboot.rtl.css, code is 409, comment is 8, blank is 65.
+assets\css\bootstrap-reboot.rtl.css.map, code is 1, comment is 0, blank is 0.
+assets\css\bootstrap-reboot.rtl.min.css, code is 1, comment is 8, blank is 0.
+assets\css\bootstrap-reboot.rtl.min.css.map, code is 1, comment is 0, blank is 0.
+assets\css\bootstrap-utilities.css, code is 3729, comment is 9, blank is 1128.
+assets\css\bootstrap-utilities.css.map, code is 1, comment is 0, blank is 0.
+assets\css\bootstrap-utilities.min.css, code is 1, comment is 7, blank is 0.
+assets\css\bootstrap-utilities.min.css.map, code is 1, comment is 0, blank is 0.
+assets\css\bootstrap-utilities.rtl.css, code is 3725, comment is 7, blank is 1125.
+assets\css\bootstrap-utilities.rtl.css.map, code is 1, comment is 0, blank is 0.
+assets\css\bootstrap-utilities.rtl.min.css, code is 1, comment is 7, blank is 0.
+assets\css\bootstrap-utilities.rtl.min.css.map, code is 1, comment is 0, blank is 0.
+assets\css\bootstrap.css, code is 9497, comment is 27, blank is 1742.
+assets\css\bootstrap.css.map, code is 1, comment is 0, blank is 0.
+assets\css\bootstrap.min.css, code is 2, comment is 6, blank is 0.
+assets\css\bootstrap.min.css.map, code is 1, comment is 0, blank is 0.
+assets\css\bootstrap.rtl.css, code is 9499, comment is 7, blank is 1736.
+assets\css\bootstrap.rtl.css.map, code is 1, comment is 0, blank is 0.
+assets\css\bootstrap.rtl.min.css, code is 2, comment is 6, blank is 0.
+assets\css\bootstrap.rtl.min.css.map, code is 1, comment is 0, blank is 0.
+assets\css\dashboard.css, code is 9819, comment is 11, blank is 1418.
+assets\css\fontawesome.css, code is 3081, comment is 6, blank is 1498.
+assets\css\fontawesome.min.css, code is 1, comment is 4, blank is 0.
+assets\css\ratingstars.css, code is 33, comment is 0, blank is 10.
+assets\css\sb-admin-2.css, code is 9852, comment is 11, blank is 1418.
+assets\css\sb-admin-2.min.css, code is 6, comment is 8, blank is 0.
+assets\css\settings.css, code is 88, comment is 0, blank is 12.
+assets\css\styles.css, code is 1014, comment is 6, blank is 143.
+assets\js\bootstrap.bundle.js, code is 4783, comment is 741, blank is 1331.
+assets\js\bootstrap.bundle.js.map, code is 1, comment is 0, blank is 0.
+assets\js\bootstrap.bundle.min.js, code is 1, comment is 7, blank is 0.
+assets\js\bootstrap.bundle.min.js.map, code is 1, comment is 0, blank is 0.
+assets\js\bootstrap.esm.js, code is 3360, comment is 569, blank is 1046.
+assets\js\bootstrap.esm.js.map, code is 1, comment is 0, blank is 0.
+assets\js\bootstrap.esm.min.js, code is 1, comment is 7, blank is 0.
+assets\js\bootstrap.esm.min.js.map, code is 1, comment is 0, blank is 0.
+assets\js\bootstrap.js, code is 3397, comment is 575, blank is 1050.
+assets\js\bootstrap.js.map, code is 1, comment is 0, blank is 0.
+assets\js\bootstrap.min.js, code is 1, comment is 7, blank is 0.
+assets\js\bootstrap.min.js.map, code is 1, comment is 0, blank is 0.
+assets\js\chart-area-demo.js, code is 110, comment is 6, blank is 2.
+assets\js\chart-pie-demo.js, code is 32, comment is 2, blank is 1.
+assets\js\Chart.min.js, code is 1, comment is 6, blank is 0.
+assets\js\jquery.easing.min.js, code is 1, comment is 0, blank is 0.
+assets\js\jquery.min.js, code is 1, comment is 2, blank is 0.
+assets\js\sb-admin-2.min.js, code is 1, comment is 5, blank is 1.
+config\dbconfig.php, code is 5, comment is 1, blank is 0.
+countries\allcountriesd.php, code is 61, comment is 0, blank is 0.
+countries\allcountriesr.php, code is 61, comment is 0, blank is 0.
+countries\allcountriessettings.php, code is 182, comment is 0, blank is 0.
+databaseinserts, code is 105, comment is 0, blank is 6.
+fpdf\changelog.htm, code is 87, comment is 0, blank is 0.
+fpdf\doc\__construct.htm, code is 63, comment is 0, blank is 0.
+fpdf\doc\acceptpagebreak.htm, code is 57, comment is 3, blank is 3.
+fpdf\doc\addfont.htm, code is 55, comment is 0, blank is 0.
+fpdf\doc\addlink.htm, code is 26, comment is 0, blank is 0.
+fpdf\doc\addpage.htm, code is 61, comment is 0, blank is 0.
+fpdf\doc\aliasnbpages.htm, code is 41, comment is 3, blank is 1.
+fpdf\doc\cell.htm, code is 102, comment is 3, blank is 0.
+fpdf\doc\close.htm, code is 21, comment is 0, blank is 0.
+fpdf\doc\error.htm, code is 26, comment is 0, blank is 0.
+fpdf\doc\footer.htm, code is 32, comment is 3, blank is 0.
+fpdf\doc\getpageheight.htm, code is 18, comment is 0, blank is 0.
+fpdf\doc\getpagewidth.htm, code is 18, comment is 0, blank is 0.
+fpdf\doc\getstringwidth.htm, code is 23, comment is 0, blank is 0.
+fpdf\doc\getx.htm, code is 20, comment is 0, blank is 0.
+fpdf\doc\gety.htm, code is 20, comment is 0, blank is 0.
+fpdf\doc\header.htm, code is 33, comment is 4, blank is 0.
+fpdf\doc\image.htm, code is 98, comment is 2, blank is 0.
+fpdf\doc\index.htm, code is 59, comment is 0, blank is 0.
+fpdf\doc\line.htm, code is 38, comment is 0, blank is 0.
+fpdf\doc\link.htm, code is 46, comment is 0, blank is 0.
+fpdf\doc\ln.htm, code is 28, comment is 0, blank is 0.
+fpdf\doc\multicell.htm, code is 76, comment is 0, blank is 0.
+fpdf\doc\output.htm, code is 46, comment is 0, blank is 0.
+fpdf\doc\pageno.htm, code is 18, comment is 0, blank is 0.
+fpdf\doc\rect.htm, code is 48, comment is 0, blank is 0.
+fpdf\doc\setauthor.htm, code is 33, comment is 0, blank is 0.
+fpdf\doc\setautopagebreak.htm, code is 33, comment is 0, blank is 0.
+fpdf\doc\setcompression.htm, code is 31, comment is 0, blank is 0.
+fpdf\doc\setcreator.htm, code is 34, comment is 0, blank is 0.
+fpdf\doc\setdisplaymode.htm, code is 45, comment is 0, blank is 0.
+fpdf\doc\setdrawcolor.htm, code is 41, comment is 0, blank is 0.
+fpdf\doc\setfillcolor.htm, code is 40, comment is 0, blank is 0.
+fpdf\doc\setfont.htm, code is 88, comment is 4, blank is 0.
+fpdf\doc\setfontsize.htm, code is 25, comment is 0, blank is 0.
+fpdf\doc\setkeywords.htm, code is 33, comment is 0, blank is 0.
+fpdf\doc\setleftmargin.htm, code is 30, comment is 0, blank is 0.
+fpdf\doc\setlinewidth.htm, code is 29, comment is 0, blank is 0.
+fpdf\doc\setlink.htm, code is 34, comment is 0, blank is 0.
+fpdf\doc\setmargins.htm, code is 37, comment is 0, blank is 0.
+fpdf\doc\setrightmargin.htm, code is 28, comment is 0, blank is 0.
+fpdf\doc\setsubject.htm, code is 33, comment is 0, blank is 0.
+fpdf\doc\settextcolor.htm, code is 40, comment is 0, blank is 0.
+fpdf\doc\settitle.htm, code is 33, comment is 0, blank is 0.
+fpdf\doc\settopmargin.htm, code is 28, comment is 0, blank is 0.
+fpdf\doc\setx.htm, code is 29, comment is 0, blank is 0.
+fpdf\doc\setxy.htm, code is 31, comment is 0, blank is 0.
+fpdf\doc\sety.htm, code is 33, comment is 0, blank is 0.
+fpdf\doc\text.htm, code is 39, comment is 0, blank is 0.
+fpdf\doc\write.htm, code is 50, comment is 2, blank is 0.
+fpdf\FAQ.htm, code is 102, comment is 2, blank is 7.
+fpdf\font\courier.php, code is 10, comment is 0, blank is 0.
+fpdf\font\courierb.php, code is 10, comment is 0, blank is 0.
+fpdf\font\courierbi.php, code is 10, comment is 0, blank is 0.
+fpdf\font\courieri.php, code is 10, comment is 0, blank is 0.
+fpdf\font\helvetica.php, code is 21, comment is 0, blank is 0.
+fpdf\font\helveticab.php, code is 21, comment is 0, blank is 0.
+fpdf\font\helveticabi.php, code is 21, comment is 0, blank is 0.
+fpdf\font\helveticai.php, code is 21, comment is 0, blank is 0.
+fpdf\font\symbol.php, code is 20, comment is 0, blank is 0.
+fpdf\font\times.php, code is 21, comment is 0, blank is 0.
+fpdf\font\timesb.php, code is 21, comment is 0, blank is 0.
+fpdf\font\timesbi.php, code is 21, comment is 0, blank is 0.
+fpdf\font\timesi.php, code is 21, comment is 0, blank is 0.
+fpdf\font\zapfdingbats.php, code is 20, comment is 0, blank is 0.
+fpdf\fpdf.css, code is 21, comment is 0, blank is 0.
+fpdf\fpdf.php, code is 1648, comment is 221, blank is 96.
+fpdf\install.txt, code is 9, comment is 0, blank is 6.
+fpdf\license.txt, code is 5, comment is 0, blank is 1.
+fpdf\makefont\cp1250.map, code is 251, comment is 0, blank is 0.
+fpdf\makefont\cp1251.map, code is 255, comment is 0, blank is 0.
+fpdf\makefont\cp1252.map, code is 251, comment is 0, blank is 0.
+fpdf\makefont\cp1253.map, code is 239, comment is 0, blank is 0.
+fpdf\makefont\cp1254.map, code is 249, comment is 0, blank is 0.
+fpdf\makefont\cp1255.map, code is 233, comment is 0, blank is 0.
+fpdf\makefont\cp1257.map, code is 244, comment is 0, blank is 0.
+fpdf\makefont\cp1258.map, code is 247, comment is 0, blank is 0.
+fpdf\makefont\cp874.map, code is 225, comment is 0, blank is 0.
+fpdf\makefont\iso-8859-1.map, code is 256, comment is 0, blank is 0.
+fpdf\makefont\iso-8859-11.map, code is 248, comment is 0, blank is 0.
+fpdf\makefont\iso-8859-15.map, code is 256, comment is 0, blank is 0.
+fpdf\makefont\iso-8859-16.map, code is 256, comment is 0, blank is 0.
+fpdf\makefont\iso-8859-2.map, code is 256, comment is 0, blank is 0.
+fpdf\makefont\iso-8859-4.map, code is 256, comment is 0, blank is 0.
+fpdf\makefont\iso-8859-5.map, code is 256, comment is 0, blank is 0.
+fpdf\makefont\iso-8859-7.map, code is 250, comment is 0, blank is 0.
+fpdf\makefont\iso-8859-9.map, code is 256, comment is 0, blank is 0.
+fpdf\makefont\koi8-r.map, code is 256, comment is 0, blank is 0.
+fpdf\makefont\koi8-u.map, code is 256, comment is 0, blank is 0.
+fpdf\makefont\makefont.php, code is 401, comment is 23, blank is 23.
+fpdf\makefont\ttfparser.php, code is 648, comment is 47, blank is 45.
+fpdf\tutorial\20k_c1.txt, code is 9, comment is 0, blank is 0.
+fpdf\tutorial\20k_c2.txt, code is 9, comment is 0, blank is 2.
+fpdf\tutorial\CevicheOne-Regular-Licence.txt, code is 76, comment is 1, blank is 18.
+fpdf\tutorial\CevicheOne-Regular.php, code is 25, comment is 0, blank is 0.
+fpdf\tutorial\CevicheOne-Regular.ttf, it is a binary file.
+fpdf\tutorial\CevicheOne-Regular.z, it is a binary file.
+fpdf\tutorial\countries.txt, code is 15, comment is 0, blank is 0.
+fpdf\tutorial\index.htm, code is 20, comment is 0, blank is 0.
+fpdf\tutorial\logo.png, it is a binary file.
+fpdf\tutorial\makefont.php, code is 4, comment is 1, blank is 1.
+fpdf\tutorial\tuto1.htm, code is 22, comment is 0, blank is 0.
+fpdf\tutorial\tuto1.php, code is 8, comment is 0, blank is 1.
+fpdf\tutorial\tuto2.htm, code is 24, comment is 0, blank is 0.
+fpdf\tutorial\tuto2.php, code is 27, comment is 11, blank is 3.
+fpdf\tutorial\tuto3.htm, code is 10, comment is 0, blank is 0.
+fpdf\tutorial\tuto3.php, code is 55, comment is 19, blank is 7.
+fpdf\tutorial\tuto4.htm, code is 122, comment is 20, blank is 10.
+fpdf\tutorial\tuto4.php, code is 81, comment is 20, blank is 10.
+fpdf\tutorial\tuto5.htm, code is 111, comment is 18, blank is 5.
+fpdf\tutorial\tuto5.php, code is 79, comment is 18, blank is 5.
+fpdf\tutorial\tuto6.htm, code is 128, comment is 10, blank is 8.
+fpdf\tutorial\tuto6.php, code is 93, comment is 10, blank is 8.
+fpdf\tutorial\tuto7.htm, code is 139, comment is 0, blank is 4.
+fpdf\tutorial\tuto7.php, code is 10, comment is 0, blank is 1.
+functions\analytics.php, code is 45, comment is 0, blank is 3.
+functions\cartFunctions.php, code is 85, comment is 0, blank is 22.
+functions\db_funktionen.php, code is 44, comment is 6, blank is 26.
+functions\description.php, code is 74, comment is 1, blank is 30.
+functions\erstelleRechnung.php, code is 69, comment is 6, blank is 30.
+functions\invoicefunctions.php, code is 26, comment is 0, blank is 4.
+functions\product.php, code is 123, comment is 0, blank is 35.
+functions\user.php, code is 71, comment is 3, blank is 22.
+includes.php, code is 9, comment is 0, blank is 0.
+index.php, code is 11, comment is 0, blank is 8.
+mull.png, it is a binary file.
+routes.php, code is 321, comment is 3, blank is 142.
+sites\category.php, code is 31, comment is 1, blank is 27.
+sites\checkout.php, code is 217, comment is 1, blank is 50.
+sites\finishbuy.php, code is 52, comment is 1, blank is 14.
+sites\home.php, code is 33, comment is 1, blank is 15.
+sites\impressum.php, code is 5, comment is 0, blank is 1.
+sites\invoice.php, code is 44, comment is 1, blank is 15.
+sites\login.php, code is 73, comment is 1, blank is 24.
+sites\productsite.php, code is 66, comment is 1, blank is 31.
+sites\register.php, code is 21, comment is 1, blank is 8.
+sites\searchsite.php, code is 29, comment is 1, blank is 25.
+sites\settings.php, code is 125, comment is 1, blank is 52.
+sites\tos.php, code is 110, comment is 2, blank is 14.
+sites\warenkorb.php, code is 13, comment is 1, blank is 16.
+templates\adminpanel.php, code is 8, comment is 0, blank is 2.
+templates\ajax.php, code is 70, comment is 5, blank is 19.
+templates\card.php, code is 29, comment is 0, blank is 8.
+templates\cartcard.php, code is 81, comment is 1, blank is 18.
+templates\cartcardcheckout.php, code is 10, comment is 0, blank is 2.
+templates\cartItem.php, code is 32, comment is 0, blank is 11.
+templates\emptycart.html, code is 3, comment is 0, blank is 4.
+templates\navbar.php, code is 9, comment is 0, blank is 4.
+templates\navbaradminpanel.php, code is 113, comment is 0, blank is 19.
+templates\newcart.php, code is 80, comment is 0, blank is 19.
+templates\registrationForm.html, code is 123, comment is 0, blank is 39.
+templates\usericon.php, code is 33, comment is 0, blank is 15.
+usericon.png, it is a binary file.
+===============================================================================

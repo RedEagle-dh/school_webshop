@@ -9619,6 +9619,14 @@ a.text-success:hover, a.text-success:focus {
   color: #36b9cc !important;
 }
 
+.text-pink {
+  color: #e179a3 !important;
+}
+
+.text-yellow {
+  color: #FDDA0D !important;
+}
+
 a.text-info:hover, a.text-info:focus {
   color: #258391 !important;
 }
