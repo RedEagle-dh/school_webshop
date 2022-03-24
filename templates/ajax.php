@@ -131,6 +131,18 @@ if (isset($_GET['productid'])) {
         </div> 
         </div>';
     endfor;
+} else if(isset($_GET["sendFeedback"])) {
+    $message = $_GET["sendFeedback"];
+    $rating = $_GET["rating"];
+    $productid = $_GET["productidrating"];
+    $userid = $_GET["userid"];
+    $date = new DateTime();
+    $dateString = $date -> format('Y-m-d H:i:s');
+
+    $sql = "INSERT INTO kundenbewertungen SET kundenid = $userid , productid = $productid , message = '$message', rating = $rating, datum = '$dateString'";
+    db_query($sql);
+
+    echo "yes";
 }
 
 

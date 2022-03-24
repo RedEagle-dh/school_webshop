@@ -101,7 +101,7 @@ $row = mysqli_fetch_row($result); ?>
                         </div>
 
                         <!-- Hier ist die Funktion für die Kundenbewertung -->
-                        <h3 class="box-title mt-5 goingdark">Kundenbewertung</h3>
+                        <h3 class="box-title mt-5 goingdark">Dein Feedback</h3>
                         <div class="noborder">
                             <div class="card-body darkcard">
                                 <div class="card-title goingdark">
@@ -125,13 +125,29 @@ $row = mysqli_fetch_row($result); ?>
 
 
                                             <br>
-                                            <textarea class="form-control searchbar goingdark" id="exampleFormControlTextarea1" rows="4" placeholder="Dein Feedback..."></textarea>
+                                            <textarea class="form-control searchbar goingdark" id="exampleFormControlTextarea1" rows="4" placeholder="Dein Feedback..." maxlength="150"></textarea>
 
+                                        </div>
+
+                                    </div>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-lg-2 col-md-2 col-sm-2">
+                                            <button class="btn btn-success" onclick="sendRequest(<?= $row[4] ?>, <?= getCurrentUserId() ?>);">
+                                                Senden
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <?php $comments = getCommentsForProduct($row[4]); ?>
+                            
+                            <div class="col-lg-12 col-md-12 col-sm-12 darkcard">
+                                <?php include 'templates/comments.php'; ?>
+                            </div>
+                            
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -146,7 +162,61 @@ $row = mysqli_fetch_row($result); ?>
 
 
     <script src="assets/js/bootstrap.bundle.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script>
+        function sendRequest(product, userid) {
+            if ($('input[name=star]:checked').length > 0) {
+                if (document.getElementById("exampleFormControlTextarea1").value != "") {
+                    var star1 = document.getElementById("star-1");
+                    var star2 = document.getElementById("star-2");
+                    var star3 = document.getElementById("star-3");
+                    var star4 = document.getElementById("star-4");
+                    var star5 = document.getElementById("star-5");
 
+                    var rating = 0;
+                    if (star1.checked) {
+                        rating = 1;
+                    } else if (star2.checked) {
+                        rating = 2;
+                    } else if (star3.checked) {
+                        rating = 3;
+                    } else if (star4.checked) {
+                        rating = 4;
+                    } else if (star5.checked) {
+                        rating = 5;
+                    }
+
+                    var ajax = new XMLHttpRequest();
+                    var message = document.getElementById("exampleFormControlTextarea1").value;
+                    ajax.open("GET", "templates/ajax.php?sendFeedback=" + message + "&rating=" + rating + "&productidrating=" + product + "&userid=" + userid, true);
+                    ajax.send();
+                    ajax.onreadystatechange = function() {
+                        if (this.readyState == 4 && this.status == 200) {
+                            if (this.response == " yes") {
+                                alert("Ihr Feedback wurde erfolgreich eingetragen");
+                                document.getElementById("exampleFormControlTextarea1").value = "";
+                                star1.checked = false;
+                                star2.checked = false;
+                                star3.checked = false;
+                                star4.checked = false;
+                                star5.checked = false;
+                            } else {
+                                alert(this.response);
+                                alert("Opps");
+                            }
+                        }
+                    }
+                } else {
+                    alert("Bitte tragen sie etwas in das Feld ein, Maximal 150 Zeichen");
+                }
+
+
+            } else {
+                alert("Bitte die Sternebewertung ausfüllen!");
+            }
+
+        }
+    </script>
 
 </body>
 <footer class="my-5 pt-5 text-muted text-center text-small">

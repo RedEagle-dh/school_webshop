@@ -310,6 +310,8 @@ if (strpos($route, '/bought') !== false) {
         
         //$sql = "UPDATE produkte SET auflager = '49' WHERE (`artnr` = '1');";
         foreach ($cartItems as $cartItem) {
+            $sql = "INSERT INTO verkäufe SET kundenid = '".$data[0]."', productid = '". $cartItem[0] ."';";
+            db_query($sql);
             $sql = "SELECT auflager FROM produkte WHERE artnr = '".$cartItem[0]."';";
             $result = db_query($sql);
             $r = (int) mysqli_fetch_column($result);
