@@ -191,7 +191,7 @@
                                                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between  darkcard row-border-light">
                                                     <h6 class="m-0 font-weight-bold text-success">Kategorie hinzufügen</h6>
                                                     <div class="dropdown no-arrow">
-                                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-bs-haspopup="true" aria-bs-expanded="false">
+                                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-bs-haspopup="true" aria-bs-expanded="false">
                                                             <i class="fi fi-rr-add text-gray-400"></i>
                                                         </a>
                                                         <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
@@ -337,7 +337,7 @@
 
                         ajax.onreadystatechange = function() {
                             if (this.readyState == 4 && this.status == 200) {
-                                alert(this.response);
+                                
 
                             }
                         }

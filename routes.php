@@ -128,40 +128,53 @@ if (strpos($route, '/registercheck') !== false) {
 
 
     if ($isPost) {
+        
         $emailadress = filter_input(INPUT_POST, 'emailadress');
         $passwordFromForm = filter_input(INPUT_POST, 'password');
-        $password = password_hash($passwordFromForm, PASSWORD_DEFAULT);
-        $fname = filter_input(INPUT_POST, 'fname');
-        $lname = filter_input(INPUT_POST, 'lname');
-        $city = filter_input(INPUT_POST, 'city');
-        $phone = filter_input(INPUT_POST, 'phone');
-        $zip = filter_input(INPUT_POST, 'zip');
-        $street = filter_input(INPUT_POST, 'street');
-        $hnr = filter_input(INPUT_POST, 'hnr');
-        $addinfo = filter_input(INPUT_POST, 'addinfo');
-        $title = filter_input(INPUT_POST, 'title');
-        $country = filter_input(INPUT_POST, 'country');
-        
-        
-        $sqlreadadressid = "SELECT adresseid FROM kunde ORDER BY adresseid ASC";
-        $result = db_query($sqlreadadressid);
-        $id = "";
-        while ($row = mysqli_fetch_row($result)) {
-            $id = $row[0];
+        $passwordwFromForm = filter_input(INPUT_POST, 'passwordw');
+        if($passwordFromForm == $passwordwFromForm) {
+            $password = password_hash($passwordFromForm, PASSWORD_DEFAULT);
+            $fname = filter_input(INPUT_POST, 'fname');
+            $lname = filter_input(INPUT_POST, 'lname');
+            $city = filter_input(INPUT_POST, 'city');
+            $phone = filter_input(INPUT_POST, 'phone');
+            $zip = filter_input(INPUT_POST, 'zip');
+            $street = filter_input(INPUT_POST, 'street');
+            $hnr = filter_input(INPUT_POST, 'hnr');
+            $addinfo = filter_input(INPUT_POST, 'addinfo');
+            $title = filter_input(INPUT_POST, 'title');
+            $country = filter_input(INPUT_POST, 'country');
+            
+            
+            $sqlreadadressid = "SELECT adresseid FROM kunde ORDER BY adresseid ASC";
+            $result = db_query($sqlreadadressid);
+            $id = "";
+            while ($row = mysqli_fetch_row($result)) {
+                $id = $row[0];
+            }
+            if($id[0] == null) {
+                $newadressid = 1;
+            } else {
+                $newadressid = $id[0] + 1;
+            }
+            
+            
+            if (isset($_SESSION['userid'])) {
+                echo $_SESSION['userid'];
+            }
+            $sql = "INSERT INTO kunde SET email = '" . $emailadress . "', passwort = '" . $password . "', titel = '" . $title . "', vorname = '" . $fname . "', nachname = '" . $lname . "', telefonnummer = '" . $phone . "', adresseid = '" . $newadressid . "', zahlungsid = 1, wunschlistenid = 1, rechnungsid = 1;";
+            db_query($sql);
+            $sql = "INSERT INTO adressen SET strasse = '" . $street . "', hausnummer = '" . $hnr . "', plz = '" . $zip . "', ort = '" . $city . "', land = '" . $country . "', addinfo = '" . $addinfo . "', adresseid = '" . $newadressid . "';";
+            db_query($sql);
+            $_SESSION['redirectTarget'] = 'Webshop/#';
+            header("Location: Webshop/index.php/login");
+            exit();
+        } else {
+            echo '<script>
+                alert("Passwörter stimmen nicht überein!");
+            </script>';
         }
-
-        $newadressid = $id[0] + 1;
         
-        if (isset($_SESSION['userid'])) {
-            echo $_SESSION['userid'];
-        }
-        $sql = "INSERT INTO kunde SET email = '" . $emailadress . "', passwort = '" . $password . "', titel = '" . $title . "', vorname = '" . $fname . "', nachname = '" . $lname . "', telefonnummer = '" . $phone . "', adresseid = '" . $newadressid . "', zahlungsid = 1, wunschlistenid = 1, rechnungsid = 1;";
-        db_query($sql);
-        $sql = "INSERT INTO adressen SET strasse = '" . $street . "', hausnummer = '" . $hnr . "', plz = '" . $zip . "', ort = '" . $city . "', land = '" . $country . "', addinfo = '" . $addinfo . "', adresseid = '" . $newadressid . "';";
-        db_query($sql);
-        $_SESSION['redirectTarget'] = 'Webshop/#';
-        header("Location: Webshop/index.php/login");
-        exit();
 
         
     }
@@ -486,9 +499,27 @@ if(strpos($route, '/shownotifications') !== false) {
 
 if(strpos($route, '/bearbeiten') !== false) {
     
-
+    
+    
 
     require('adminstuff/productbearbeiten.php');
     exit();
 }
 
+
+if(strpos($route, '/editproduct') !== false) {
+    $name = $_POST["name"];
+    $beschreibung = $_POST["beschreibung"];
+    $preis = $_POST["preis"];
+    $auflager = $_POST["auflager"];
+    $versand = $_POST["versand"];
+    $rabatt = $_POST["rabatt"];
+    $productid = $_POST["prodid"];
+    
+    $sql = "UPDATE produkte SET titel = '$name', beschreibung = '$beschreibung', preis = '$preis', auflager = '$auflager', lieferkosten = '$versand', discount = '$rabatt' WHERE artnr = '$productid';";
+    db_query($sql);
+    
+
+    require('adminstuff/productbearbeiten.php');
+    exit();
+}

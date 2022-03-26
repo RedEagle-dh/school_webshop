@@ -1,5 +1,5 @@
 <?php
-if (!empty($cartItems)) {
+
 /*A4 width : 219mm*/
 define('EURO',chr(128));
 $pdf = new FPDF('P', 'mm', 'A4');
@@ -91,7 +91,7 @@ foreach ($cartItems as $cartItem) {
     $pdf->Cell(23, 6, $cartItem[6], 1, 0, 'R');
     $pdf->Cell(30, 6, ($cartItem[3]-($cartItem[3]*19/100)).EURO, 1, 0, 'R');
     $pdf->Cell(20, 6, ($cartItem[3]*19/100).EURO, 1, 0, 'R');
-    $pdf->Cell(25, 6, ($cartItem[3]*$cartItem[6]).EURO, 1, 1, 'R');
+    $pdf->Cell(25, 6, (($cartItem[3]*$cartItem[6])-((($cartItem[3] * $cartItem[9] ) / 100)) *$cartItem[6] ).EURO, 1, 1, 'R');
     $i++;
 }
 
@@ -103,12 +103,11 @@ $pdf->Cell(118, 6, '', 0, 0);
         0,
         0
     );
+    
     $pdf->Cell(25, 6, 'Gesamtpreis', 0, 0);
     $pdf->Cell(45, 6, number_format(getTotalPrice(), 2) . EURO, 1, 1, 'R');
 
 
 $content = $pdf->Output("", "S");
 return $content;
-} else {
-    return "noitems";
-}
+

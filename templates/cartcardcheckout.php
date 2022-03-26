@@ -4,7 +4,7 @@
         
     </div>
     <span class="text-muted goingdark"><?= $cartItem[6] ?> x <?php
-                                $cost = number_format($cartItem[3], 2);
+                                $cost = number_format(($cartItem[3] -($cartItem[3] * getDiscountForProduct($cartItem[0]) / 100 )), 2) ;
                                 echo "$cost";
 
 

@@ -35,7 +35,7 @@
 
      function getCartItemsForUser():array {
         $userid = getCurrentUserId();
-        $sql = "SELECT productid, titel, beschreibung, preis, picture, id, amount, lieferkosten FROM cart JOIN produkte ON(cart.productid = produkte.artnr) WHERE userid = " . $userid;
+        $sql = "SELECT productid, titel, beschreibung, preis, picture, id, amount, lieferkosten, userid, discount FROM cart JOIN produkte ON(cart.productid = produkte.artnr) WHERE userid = " . $userid;
          $results = db_query($sql);
          if ($results === false) {
              return[];
@@ -53,22 +53,24 @@
 
      }
 
-    function getCartPrice()
-    {
-        $userid = getCurrentUserId();
-        $sql = "SELECT sum(produkte.preis*cart.amount) as gesamtpreis FROM cart, produkte WHERE productid = artnr AND userid = $userid;";
-        $result = db_query($sql);
 
-        while ($row = mysqli_fetch_row($result)) {
-            $sum = $row[0];
-        }
-        if ($sum == 0) {
-            return "0";
-        } else {
-            
-            return $sum;
-        }
-    }
+     function getCartPrice()
+     {
+         $userid = getCurrentUserId();
+         
+         $sql = "SELECT sum((produkte.preis - ((produkte.preis*produkte.discount)/100))*cart.amount) as gesamtpreis FROM cart, produkte WHERE productid = artnr AND userid = $userid;";
+         $result = db_query($sql);
+         
+         while ($row = mysqli_fetch_row($result)) {
+             $sum = $row[0];
+         }
+         if ($sum == 0) {
+             return "0";
+         } else {
+             
+             return $sum;
+         }
+     }
 
     function updateAmount($productid, $aum, $userid)
     {

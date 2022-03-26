@@ -82,6 +82,9 @@
 
                     if (this.response.includes("redtologin")) {
                         location.href = "/Webshop/index.php/login";
+                    } else if (this.response.includes("nomoreauflager")) {
+                        alert("Leider haben wir nicht mehr so viele Produkte auf Lager!");
+
                     } else {
                         var resp = this.response.trim();
                         const responsee = resp.split("*");
@@ -93,7 +96,6 @@
                         var toast = new bootstrap.Toast(toastLiveExample)
 
                         toast.show()
-
                     }
 
 

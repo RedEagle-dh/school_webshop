@@ -7,7 +7,7 @@
         } else {
             $bild = base64_encode($product[4]);
         }
-        $price = "<p class='card-text goingdark pricesoldout' style='color:green' id='picesoldout'>".number_format($product[3], 2) . "€";
+        $price = "<p class='card-text goingdark pricesoldout' style='color:green' id='picesoldout'>".number_format($product[3]-($product[3]*$product[8]/100), 2) . "€";
         $img = "<img src='data:image/jpg;charset=utf8;base64,".$bild."' class='card-img-top center productimage' id='productimage' alt='$product[1]'>";
         $btn = "<a onclick='sendReq(".$product[0].", ".getCurrentUserId().", ".isLoggedIn().")' class='btn btn-success' id='addtocartbtn'><i class='fa fa-shopping-cart addtocartbtn'></i> Hinzufügen</a>";
         if ($product[5] == 0) {

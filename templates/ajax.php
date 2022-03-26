@@ -58,23 +58,31 @@ if (isset($_GET['productid'])) {
     $id = $_GET['productid'];
     $amount = $_GET['amount'];
     // TODO irgendwie die userid übergeben
-    $userid = getCurrentUserId();
-
+    $userid = $_GET["user"];
 
     if ($amount == 0) {
-        $sql = "DELETE FROM cart WHERE productid = $id AND userid = 11;";
+
+
+        $sql = "DELETE FROM cart WHERE productid = $id AND userid = $userid;";
         db_query($sql);
-        $sql = "SELECT sum(lieferkosten) FROM produkte, cart WHERE cart.productid = produkte.artnr AND userid = 11;";
+        $sql = "SELECT sum(lieferkosten) FROM produkte, cart WHERE cart.productid = produkte.artnr AND userid = $userid;";
         $result = db_query($sql);
         $preis = mysqli_fetch_column($result);
         if ($preis == 0) {
             $preis = 0;
         }
         echo "delete " . $preis;
+        
+        
     } else {
-        $sql = "UPDATE cart SET amount = $amount WHERE productid = $id AND userid = 11;";
-        db_query($sql);
+        if (getAufLager($id) < $amount) {
+            echo "nomoreauflager";
+        } else {
+            $sql = "UPDATE cart SET amount = $amount WHERE productid = $id AND userid = $userid;";
+            db_query($sql);
+        }
     }
+    
 
 } else if (isset($_GET["check"]) & !isset($_GET["removeid"])) {
     
@@ -109,8 +117,13 @@ if (isset($_GET['productid'])) {
             addProductToCart($productid, $userid);
             echo countCartItems($userid) . "*" . getProductNameForAlert($productid);
         } else {
-            updateAmount($productid, +1, $userid);
-            echo countCartItems($userid) . "*" . getProductNameForAlert($productid);
+            if (getAufLager($productid) <= getAufLagerCurrentAnzahlFromProductInCart($productid, $userid)) {
+                echo "nomoreauflager";
+            } else {
+                updateAmount($productid, +1, $userid);
+                echo countCartItems($userid) . "*" . getProductNameForAlert($productid);
+            }
+            
         }
     }
 
@@ -171,7 +184,7 @@ if (isset($_GET['productid'])) {
         $tablenamefornewtable = "description_" . strtolower($msg);
 
 
-        $sql = "CREATE TABLE `webshop`.`$tablenamefornewtable` (" . $presql . "`productid` INT NULL, `id` INT NOT NULL AUTO_INCREMENT, PRIMARY KEY (`id`), INDEX `fkname_idx` (`productid` ASC) VISIBLE, CONSTRAINT `fkname_" . $tablenamefornewtable . "` FOREIGN KEY (`productid`) REFERENCES `webshop`.`produkte` (`artnr`) ON DELETE NO ACTION ON UPDATE NO ACTION);";
+        $sql = "CREATE TABLE `webshop`.`$tablenamefornewtable` (" . $presql . "`productid` INT NULL, `id` INT NOT NULL AUTO_INCREMENT, PRIMARY KEY (`id`), INDEX `fkname_idx` (`productid` ASC) VISIBLE, CONSTRAINT `fkname_" . $tablenamefornewtable . "` FOREIGN KEY (`productid`) REFERENCES `webshop`.`produkte` (`artnr`) ON DELETE CASCADE ON UPDATE NO ACTION);";
         db_query($sql);
     }
 
@@ -186,14 +199,15 @@ if (isset($_GET['productid'])) {
 } else if (isset($_GET["removecatid"]) && isset($_GET["catid"])) {
     $catid = $_GET["catid"];
     removeCategoryById($_GET["removecatid"], $catid);
+
 } else if (isset($_GET["productidforedit"])) {
     $fields = getProductFields($_GET["productidforedit"]);
-    $fieldsasarray = [];
-    for($i = 0; $i < count($fields); $i++) {
-        $fieldsasarray[] = $fields[$i][0];
-    }
-    
-}
+
+    $str = "&" . $fields["titel"] . "&" . $fields["beschreibung"] . "&" . $fields["preis"] . "&" . $fields["auflager"] . "&" . $fields["lieferkosten"] . "&" . $fields["discount"];
+
+
+    echo $str;
+} 
 
 
 

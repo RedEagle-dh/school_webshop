@@ -182,7 +182,7 @@
 
 
                                 <!-- Content Row -->
-                                <form action="" method="POST" enctype="multipart/form-data">
+                                <form action="index.php/editproduct" method="POST" enctype="multipart/form-data">
                                     <div class="row">
 
                                         <!-- Area Chart -->
@@ -197,8 +197,9 @@
 
 
                                                     <div class="dropdown no-arrow">
-                                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-bs-haspopup="true" aria-bs-expanded="false">
-                                                            <i class="fi fi-rr-trash text-gray-400"></i>
+                                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-bs-haspopup="true" aria-bs-expanded="false">
+                                                            <i class="fi fi-rr-edit text-gray-400"></i>
+                                                            
                                                         </a>
                                                         <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
                                                             <div class="dropdown-header">Dropdown Header:</div>
@@ -223,6 +224,9 @@
                                                                                 <th scope="col">Produktname</th>
                                                                                 <th scope="col">Hinzugefügt Am</th>
                                                                                 <th scope="col">Im Lager</th>
+                                                                                <th scope="col">Preis (€)</th>
+                                                                                <th scope="col">Rabatt (%)</th>
+                                                                                <th scope="col">Versandkosten</th>
                                                                                 <th scope="col">Auswählen</th>
                                                                             </tr>
                                                                         </thead>
@@ -244,10 +248,14 @@
                                                                                     <td><?= $row[1] ?></td>
                                                                                     <td><?= $row[6] ?></td>
                                                                                     <td><?= $row[5] ?></td>
+                                                                                    <td><?= $row[3] ?>€</td>
+                                                                                    <td><?= $row[8] ?>%</td>
+                                                                                    <td><?= $row[7] ?>€</td>
+                                                                                    
                                                                                     <td for="flexButtonDefault">
                                                                                         <div class="form-button d-flex justify-content-center">
                                                                                             <button type="button" class="btn btn-warning" onclick="selectProduct(<?= $row[0] ?>);"><i class="fi fi-rr-pencil"></i> Edit</button>
-                                                                                            <!--<input onchange="hakenAusgewaehlt( $row[0] );" name=" $row[0] " class="form-check-input" type="button" value="" id=" $row[0] "> -->
+                                                                                            
                                                                                         </div>
                                                                                     </td>
                                                                                 </tr>
@@ -270,7 +278,7 @@
                                                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between  darkcard row-border-light">
                                                     <h6 class="m-0 font-weight-bold text-primary">Produktauswahl</h6>
                                                     <div class="dropdown no-arrow">
-                                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                             <i class="fi fi-rr-filter text-gray-400"></i>
                                                         </a>
                                                         <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
@@ -283,30 +291,31 @@
                                                     </div>
                                                 </div>
                                                 <!-- Card Body -->
-                                                <div class="card-body">
+                                                <div class="card-body" id="cardbodyforedit" style="display: none;">
 
 
 
 
                                                     <div class="col-md-12 mb-4 pb-2 mb-md-0 pb-md-0">
-                                                        <p id="produktname"> wird bearbeitet</p>
-                                                        
+                                                        <div class="row">
+                                                        <p id="produktid" name="prodid"><div>Moin</div></p>
+                                                        </div>
                                                         <div class="row">
                                                             <div class="col-md-8 mb-8 pb-8">
                                                                 <div class="form-outline">
-                                                                    <label class="form-label goingdark" for="form3Examplev22">
+                                                                    <label class="form-label goingdark" for="produktnameform">
                                                                         <nobr>Produktname*</nobr>
                                                                     </label>
-                                                                    <input maxlength="30" type="text" id="form3Examplev22" class="form-control form-control-lg searchbar goingdark" name="produktname" />
+                                                                    <input maxlength="30" type="text" id="produktnameform" class="form-control form-control-lg searchbar goingdark" name="name" />
 
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-4 mb-4 pb-4">
                                                                 <div class="form-outline">
-                                                                    <label class="form-label goingdark" for="form3Examplev223">
-                                                                        <nobr>Preis</nobr>
+                                                                    <label class="form-label goingdark" for="produktpreisform">
+                                                                        <nobr>Preis (€)</nobr>
                                                                     </label>
-                                                                    <input type="text" id="form3Examplev223" placeholder="" class="form-control form-control-lg searchbar goingdark" name="kattechdatacount" />
+                                                                    <input type="text" id="produktpreisform" placeholder="" class="form-control form-control-lg searchbar goingdark" name="preis" />
 
                                                                 </div>
                                                             </div>
@@ -314,19 +323,19 @@
                                                         <div class="row">
                                                             <div class="col-md-8 mb-8 pb-8">
                                                                 <div class="form-outline">
-                                                                    <label class="form-label goingdark" for="form3Examplev22">
+                                                                    <label class="form-label goingdark" for="produktbeschreibungform">
                                                                         <nobr>Beschreibung</nobr>
                                                                     </label>
-                                                                    <textarea rows="2" type="text" id="form3Examplev22" class="form-control form-control-lg searchbar goingdark" name="produktname"></textarea>
+                                                                    <textarea rows="2" type="text" id="produktbeschreibungform" class="form-control form-control-lg searchbar goingdark" name="beschreibung"></textarea>
 
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-4 mb-4 pb-4">
                                                                 <div class="form-outline">
-                                                                    <label class="form-label goingdark" for="form3Examplev223">
+                                                                    <label class="form-label goingdark" for="produktauflagerform">
                                                                         <nobr>Auf Lager</nobr>
                                                                     </label>
-                                                                    <input type="text" id="form3Examplev223" placeholder="" class="form-control form-control-lg searchbar goingdark" name="kattechdatacount" />
+                                                                    <input type="text" id="produktauflagerform" placeholder="" class="form-control form-control-lg searchbar goingdark" name="auflager" />
 
                                                                 </div>
                                                             </div>
@@ -334,33 +343,33 @@
                                                         <div class="row">
                                                             <div class="col-md-4 mb-4 pb-4">
                                                                 <div class="form-outline">
-                                                                    <label class="form-label goingdark" for="form3Examplev22">
-                                                                        <nobr>Rabatt</nobr>
+                                                                    <label class="form-label goingdark" for="produktrabattform">
+                                                                        <nobr>Rabatt (%)</nobr>
                                                                     </label>
-                                                                    <input rows="3" type="text" id="form3Examplev22" class="form-control form-control-lg searchbar goingdark" name="produktname"/>
+                                                                    <input rows="3" type="text" id="produktrabattform" class="form-control form-control-lg searchbar goingdark" name="rabatt"/>
 
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-4 mb-4 pb-4">
                                                                 <div class="form-outline">
-                                                                    <label class="form-label goingdark" for="form3Examplev223">
+                                                                    <label class="form-label goingdark" for="produktlieferkostenform">
                                                                         <nobr>Lieferkosten</nobr>
                                                                     </label>
-                                                                    <input type="text" id="form3Examplev223" placeholder="" class="form-control form-control-lg searchbar goingdark" name="kattechdatacount" />
+                                                                    <input type="text" id="produktlieferkostenform" placeholder="" class="form-control form-control-lg searchbar goingdark" name="versand" />
 
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-4 mb-4 pb-4">
                                                                 <div class="form-outline">
-                                                                    <label class="form-label goingdark" for="form3Examplev223">
-                                                                        <nobr>Anzahl Techfelder</nobr>
+                                                                    <label class="form-label goingdark" for="produktidform">
+                                                                        <nobr>Artikel Nummer</nobr>
                                                                     </label>
-                                                                    <input type="text" id="form3Examplev223" placeholder="" class="form-control form-control-lg searchbar goingdark" name="kattechdatacount" />
+                                                                    <input style="font-size: 18px;" type="text" value="" id="produktidform" placeholder="" class="form-control form-control-lg searchbar goingdark" readonly name="prodid" />
 
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <button class="btn btn-success disabled" id="buttonremoveproduct" onclick="">Speichern</button>
+                                                        <button class="btn btn-success" id="buttonremoveproduct" type="submit">Speichern</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -395,6 +404,8 @@
                     </div>
                 </div>
                 <script>
+                    
+
                     function selectProduct(productid) {
                         var ajax = new XMLHttpRequest();
                         ajax.open("GET", "templates/ajax.php?productidforedit=" + productid, true);
@@ -402,8 +413,19 @@
 
                         ajax.onreadystatechange = function() {
                             if (this.readyState == 4 && this.status == 200) {
-                                
-                            }
+                                var str = String(this.response);
+                                var splittedstr = str.split('&');
+
+                                document.getElementById("cardbodyforedit").style.display = "block";
+                                document.getElementById("produktid").textContent = "Artikel " + productid + " wird bearbeitet";
+                                document.getElementById("produktnameform").setAttribute("value", splittedstr[1]);
+                                document.getElementById("produktbeschreibungform").textContent = splittedstr[2];
+                                document.getElementById("produktpreisform").setAttribute("value", splittedstr[3]);
+                                document.getElementById("produktauflagerform").setAttribute("value", splittedstr[4]);
+                                document.getElementById("produktlieferkostenform").setAttribute("value", splittedstr[5]);
+                                document.getElementById("produktrabattform").setAttribute("value", splittedstr[6]);
+                                document.getElementById("produktidform").setAttribute("value", productid);
+                            } 
                         }
                     }
 

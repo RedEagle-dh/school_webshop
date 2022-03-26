@@ -43,38 +43,21 @@
 
                     <?php endforeach; ?>
 
-                    <li class="list-group-item d-flex justify-content-between bg-light darkcard">
-                        <div class="text-success">
-                            <h6 class="my-0">Promo code</h6>
-                            <small>EXAMPLECODE</small>
-                        </div>
-
-                        <span class="text-success">-5€</span>
-                    </li>
+                    
                     <li class="list-group-item d-flex justify-content-between darkcard">
                         <span class="goingdark">Versandkosten</span>
                         <strong class="goingdark"><?= getDeliveryPrice() ?>€</strong>
                     </li>
                     <li class="list-group-item d-flex justify-content-between darkcard">
                         <strong class="goingdark">Gesamt (EUR)</strong>
-                        <strong class="goingdark"><?= number_format(getTotalPrice(), 2) ?>€</strong>
+                        <strong class="goingdark" id="totalpricecheckout"><?= number_format(getTotalPrice(), 2) ?>€</strong>
                     </li>
                 </ul>
 
 
 
 
-                <form class="card p-2 darkcard">
-                    <div class="input-group">
-                        <input type="text" class="form-control goingdark searchbar" placeholder="Promo code" name="testinput" id="testinput">
-                        <div class="input-group-append">
-                            <button type="submit" class="btn btn-secondary">Einlösen
-                            </button>
-                        </div>
-                    </div>
-
-
-                </form>
+                
 
 
             </div>
@@ -225,7 +208,7 @@
                     <h4 class="mb-3 goingdark">Kreditkarte</h4>
                     <br>
 
-                    <div class="showorshownot">
+                    
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="cc-name" class="goingdark">Karteninhaber</label>
@@ -259,12 +242,18 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    
                     <hr class="mb-4">
                     <div class="row">
-                        <button class="btn btn-success btn-lg btn-block" type="submit" onclick="Watch();">Kostenpflichtig bestellen</button>
-                        
+                    <div class="col-md-8 mb-8">
+                        <button class="btn btn-success btn-lg btn-block" onclick="Watch(); return false">Kostenpflichtig bestellen</button>
+                        &nbsp;
+                        <div class="spinner-border text-success" role="status" id="spinner" style="display: none;">
+                            
+                            </div>
                     </div>
+                    </div>
+                    
                 </form>
             </div>
         </div>
@@ -282,6 +271,7 @@
 
 
     <script>
+        var neuerpreis = parseFloat(document.getElementById("totalpricecheckout").textContent);
         // Example starter JavaScript for disabling form submissions if there are invalid fields
         (function() {
             'use strict';
@@ -296,14 +286,19 @@
                         if (form.checkValidity() === false) {
                             event.preventDefault();
                             event.stopPropagation();
+                        } else {
+                            document.getElementById("spinner").style.display = "block";
+                            
                         }
                         form.classList.add('was-validated');
+                        
                     }, false);
                 });
             }, false);
         })();
 
         function Watch() {
+            
             var c = document.getElementById("same-address");
             if (c.checked == true) {
                 document.querySelector('input[name="rfname"]').value = document.querySelector('input[name="dfname"]').value;
@@ -316,9 +311,11 @@
                 document.querySelector('input[name="raddress2"]').value = document.querySelector('input[name="daddress2"]').value;
 
             }
-
+            
 
         }
+
+        
 
         function SetBilling(checked) {
 
@@ -328,6 +325,8 @@
                 document.getElementById('rechnungsadressediv').style.display = "block";
             }
         }
+
+        
     </script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
     <!-- Bootstrap core JavaScript-->

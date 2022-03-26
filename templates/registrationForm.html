@@ -1,3 +1,4 @@
+
 <section class="h-100 h-custom gradient-custom-2">
     <form action="index.php/registercheck" method="POST">
         <div class="container py-5 h-100">
@@ -25,7 +26,7 @@
                                             <div class="col-md-6 mb-4 pb-2">
 
                                                 <div class="form-outline">
-                                                    <input type="text" id="form3Examplev2" class="form-control form-control-lg searchbar goingdark" name="fname" />
+                                                    <input type="text" id="form3Examplev2" class="form-control form-control-lg searchbar goingdark" name="fname" required/>
                                                     <label class="form-label goingdark" for="form3Examplev2"><nobr>Vorname</nobr></label>
                                                 </div>
 
@@ -33,7 +34,7 @@
                                             <div class="col-md-6 mb-4 pb-2">
 
                                                 <div class="form-outline">
-                                                    <input type="text" id="form3Examplev3" class="form-control form-control-lg searchbar goingdark" name="lname" />
+                                                    <input type="text" id="form3Examplev3" class="form-control form-control-lg searchbar goingdark" name="lname" required/>
                                                     <label class="form-label goingdark" for="form3Examplev3"><nobr>Nachname</nobr></label>
                                                 </div>
 
@@ -45,7 +46,7 @@
                                             <div class="col-md-6 mb-4 pb-2 mb-md-0 pb-md-0">
 
                                                 <div class="form-outline">
-                                                    <input type="password" id="form3Examplev5" class="form-control form-control-lg searchbar goingdark" />
+                                                    <input type="password" id="form3Examplev5" class="form-control form-control-lg searchbar goingdark" name="password" required/>
                                                     <label class="form-label goingdark" for="form3Examplev5"><nobr>Passwort</nobr></label>
                                                 </div>
 
@@ -53,7 +54,7 @@
                                             <div class="col-md-6 mb-4 pb-2 mb-md-0 pb-md-0">
 
                                                 <div class="form-outline">
-                                                    <input type="password" id="form3Examplev5" class="form-control form-control-lg searchbar goingdark" name="password" />
+                                                    <input type="password" id="form3Examplev5" class="form-control form-control-lg searchbar goingdark" name="passwordw" required/>
                                                     <label class="form-label goingdark" for="form3Examplev5"><nobr>Passwort Wiederholen</nobr></label>
                                                 </div>
 
@@ -70,14 +71,14 @@
                                         <div class="row">
                                             <div class="col-md-10 mb-4 pb-2">
                                                 <div class="form-outline form-white">
-                                                    <input type="text" id="form3Examplea2" class="form-control form-control-lg" name="street" />
+                                                    <input type="text" id="form3Examplea2" class="form-control form-control-lg" name="street" required/>
                                                     <label class="form-label" for="form3Examplea2">Straße</label>
                                                 </div>
                                             </div>
 
                                             <div class="col-md-2 mb-4 pb-2">
                                                 <div class="form-outline form-white">
-                                                    <input type="text" id="form3Examplea2" class="form-control form-control-lg" name="hnr" />
+                                                    <input type="text" id="form3Examplea2" class="form-control form-control-lg" name="hnr" required/>
                                                     <label class="form-label" for="form3Examplea2">No.</label>
                                                 </div>
                                             </div>
@@ -98,7 +99,7 @@
                                             <div class="col-md-5 mb-4 pb-2">
 
                                                 <div class="form-outline form-white">
-                                                    <input type="text" id="form3Examplea4" class="form-control form-control-lg" name="zip" />
+                                                    <input type="text" id="form3Examplea4" class="form-control form-control-lg" name="zip" required/>
                                                     <label class="form-label" for="form3Examplea4"><nobr>PLZ</nobr></label>
                                                 </div>
 
@@ -106,7 +107,7 @@
                                             <div class="col-md-7 mb-4 pb-2">
 
                                                 <div class="form-outline form-white">
-                                                    <input type="text" id="form3Examplea5" class="form-control form-control-lg" name="city" />
+                                                    <input type="text" id="form3Examplea5" class="form-control form-control-lg" name="city" required/>
                                                     <label class="form-label" for="form3Examplea5"><nobr>Stadt</nobr></label>
                                                 </div>
 
@@ -115,7 +116,7 @@
 
                                         <div class="mb-4 pb-2">
                                             <div class="form-outline form-white">
-                                                <input type="text" id="form3Examplea6" class="form-control form-control-lg" name="country" />
+                                                <input type="text" id="form3Examplea6" class="form-control form-control-lg" name="country" required/>
                                                 <label class="form-label" for="form3Examplea6"><nobr>Land</nobr></label>
                                             </div>
                                         </div>
@@ -125,7 +126,7 @@
                                         <div class="mb-4 pb-2">
 
                                             <div class="form-outline form-white">
-                                                <input type="text" id="form3Examplea8" class="form-control form-control-lg" name="phone" />
+                                                <input type="text" id="form3Examplea8" class="form-control form-control-lg" name="phone" required/>
                                                 <label class="form-label" for="form3Examplea8"><nobr>Telefonnummer</nobr></label>
                                             </div>
 
@@ -134,15 +135,15 @@
 
                                         <div class="mb-4">
                                             <div class="form-outline form-white">
-                                                <input type="text" id="form3Examplea9" class="form-control form-control-lg" name="emailadress" />
+                                                <input type="text" id="form3Examplea9" class="form-control form-control-lg" name="emailadress" required/>
                                                 <label class="form-label" for="form3Examplea9"><nobr>Emailadresse</nobr></label>
                                             </div>
                                         </div>
 
                                         <div class="form-check d-flex justify-content-start mb-4 pb-3">
-                                            <input class="form-check-input me-3" type="checkbox" value="" id="form2Example3c" />
+                                            <input class="form-check-input me-3" type="checkbox" value="" id="form2Example3c" required/>
                                             <label class="form-check-label text-white" for="form2Example3">
-                                                <nobr>I do accept the <a href="#!" class="text-white"><u>Terms and Conditions</u></a> of your site.</nobr>
+                                                <nobr>I do accept the <a href="index.php/tos" class="text-white"><u>Terms and Conditions</u></a> of your site.</nobr>
                                             </label>
                                         </div>
 

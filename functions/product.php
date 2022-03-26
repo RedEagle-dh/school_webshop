@@ -2,7 +2,7 @@
 
 function getAllProducts() {
 
-    $sql = "SELECT artnr, titel, beschreibung, preis, picture, auflager, datum FROM produkte";
+    $sql = "SELECT artnr, titel, beschreibung, preis, picture, auflager, datum, lieferkosten, discount FROM produkte";
     $result = db_query($sql);
 
     if (!$result) {
@@ -187,9 +187,21 @@ function getProductFields($prodid)
 {
     $sql = "SELECT * FROM produkte WHERE artnr = $prodid;";
     $result = db_query($sql);
-    $res = [];
-    while ($row = mysqli_fetch_row($result)) {
-        $res[] = $row;
-    }
-    return $res;
+    
+    
+    return mysqli_fetch_assoc($result);
+}
+
+function getAufLager($productid) {
+    $sql = "SELECT auflager FROM produkte WHERE artnr = $productid;";
+    $result = db_query($sql);
+    
+    
+    return mysqli_fetch_column($result);
+}
+
+function getAufLagerCurrentAnzahlFromProductInCart($productid, $userid) {
+    $sql = "SELECT amount FROM cart WHERE productid = $productid AND userid = $userid";
+    $result = db_query($sql);
+    return mysqli_fetch_column($result);
 }
