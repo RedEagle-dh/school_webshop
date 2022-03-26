@@ -606,6 +606,11 @@ font-weight: bold;
 font-size: 1.1em;
 transition: 0.5s;
 }
+.goingdark .dropdown-item:hover, .dropdown-item:focus {
+  color: #2e2f37;
+  text-decoration: none;
+  background-color: #747474;
+}
 .navbgwhite {
 --bs-bg-opacity: 1;
 background-color: rgba(var(--bs-white-rgb), var(--bs-bg-opacity)) !important;

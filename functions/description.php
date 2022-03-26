@@ -29,8 +29,18 @@ function getDescriptionName($kat)
 
 function getDescriptionTableName($katname)
 {
-    $sql = "SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_type = 'BASE TABLE' AND table_name LIKE '%$katname%';";
+    $sql = "SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_type = 'BASE TABLE' AND table_name LIKE 'description_$katname';";
     $r = db_query($sql);
     return mysqli_fetch_column($r);
 }
 
+function getCatNameFromID($katid) {
+    $sql = "SELECT katname FROM kategorien WHERE katid = $katid;";
+    $r = db_query($sql);
+    
+    if(!$r) {
+        return [];
+    }
+    
+    return mysqli_fetch_column($r);
+}

@@ -22,12 +22,12 @@ if (strpos($route, '/cart/add/') !== false) {
     }
 
         if (getProduct($productid, $userid) == 0) {
-            addProductToCart($route, $userid);
+            addProductToCartFromProductSite($route, $userid);
         } else {
             updateAmount($productid, +1, $userid);
         }
     
-    header("Location: /Webshop/index.php");
+    header("Location: /Webshop/index.php/cart?");
     exit();
 }
 
@@ -239,7 +239,10 @@ if (strpos($route, '/search') !== false) {
 
 
 if (strpos($route, '/admin') !== false) {
-    
+    if (isset($_GET["deletenotification"])) {
+        $sql = "DELETE FROM kundenbewertungen WHERE id = ".$_GET["deletenotification"].";";
+        db_query($sql);
+    }
    
     require 'templates/adminpanel.php';
     exit();
@@ -266,7 +269,8 @@ if (strpos($route, '/settings') !== false) {
 }
 if (strpos($route, '/bought') !== false) {
     require("fpdf/fpdf.php");
-    $invoicedate = date("d-m-Y");
+    $invoicedate = date("d.m.Y");
+    $rechnummer = ((int) mysqli_fetch_column(db_query("SELECT MAX(rechnummer) FROM rechnungen WHERE userid = $userid;")) + 1);
     $rfname = filter_input(INPUT_POST, 'rfname');
     $rlname = filter_input(INPUT_POST, 'rlname');
     $rstreet = filter_input(INPUT_POST, 'rstreet');
@@ -452,10 +456,39 @@ if (strpos($route, '/removeproduct') !== false) {
     exit();
 }
 
+if (strpos($route, '/addcategory') !== false) {
+    require('adminstuff/addcategory.php');
+    exit();
+}
+
 
 if (strpos($route, '/uploadimage') !== false) {
     require('adminstuff/uploadimage.php');
     exit();
 
-
+    
 }
+
+if (strpos($route, '/removecategory') !== false) {
+    require('adminstuff/removecategory.php');
+    exit();
+
+    
+}
+
+if(strpos($route, '/shownotifications') !== false) {
+    $notid = $_GET["notificationid"];
+
+
+    require('adminstuff/notificationpage.php');
+    exit();
+}
+
+if(strpos($route, '/bearbeiten') !== false) {
+    
+
+
+    require('adminstuff/productbearbeiten.php');
+    exit();
+}
+

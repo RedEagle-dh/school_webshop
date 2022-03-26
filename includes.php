@@ -7,4 +7,5 @@ require_once __DIR__ . '/functions/invoicefunctions.php';
 require_once __DIR__ . '/functions/description.php';
 require_once __DIR__ . '/functions/analytics.php';
 require_once __DIR__ . '/functions/commentfunctions.php';
+require_once __DIR__ . '/functions/categoryfunctions.php';
 require_once __DIR__ . '/routes.php';

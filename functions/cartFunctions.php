@@ -8,6 +8,14 @@
          return $result;
      }
 
+     function addProductToCartFromProductSite($route, $userid) {
+         $routeParts = explode('/', $route);
+         $productId = (int) $routeParts[3];
+         $sql = "INSERT INTO cart SET userid = $userid, productid = $productId, amount = 1, created = time(now())";
+         $result = db_query($sql);
+         return $result;
+     }
+
     function getProdcutIDThatWantsToBeAddedToCart($route)
     {
         $routeParts = explode('/', $route);

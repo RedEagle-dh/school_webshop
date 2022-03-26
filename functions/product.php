@@ -176,38 +176,20 @@ function getNewProductID() {
     return $ret;
 }
 
-function getCatIdAndName() {
-    $sql = "SELECT katid, katname FROM kategorien";
-    $r = db_query($sql);
-    
-    if(!$r) {
-        return [];
-    }
+function getDiscountForProduct($prodid)
+{
+    $sql = "SELECT discount FROM produkte WHERE artnr = $prodid;";
+    $result = db_query($sql);
+    return mysqli_fetch_column($result);
+}
+
+function getProductFields($prodid)
+{
+    $sql = "SELECT * FROM produkte WHERE artnr = $prodid;";
+    $result = db_query($sql);
     $res = [];
-    while ($row = mysqli_fetch_row($r)) {
+    while ($row = mysqli_fetch_row($result)) {
         $res[] = $row;
     }
     return $res;
-}
-
-function getCatNameFromID($katid) {
-    $sql = "SELECT katname FROM kategorien WHERE katid = $katid;";
-    $r = db_query($sql);
-    
-    if(!$r) {
-        return [];
-    }
-    
-    return mysqli_fetch_column($r);
-}
-
-function getCatNameFromProdId($prodid) {
-    $sql = "SELECT katname FROM produkte, kategorien WHERE produkte.katid = kategorien.katid AND produkte.artnr = $prodid;";
-    $r = db_query($sql);
-    
-    if(!$r) {
-        return [];
-    }
-    
-    return mysqli_fetch_column($r);
 }

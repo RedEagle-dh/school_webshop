@@ -10198,7 +10198,7 @@ a:focus {
 
 .topbar .dropdown-list .dropdown-header {
   background-color: #4e73df;
-  border: 1px solid #4e73df;
+  border: 0px solid #4e73df;
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
   color: #fff;
@@ -10208,9 +10208,9 @@ a:focus {
   white-space: normal;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
-  border-left: 1px solid #e3e6f0;
-  border-right: 1px solid #e3e6f0;
-  border-bottom: 1px solid #e3e6f0;
+  border-left: 0px solid #e3e6f0;
+  border-right: 0px solid #e3e6f0;
+  border-bottom: 0px solid #e3e6f0;
   line-height: 1.3rem;
 }
 

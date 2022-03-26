@@ -31,7 +31,16 @@ function db_close($dbh)
 }
 
 
-
+function getCatNameFromProdId($prodid) {
+    $sql = "SELECT katname FROM produkte, kategorien WHERE produkte.katid = kategorien.katid AND produkte.artnr = $prodid;";
+    $r = db_query($sql);
+    
+    if(!$r) {
+        return [];
+    }
+    
+    return mysqli_fetch_column($r);
+}
 
 
 
@@ -132,6 +141,7 @@ if (isset($_GET['productid'])) {
         </div>';
     endfor;
 } else if(isset($_GET["sendFeedback"])) {
+
     $message = $_GET["sendFeedback"];
     $rating = $_GET["rating"];
     $productid = $_GET["productidrating"];
@@ -139,10 +149,50 @@ if (isset($_GET['productid'])) {
     $date = new DateTime();
     $dateString = $date -> format('Y-m-d H:i:s');
 
-    $sql = "INSERT INTO kundenbewertungen SET kundenid = $userid , productid = $productid , message = '$message', rating = $rating, datum = '$dateString'";
-    db_query($sql);
+    $sql = "INSERT INTO kundenbewertungen SET kundenid = $userid , productid = $productid , message = '$message', rating = $rating, datum = '$dateString', gelesen = 0;";
+    try {
+        db_query($sql);
+        echo "yes";
+    } catch (Exception $e) {
+        echo "no";
+    }
+    
+    
+    
+} else if (isset($_GET["newcatname"])) {
+    $anzahlTechFelder = $_GET["anzahlTechFelder"];
+    $msg = $_GET["newcatname"];
+    if (intval($anzahlTechFelder) > 0) {
+        $presql = "";
+        for ($i = 0; $i < $anzahlTechFelder; $i++) {
+            $presql = $presql . "`" . $_GET["$i"] . ":` VARCHAR(300) NULL, ";
+        }
 
-    echo "yes";
+        $tablenamefornewtable = "description_" . strtolower($msg);
+
+
+        $sql = "CREATE TABLE `webshop`.`$tablenamefornewtable` (" . $presql . "`productid` INT NULL, `id` INT NOT NULL AUTO_INCREMENT, PRIMARY KEY (`id`), INDEX `fkname_idx` (`productid` ASC) VISIBLE, CONSTRAINT `fkname_" . $tablenamefornewtable . "` FOREIGN KEY (`productid`) REFERENCES `webshop`.`produkte` (`artnr`) ON DELETE NO ACTION ON UPDATE NO ACTION);";
+        db_query($sql);
+    }
+
+    $sql = "INSERT INTO kategorien SET katname = '$msg';";
+
+    $res = db_query($sql);
+    if (!$res) {
+        echo "f";
+    } else {
+        echo "t";
+    }
+} else if (isset($_GET["removecatid"]) && isset($_GET["catid"])) {
+    $catid = $_GET["catid"];
+    removeCategoryById($_GET["removecatid"], $catid);
+} else if (isset($_GET["productidforedit"])) {
+    $fields = getProductFields($_GET["productidforedit"]);
+    $fieldsasarray = [];
+    for($i = 0; $i < count($fields); $i++) {
+        $fieldsasarray[] = $fields[$i][0];
+    }
+    
 }
 
 
@@ -167,7 +217,7 @@ function removeProductsById($id, $pids)
         
         $sql = "DELETE FROM cart WHERE productid = '" . $y[$i] . "';";
         db_query($sql);
-        $tablename = getDescriptionTableName(getCatNameFromProdId($y[$i]));
+        $tablename = "description_".getCatNameFromProdId($y[$i]);
         $sql = "DELETE FROM ".$tablename." WHERE productid = '". $y[$i] . "';";
         db_query($sql);
         
@@ -178,4 +228,29 @@ function removeProductsById($id, $pids)
     echo $id;
 }
 
+function removeCategoryById($id, $pids)
+{
+
+    // for schleife, zahlen aus id mit komma trennen und solange produkte aus datenbank entfernen
+
+
+    $y = explode(',', $pids);
+
+    for ($i = 0; $i < count($y); $i++) {
+
+        $sql = "DELETE cart, produkte FROM cart INNER JOIN produkte ON cart.productid = produkte.artnr WHERE produkte.katid = '" . $y[$i] . "';";
+        db_query($sql);
+        $tablename = "description_" . getCatNameFromID($y[$i]);
+        $sql = "DROP TABLE IF EXISTS " . $tablename . ";";
+        db_query($sql);
+
+
+        $sql = "DELETE FROM produkte WHERE katid = '" . $y[$i] . "';";
+        db_query($sql);
+        $sql = "DELETE FROM kategorien WHERE katid = '" . $y[$i] . "';";
+        db_query($sql);
+    }
+
+    echo $id;
+}
 

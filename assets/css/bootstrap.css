@@ -3545,7 +3545,7 @@ textarea.form-control-lg {
   list-style: none;
   background-color: #fff;
   background-clip: padding-box;
-  border: 1px solid rgba(0, 0, 0, 0.15);
+  border: 0px solid rgba(0, 0, 0, 0.15);
   border-radius: 0.25rem;
 }
 .dropdown-menu[data-bs-popper] {

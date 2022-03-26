@@ -1,7 +1,7 @@
 <!-- Navigationsbar -->
 <nav class="navbar navbar-expand navbar-light navbgwhite topbar mb-4 static-top shadow">
     <div class="container-fluid">
-        
+
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 
             <span class="navbar-toggler-icon"></span>
@@ -12,7 +12,7 @@
                 <li class="nav-item">
                     <a class="nav-link active goingdark" aria-current="page" href="#">Home</a>
                 </li>
-                
+
                 <li class="nav-item dropdown">
                     <a class="nav-link goingdark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Kategorie &nbsp;<i class="fi fi-rr-angle-small-down"></i>
@@ -96,96 +96,105 @@
 
             ?>
             <!-- Nav Item - Alerts -->
-            
+
             <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fi fi-rr-bell"></i>
-                                <!-- Counter - Alerts -->
-                                <span class="badge badge-danger badge-counter">3+</span>
+                <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fi fi-rr-bell"></i>
+                    <!-- Counter - Alerts -->
+                    
+                        <?php if (getNotifications() != 0) { ?>
+                            <span class="badge badge-danger badge-counter" id="notificationbadge"><?= getNotifications() ?></span>
+                        <?php } ?>
+                    
+                </a>
+                <!-- Dropdown - Alerts -->
+                <div class="dropdown-list dropdown-menu dropdown-menu-end shadow animated--grow-in darkcard goingdark" aria-labelledby="alertsDropdown">
+                    <h6 class="dropdown-header">
+                        Mitteilungen
+                    </h6>
+                    <?php $msgs = getNotReadMessages();
+                    if ($msgs != null) {
+                        foreach ($msgs as $m) : ?>
+                            <a class="dropdown-item d-flex align-items-center" id="notid<?= $m[4] ?>" href="index.php/shownotifications?notificationid=<?= $m[4] ?>">
+                                <div class="mr-3">
+                                    <div class="icon-circle bg-primary">
+                                        <style>
+                                            i {
+                                                padding-top: 8px;
+                                            }
+                                        </style>
+                                        <i class="fi fi-rr-comment-alt text-white"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="small text-gray-500">
+                                        <?php
+                                        $da = new DateTime($m[3]);
+                                        $date = $da->format("D, d.m.Y, H:i:s");
+                                        echo $date;
+                                        ?></div>
+                                    <span class="font-weight-bold goingdark">
+                                        <?php
+                                        echo $m[0] . " " . $m[1] . " hat Feedback dagelassen!";
+
+                                        ?></span>
+                                </div>
                             </a>
-                            <!-- Dropdown - Alerts -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-end shadow animated--grow-in" aria-labelledby="alertsDropdown">
-                                <h6 class="dropdown-header">
-                                    Alerts Center
-                                </h6>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-primary">
-                                            <i class="fas fa-file-alt text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">December 12, 2019</div>
-                                        <span class="font-weight-bold">A new monthly report is ready to download!</span>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-success">
-                                            <i class="fas fa-donate text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">December 7, 2019</div>
-                                        $290.29 has been deposited into your account!
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-warning">
-                                            <i class="fas fa-exclamation-triangle text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">December 2, 2019</div>
-                                        Spending Alert: We've noticed unusually high spending for your account.
-                                    </div>
-                                </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-                            </div>
-                        </li>
+                    <?php endforeach;
+                    } else {
+                        echo '<a class="dropdown-item text-center small text-gray-500" >Keine</a>';
+                    }
+                    ?>
+
+                    
+                    
+                </div>
+            </li>
 
 
 
-                        
+
         </div>
     </div>
 
 </nav>
 <script>
-            var checkbox = document.getElementById("ChangeTheme"); //get the checkbox to a variable
+    var checkbox = document.getElementById("ChangeTheme"); //get the checkbox to a variable
 
-            //check storage if dark mode was on or off
-            if (sessionStorage.getItem("mode") == "dark") {
-                darkmode(); //if dark mode was on, run this funtion
-            } else {
-                nodark(); //else run this funtion
-            }
+    //check storage if dark mode was on or off
+    if (sessionStorage.getItem("mode") == "dark") {
+        darkmode(); //if dark mode was on, run this funtion
+    } else {
+        nodark(); //else run this funtion
+    }
 
-            //if the checkbox state is changed, run a funtion
-            checkbox.addEventListener("change", function() {
-                //check if the checkbox is checked or not
-                if (checkbox.checked) {
-                    darkmode(); //if the checkbox is checked, run this funtion
-                } else {
-                    nodark(); //else run this funtion
-                }
-            });
+    //if the checkbox state is changed, run a funtion
+    checkbox.addEventListener("change", function() {
+        //check if the checkbox is checked or not
+        if (checkbox.checked) {
+            darkmode(); //if the checkbox is checked, run this funtion
+        } else {
+            nodark(); //else run this funtion
+        }
+    });
 
-            //function for checkbox when checkbox is checked
-            function darkmode() {
-                document.body.classList.add("dark-mode"); //add a class to the body tag
-                checkbox.checked = true; //set checkbox to be checked state
-                sessionStorage.setItem("mode", "dark"); //store a name & value to know that dark mode is on
-            }
+    //function for checkbox when checkbox is checked
+    function darkmode() {
+        document.body.classList.add("dark-mode"); //add a class to the body tag
+        checkbox.checked = true; //set checkbox to be checked state
+        sessionStorage.setItem("mode", "dark"); //store a name & value to know that dark mode is on
+    }
 
-            //function for checkbox when checkbox is not checked
-            function nodark() {
-                document.body.classList.remove("dark-mode"); //remove added class from body tag
-                checkbox.checked = false; //set checkbox to be unchecked state
-                sessionStorage.setItem("mode", "light"); //store a name & value to know that dark mode is off or light mode is on
-            }
-        </script>
+    //function for checkbox when checkbox is not checked
+    function nodark() {
+        document.body.classList.remove("dark-mode"); //remove added class from body tag
+        checkbox.checked = false; //set checkbox to be unchecked state
+        sessionStorage.setItem("mode", "light"); //store a name & value to know that dark mode is off or light mode is on
+    }
+
+
+    
+</script>
 
 
 <!-- Navigationsbar Ende -->

@@ -45,7 +45,18 @@ $row = mysqli_fetch_row($result); ?>
                         <h4 class="box-title mt-5 goingdark">Produktbeschreibung</h4>
                         <p class="goingdark"><?= $row[1] ?></p>
                         <h2 class="mt-5 goingdark">
-                            <?php echo number_format($row[2], 2);  ?>€ <small class="text-success">(36%off)</small>
+                            <?php 
+                            if (getDiscountForProduct($row[4]) == null || getDiscountForProduct($row[4]) == 0) {
+                                echo number_format($row[2], 2)."€";
+                            } else {
+                                $gesamt = number_format($row[2], 2);
+                                $rabatt = getDiscountForProduct($row[4]);
+                                $anteil = ($gesamt - round(($rabatt*$gesamt/100), 2));
+                                echo $anteil."€ ";
+                                echo "<small class='text-success'>(".getDiscountForProduct($row[4])."% Reduziert)</small>";
+                            }
+                            
+                              ?> 
                         </h2>
                         <?php
 
@@ -200,6 +211,8 @@ $row = mysqli_fetch_row($result); ?>
                                 star3.checked = false;
                                 star4.checked = false;
                                 star5.checked = false;
+                            } else if(this.response == " no") {
+                                location.href = "/Webshop/index.php/login";
                             } else {
                                 alert(this.response);
                                 alert("Opps");

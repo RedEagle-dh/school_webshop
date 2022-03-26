@@ -179,7 +179,7 @@
 
                                 <!-- Page Heading -->
                                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                                    <h1 class="h3 mb-0 text-gray-800 goingdark">Admin Dashboard</h1>
+                                    <h1 class="h3 mb-0 text-gray-800 goingdark">Notifications</h1>
 
                                 </div>
 
@@ -194,7 +194,7 @@
                                         <div class="card shadow mb-4 darkcard row-border-light">
                                             <!-- Card Header - Dropdown -->
                                             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between  darkcard row-border-light">
-                                                <h6 class="m-0 font-weight-bold text-success">Jahresumsatz Übersicht</h6>
+                                                <h6 class="m-0 font-weight-bold text-success">Feedback</h6>
                                                 <div class="dropdown no-arrow">
                                                     <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-bs-haspopup="true" aria-bs-expanded="false">
                                                         <i class="fi fi-rr-chat-arrow-grow text-gray-400"></i>
@@ -210,24 +210,12 @@
                                             </div>
                                             <!-- Card Body -->
                                             <div class="card-body">
-                                                <script>
-                                                    var jan = <?= getMonthlyEarnings('jan22') ?>;
-                                                    var feb = <?= getMonthlyEarnings('feb22') ?>;
-                                                    var mar = <?= getMonthlyEarnings('mar22') ?>;
-                                                    var apr = <?= getMonthlyEarnings('apr22') ?>;
-                                                    var mai = <?= getMonthlyEarnings('mai22') ?>;
-                                                    var jun = <?= getMonthlyEarnings('jun22') ?>;
-                                                    var jul = <?= getMonthlyEarnings('jul22') ?>;
-                                                    var aug = <?= getMonthlyEarnings('aug22') ?>;
-                                                    var sep = <?= getMonthlyEarnings('sep22') ?>;
-                                                    var okt = <?= getMonthlyEarnings('okt22') ?>;
-                                                    var nov = <?= getMonthlyEarnings('nov22') ?>;
-                                                    var dez = <?= getMonthlyEarnings('dez22') ?>;
-                                                </script>
-                                                <div class="chart-area">
-                                                    <canvas id="myAreaChart"></canvas>
-
-                                                </div>
+                                                <?php
+                                                $comments = getCommentFromNotification($notid);
+                                                $row[4] = $userid;
+                                                $sql = "UPDATE kundenbewertungen SET gelesen = 1 WHERE id = $notid;";
+                                                db_query($sql);
+                                                include 'templates/comments.php'; ?>
                                             </div>
                                         </div>
                                     </div>
@@ -237,7 +225,7 @@
                                         <div class="card shadow mb-4 darkcard row-border-light">
                                             <!-- Card Header - Dropdown -->
                                             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between  darkcard row-border-light">
-                                                <h6 class="m-0 font-weight-bold text-primary">Produktübersicht</h6>
+                                                <h6 class="m-0 font-weight-bold text-primary">Bewertung bearbeiten</h6>
                                                 <div class="dropdown no-arrow">
                                                     <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                         <i class="fi fi-sr-chart-pie text-gray-400"></i>
@@ -253,32 +241,14 @@
                                             </div>
                                             <!-- Card Body -->
                                             <div class="card-body">
-                                                <script>
-                                                    var mb = <?= getProductPercentegeOfCat(1) ?>;
-                                                    var cpu = <?= getProductPercentegeOfCat(2) ?>;
-                                                    var lapi = <?= getProductPercentegeOfCat(3) ?>;
-                                                    var gpu = <?= getProductPercentegeOfCat(4) ?>;
-                                                    var geh = <?= getProductPercentegeOfCat(5) ?>;
-                                                </script>
-                                                <div class="chart-pie pt-4 pb-2">
-                                                    <canvas id="myPieChart"></canvas>
-                                                </div>
-                                                <div class="mt-4 text-center small">
-                                                    <span class="mr-2">
-                                                        <i class="fi fi-ss-circle-small text-primary"></i> CPU
-                                                    </span>
-                                                    <span class="mr-2">
-                                                        <i class="fi fi-ss-circle-small text-success"></i> GPU
-                                                    </span>
-                                                    <span class="mr-2">
-                                                        <i class="fi fi-ss-circle-small text-info"></i> Laptops
-                                                    </span>
-                                                    <span class="mr-2">
-                                                        <i class="fi fi-ss-circle-small text-pink"></i> Gehäuse
-                                                    </span>
-                                                    <span class="mr-2">
-                                                        <i class="fi fi-ss-circle-small text-yellow"></i> Mainboards
-                                                    </span>
+                                                <div class="dropdown">
+                                                    <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButtonn" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        Bearbeiten
+                                                    </button>
+                                                    <div class="dropdown-menu shadow animated--fade-in" aria-labelledby="dropdownMenuButtonn">
+                                                        <a class="dropdown-item" href="index.php/admin?deletenotification=<?= $notid ?>">Löschen</a>
+                                                        
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -336,6 +306,22 @@
                 <!-- Page level custom scripts -->
                 <script src="assets/js/chart-area-demo.js"></script>
                 <script src="assets/js/chart-pie-demo.js"></script>
+                <script>
+                    window.onload = function() {
+
+                        var badge = document.getElementById("notificationbadge");
+
+                        if (badge.textContent == 1) {
+                            document.getElementById("notificationbadge").remove();
+                        } else if (badge.textContent > 1) {
+                            document.getElementById("notificationbadge").textContent = (badge.textContent - 1);
+                        }
+
+                        var deleteNot = document.getElementById("notid<?=$notid?>");
+                        deleteNot.parentNode.removeChild(deleteNot);
+
+                    }
+                </script>
     </body>
 
 </html>

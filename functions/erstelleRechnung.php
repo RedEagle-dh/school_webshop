@@ -24,16 +24,16 @@ $pdf->Cell(59, 5, 'Details', 0, 1);
 $pdf->SetFont('Arial', '', 10);
 
 $pdf->Cell(130, 5, "Dave's Webshop GmbH", 0, 0);
-    $pdf->Cell(25, 5, 'Kundennummer:', 0, 0);
-$pdf->Cell(34, 5, $userid, 0, 1);
+    $pdf->Cell(25, 5, 'Kundennr.:', 0, 0);
+$pdf->Cell(40, 5, $userid, 0, 1);
 
 $pdf->Cell(130, 5, 'Eichenzell, 36124', 0, 0);
-    $pdf->Cell(25, 5, 'Rechnungsdatum:', 0, 0);
+    $pdf->Cell(25, 5, 'Rech. Datum:', 0, 0);
 $pdf->Cell(34, 5, $invoicedate, 0, 1);
 
 $pdf->Cell(130, 5, 'Rheinstr. 20', 0, 0);
-    $pdf->Cell(25, 5, 'Rechnungsnummer:', 0, 0);
-$pdf->Cell(34, 5, 'ORD001', 0, 1);
+    $pdf->Cell(25, 5, 'Rechnungsnr.:', 0, 0);
+    $pdf->Cell(34, 5, $rechnummer, 0, 1);
 
 $pdf->Cell(130, 5, " ", 0, 0);
 $pdf->Cell(25, 5, " ", 0, 0);
@@ -73,7 +73,7 @@ $pdf->Cell(50, 10, '', 0, 1);
 
 $pdf->SetFont('Arial', 'B', 10);
     /*Heading Of the table*/
-    $pdf->Cell(10, 6, 'No.', 1, 0, 'C');
+    $pdf->Cell(10, 6, 'Nr.', 1, 0, 'C');
     $pdf->Cell(80, 6, 'Produktname', 1, 0, 'C');
     $pdf->Cell(23, 6, 'Anzahl', 1, 0, 'C');
     $pdf->Cell(30, 6, 'Einzelpreis', 1, 0, 'C');
@@ -97,7 +97,7 @@ foreach ($cartItems as $cartItem) {
 
 
 $pdf->Cell(118, 6, '', 0, 0);
-    $pdf->Cell(25, 6, 'Shipping costs', 0, 0);
+    $pdf->Cell(25, 6, 'Versandkosten', 0, 0);
     $pdf->Cell(45, 6, getDeliveryPrice() . EURO, 1, 1, 'R');
     $pdf->Cell(118, 6, '',
         0,

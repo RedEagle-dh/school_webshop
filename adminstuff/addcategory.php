@@ -61,7 +61,7 @@
                     Produkte
                 </div>
                 <!-- Nav Item - Pages Collapse Menu -->
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                         <i class="fi fi-rr-box goingdark"></i>
                         <span class="goingdark">Produkte</span>
@@ -69,7 +69,7 @@
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded searchbar">
                             <h6 class="collapse-header goingdark">Produkte bearbeiten</h6>
-                            <a class="collapse-item active goingdark" href="index.php/addproduct">Hinzufügen</a>
+                            <a class="collapse-item goingdark" href="index.php/addproduct">Hinzufügen</a>
                             <a class="collapse-item goingdark" href="index.php/removeproduct">Entfernen</a>
                             <a class="collapse-item goingdark" href="index.php/bearbeiten">Bearbeiten</a>
                         </div>
@@ -81,7 +81,7 @@
                     Kategorien
                 </div>
                 <!-- Nav Item - Pages Collapse Menu -->
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseTwoo" aria-expanded="true" aria-controls="collapseTwoo">
                         <i class="fi fi-rr-box goingdark"></i>
                         <span class="goingdark">Kategorien</span>
@@ -89,7 +89,7 @@
                     <div id="collapseTwoo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded searchbar">
                             <h6 class="collapse-header goingdark">Kategorien bearbeiten</h6>
-                            <a class="collapse-item goingdark" href="index.php/addcategory">Hinzufügen</a>
+                            <a class="collapse-item active goingdark" href="index.php/addcategory">Hinzufügen</a>
                             <a class="collapse-item goingdark" href="index.php/removecategory">Entfernen</a>
                         </div>
                     </div>
@@ -106,8 +106,8 @@
 
 
 
-               <!-- Nav Item - Utilities Collapse Menu -->
-               <li class="nav-item disabled">
+                <!-- Nav Item - Utilities Collapse Menu -->
+                <li class="nav-item disabled">
                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
                         <i class="fi fi-rr-stats goingdark"></i>
                         <span class=" goingdark">Charts (Bald Verfügbar)</span>
@@ -174,7 +174,7 @@
 
                                 <!-- Page Heading -->
                                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                                    <h1 class="h3 mb-0 text-gray-800 goingdark">Produkt Hinzufügen</h1>
+                                    <h1 class="h3 mb-0 text-gray-800 goingdark">Kategorie Hinzufügen</h1>
 
                                 </div>
 
@@ -189,7 +189,7 @@
                                             <div class="card shadow mb-4 darkcard row-border-light">
                                                 <!-- Card Header - Dropdown -->
                                                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between  darkcard row-border-light">
-                                                    <h6 class="m-0 font-weight-bold text-success">Produkt hinzufügen</h6>
+                                                    <h6 class="m-0 font-weight-bold text-success">Kategorie hinzufügen</h6>
                                                     <div class="dropdown no-arrow">
                                                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-bs-haspopup="true" aria-bs-expanded="false">
                                                             <i class="fi fi-rr-add text-gray-400"></i>
@@ -212,67 +212,48 @@
                                                                     <div class="p-5">
                                                                         <div class="mb-4 pb-2">
                                                                             <select class="form-select goingdark searchbar" aria-label="Kategorie" name="kategorie" id="katselector" onchange="watchKatSelector(); sendReq(this.value); return false;">
-                                                                                <option disabled selected>Kategorie</option>
+                                                                                <option disabled selected>Kategorien</option>
                                                                                 <?php foreach (getCatIdAndName() as $catitandname) : ?>
-                                                                                    <option value="<?= $catitandname[0] ?>"><?= $catitandname[1] ?></option>
+                                                                                    <option disabled value="<?= $catitandname[0] ?>"><?= $catitandname[1] ?></option>
                                                                                 <?php endforeach; ?>
                                                                             </select>
 
                                                                         </div>
                                                                         <div class="row">
-                                                                            <div class="col-md-12 mb-4 pb-2">
+                                                                            <div class="col-md-8 mb-8 pb-8">
                                                                                 <div class="form-outline">
-                                                                                    <label class="form-label goingdark" for="form3Examplev2">
-                                                                                        <nobr>Produktname*</nobr>
+                                                                                    <label class="form-label goingdark" for="form3Examplev22">
+                                                                                        <nobr>Kategoriename*</nobr>
                                                                                     </label>
-                                                                                    <input type="text" id="form3Examplev2" class="form-control form-control-lg searchbar goingdark" name="produktname" />
+                                                                                    <input maxlength="30" type="text" id="form3Examplev22" class="form-control form-control-lg searchbar goingdark" name="produktname" onkeyup="watchIfEntry(this.value);" />
 
                                                                                 </div>
                                                                             </div>
-                                                                        </div>
-                                                                        <div class="row">
-                                                                            <div class="col-md-12 mb-4 pb-2">
+                                                                            <div class="col-md-4 mb-4 pb-4">
                                                                                 <div class="form-outline">
-                                                                                    <label class="form-label goingdark" for="form3Examplev3">
-                                                                                        <nobr>Produktbeschreibung</nobr>
+                                                                                    <label class="form-label goingdark" for="form3Examplev223">
+                                                                                        <nobr>Anzahl Technische Daten*</nobr>
                                                                                     </label>
-                                                                                    <textarea type="text" class="form-control form-control-lg searchbar goingdark" id="form3Examplev3" rows="3" name="beschreibung"></textarea>
-
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="row">
-                                                                            <div class="col-md-2 mb-4 pb-2 mb-md-0 pb-md-0">
-                                                                                <div class="form-outline">
-                                                                                    <label class="form-label goingdark" for="form3Examplev5">
-                                                                                        <nobr>Preis*</nobr>
-                                                                                    </label>
-                                                                                    <input type="text" id="form3Examplev5" class="form-control form-control-lg searchbar goingdark" name="preis" />
-
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-md-2 mb-4 pb-2 mb-md-0 pb-md-0">
-                                                                                <div class="form-outline">
-                                                                                    <label class="form-label goingdark" for="form3Examplev5">
-                                                                                        <nobr>Anzahl</nobr>
-                                                                                    </label>
-                                                                                    <input type="text" id="form3Examplev5" class="form-control form-control-lg searchbar goingdark" name="anzahl" />
-
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-md-2 mb-4 pb-2 mb-md-0 pb-md-0">
-                                                                                <div class="form-outline">
-                                                                                    <label class="form-label goingdark" for="form3Examplev5">
-                                                                                        <nobr>Versandkosten</nobr>
-                                                                                    </label>
-                                                                                    <input type="text" id="form3Examplev5" class="form-control form-control-lg searchbar goingdark" name="lieferkosten" />
+                                                                                    <input maxlength="2" type="text" id="form3Examplev223" placeholder="0, 1, ... , 22" class="form-control form-control-lg searchbar goingdark" name="kattechdatacount" onkeyup="watchIfEntryCountTechData(this.value);" />
 
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                         <br>
-                                                                        <div id="techdetails">
 
+                                                                        <div class="row">
+                                                                            <div class="col-md-12 mb-4 pb-2">
+                                                                                <h3>Technische Datenfelder</h3>
+                                                                                <h6>Es müssen keine Technischen Daten angegeben werden. Falls das obere Feld leer bleibt oder 0 eingetragen wird, werden keine Technnischen Daten für das Produkt angelegt.</h6>
+                                                                                <div id="newInputFields">
+                                                                                    
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <br>
+                                                                        <div id="techdetails">
+                                                                            <button id="categoryuploadbtn" class="btn btn-success disabled" onclick="sendReq();"> Eintragen </button>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -283,63 +264,6 @@
                                                 </div>
                                             </div>
                                         </div>
-
-                                        <!-- Pie Chart -->
-                                        <div class="col-xl-4 col-lg-5">
-                                            <div class="card shadow mb-4 darkcard row-border-light">
-                                                <!-- Card Header - Dropdown -->
-                                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between  darkcard row-border-light">
-                                                    <h6 class="m-0 font-weight-bold text-primary">Produktbild</h6>
-                                                    <div class="dropdown no-arrow">
-                                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                            <i class="fi fi-rr-portrait text-gray-400"></i>
-                                                        </a>
-                                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                                                            <div class="dropdown-header">Dropdown Header:</div>
-                                                            <a class="dropdown-item" href="#">Action</a>
-                                                            <a class="dropdown-item" href="#">Another action</a>
-                                                            <div class="dropdown-divider"></div>
-                                                            <a class="dropdown-item" href="#">Something else here</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- Card Body -->
-                                                <div class="card-body">
-
-
-
-
-                                                    <div class="col-md-12 mb-4 pb-2 mb-md-0 pb-md-0">
-                                                        <?php
-                                                        include 'uploadimage.php';
-
-                                                        ?>
-                                                        <img id="preview">
-                                                        <input type="file" class="form-control" name="image" id="customFile" onchange="previewImage();" />
-                                                        <br>
-                                                        <input type="submit" name="submit" id="uploadbtn" class="btn btn-success disabled" value="Hochladen">
-
-                                                        <?php
-                                                        if (!empty($statusMsg)) { ?>
-                                                            <p><?php echo "<br>" . $statusMsg; ?></p>
-
-
-                                                        <?php } ?>
-
-                                                    </div>
-
-
-                                                </div>
-
-
-
-
-
-                                            </div>
-
-                                        </div>
-
-
                                     </div>
                                 </form>
 
@@ -370,41 +294,6 @@
                     </div>
                 </div>
 
-                <script>
-                    function watchKatSelector() {
-                        document.getElementById("uploadbtn").classList.remove("disabled");
-                    }
-
-                    function previewImage() {
-                        var file = document.getElementById("customFile").files;
-                        if (file.length > 0) {
-                            var fileReader = new FileReader();
-                            fileReader.onload = function(event) {
-                                document.getElementById("preview").setAttribute("src", event.target.result);
-                            };
-                            fileReader.readAsDataURL(file[0]);
-                        }
-                    }
-
-
-                    function sendReq(kat) {
-                        var ajax = new XMLHttpRequest();
-
-                        ajax.open("GET", "templates/ajax.php?kategorie=" + kat, true);
-                        ajax.send();
-
-                        ajax.onreadystatechange = function() {
-                            if (this.readyState == 4 && this.status == 200) {
-                                document.getElementById("techdetails").innerHTML = this.response;
-                            }
-                        }
-                    }
-                </script>
-                <!-- End of Page Wrapper -->
-
-
-
-
 
 
 
@@ -424,6 +313,65 @@
                 <!-- Page level custom scripts -->
                 <script src="assets/js/chart-area-demo.js"></script>
                 <script src="assets/js/chart-pie-demo.js"></script>
+
+                <script>
+                    function watchIfEntry(message) {
+                        if (message.length !== 0) {
+                            document.getElementById("categoryuploadbtn").classList.remove("disabled");
+                        } else {
+                            document.getElementById("categoryuploadbtn").classList.add("disabled");
+                        }
+                    }
+
+                    function sendReq() {
+                        var anzahlTechFelder = document.getElementById("form3Examplev223").value;
+                        var str = "";
+                        for(let i = 0; i < anzahlTechFelder; i++) {
+                            var inputfromid = document.getElementById("" + i + "").value;
+                            str = str + "&"+(i)+"="+(inputfromid);
+                        }
+                        var inputfield = document.getElementById("form3Examplev22").value;
+                        var ajax = new XMLHttpRequest();
+                        ajax.open("GET", "templates/ajax.php?newcatname=" + inputfield + "&anzahlTechFelder="+anzahlTechFelder+str, true);
+                        ajax.send();
+
+                        ajax.onreadystatechange = function() {
+                            if (this.readyState == 4 && this.status == 200) {
+                                alert(this.response);
+
+                            }
+                        }
+                    }
+
+                    function watchIfEntryCountTechData(message) {
+                        
+                            var printat = document.getElementById("newInputFields");
+                            printat.innerHTML = "";
+                            message = parseInt(message);
+                            
+                            for(let i = 0; i < message; i++) {
+                            var br = document.createElement("br");
+                            var input = document.createElement("input");
+                            var div = document.createElement("div");
+
+                            div.classList.add("form-outline");
+                            div.appendChild(input);
+                            div.appendChild(br);
+                            input.classList = "form-control form-control-lg searchbar goingdark";
+                            input.setAttribute("maxlength", "50");
+                            input.setAttribute("type", "text");
+                            input.setAttribute("id", i);
+                            
+                            
+                            printat.appendChild(div);
+
+                            
+                            }
+                            
+                            
+                        }
+                    
+                </script>
     </body>
 
 </html>

@@ -69,9 +69,9 @@
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded searchbar">
                             <h6 class="collapse-header goingdark">Produkte bearbeiten</h6>
-                            <a class="collapse-item active goingdark" href="index.php/addproduct">Hinzufügen</a>
+                            <a class="collapse-item goingdark" href="index.php/addproduct">Hinzufügen</a>
                             <a class="collapse-item goingdark" href="index.php/removeproduct">Entfernen</a>
-                            <a class="collapse-item goingdark" href="index.php/bearbeiten">Bearbeiten</a>
+                            <a class="collapse-item active goingdark" href="index.php/bearbeiten">Bearbeiten</a>
                         </div>
                     </div>
                 </li>
@@ -106,8 +106,8 @@
 
 
 
-               <!-- Nav Item - Utilities Collapse Menu -->
-               <li class="nav-item disabled">
+                <!-- Nav Item - Utilities Collapse Menu -->
+                <li class="nav-item disabled">
                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
                         <i class="fi fi-rr-stats goingdark"></i>
                         <span class=" goingdark">Charts (Bald Verfügbar)</span>
@@ -174,11 +174,12 @@
 
                                 <!-- Page Heading -->
                                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                                    <h1 class="h3 mb-0 text-gray-800 goingdark">Produkt Hinzufügen</h1>
+                                    <h1 class="h3 mb-0 text-gray-800 goingdark">Produkt Bearbeiten</h1>
 
                                 </div>
 
                                 <?php include 'adminstuff\cardheaders.php'; ?>
+
 
                                 <!-- Content Row -->
                                 <form action="" method="POST" enctype="multipart/form-data">
@@ -189,10 +190,15 @@
                                             <div class="card shadow mb-4 darkcard row-border-light">
                                                 <!-- Card Header - Dropdown -->
                                                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between  darkcard row-border-light">
-                                                    <h6 class="m-0 font-weight-bold text-success">Produkt hinzufügen</h6>
+                                                    <h6 class="m-0 font-weight-bold text-success">Produktliste</h6>
+
+
+                                                    <input class="form-control me-2 searchbar goingdark col-xl-8 align-items-right justify-content-right" type="text" placeholder="Name/ArtNr" aria-label="Search" id="myInput" onkeydown="searchTable()" onkeyup='searchTable()'>
+
+
                                                     <div class="dropdown no-arrow">
                                                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-bs-haspopup="true" aria-bs-expanded="false">
-                                                            <i class="fi fi-rr-add text-gray-400"></i>
+                                                            <i class="fi fi-rr-trash text-gray-400"></i>
                                                         </a>
                                                         <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
                                                             <div class="dropdown-header">Dropdown Header:</div>
@@ -209,73 +215,47 @@
                                                         <div class="col-12">
                                                             <div class="row">
                                                                 <div class="col-lg-12 darkcard">
-                                                                    <div class="p-5">
-                                                                        <div class="mb-4 pb-2">
-                                                                            <select class="form-select goingdark searchbar" aria-label="Kategorie" name="kategorie" id="katselector" onchange="watchKatSelector(); sendReq(this.value); return false;">
-                                                                                <option disabled selected>Kategorie</option>
-                                                                                <?php foreach (getCatIdAndName() as $catitandname) : ?>
-                                                                                    <option value="<?= $catitandname[0] ?>"><?= $catitandname[1] ?></option>
-                                                                                <?php endforeach; ?>
-                                                                            </select>
 
-                                                                        </div>
-                                                                        <div class="row">
-                                                                            <div class="col-md-12 mb-4 pb-2">
-                                                                                <div class="form-outline">
-                                                                                    <label class="form-label goingdark" for="form3Examplev2">
-                                                                                        <nobr>Produktname*</nobr>
-                                                                                    </label>
-                                                                                    <input type="text" id="form3Examplev2" class="form-control form-control-lg searchbar goingdark" name="produktname" />
+                                                                    <table class="table table-bordered" id="producttable">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th scope="col">ArtNr</th>
+                                                                                <th scope="col">Produktname</th>
+                                                                                <th scope="col">Hinzugefügt Am</th>
+                                                                                <th scope="col">Im Lager</th>
+                                                                                <th scope="col">Auswählen</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <?php
+                                                                            foreach (getAllProducts() as $row) : ?>
+                                                                                <tr class="<?php
+                                                                                            if ($row[5] == 0) {
+                                                                                                echo "table-danger";
+                                                                                            } else if ($row[5] > 0 && $row[5] < 10) {
+                                                                                                echo "table-warning";
+                                                                                            } else {
+                                                                                                echo "table-success";
+                                                                                            }
 
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="row">
-                                                                            <div class="col-md-12 mb-4 pb-2">
-                                                                                <div class="form-outline">
-                                                                                    <label class="form-label goingdark" for="form3Examplev3">
-                                                                                        <nobr>Produktbeschreibung</nobr>
-                                                                                    </label>
-                                                                                    <textarea type="text" class="form-control form-control-lg searchbar goingdark" id="form3Examplev3" rows="3" name="beschreibung"></textarea>
 
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="row">
-                                                                            <div class="col-md-2 mb-4 pb-2 mb-md-0 pb-md-0">
-                                                                                <div class="form-outline">
-                                                                                    <label class="form-label goingdark" for="form3Examplev5">
-                                                                                        <nobr>Preis*</nobr>
-                                                                                    </label>
-                                                                                    <input type="text" id="form3Examplev5" class="form-control form-control-lg searchbar goingdark" name="preis" />
-
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-md-2 mb-4 pb-2 mb-md-0 pb-md-0">
-                                                                                <div class="form-outline">
-                                                                                    <label class="form-label goingdark" for="form3Examplev5">
-                                                                                        <nobr>Anzahl</nobr>
-                                                                                    </label>
-                                                                                    <input type="text" id="form3Examplev5" class="form-control form-control-lg searchbar goingdark" name="anzahl" />
-
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-md-2 mb-4 pb-2 mb-md-0 pb-md-0">
-                                                                                <div class="form-outline">
-                                                                                    <label class="form-label goingdark" for="form3Examplev5">
-                                                                                        <nobr>Versandkosten</nobr>
-                                                                                    </label>
-                                                                                    <input type="text" id="form3Examplev5" class="form-control form-control-lg searchbar goingdark" name="lieferkosten" />
-
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <br>
-                                                                        <div id="techdetails">
-
-                                                                        </div>
-                                                                    </div>
+                                                                                            ?>">
+                                                                                    <th scope="row"><?= $row[0] ?></th>
+                                                                                    <td><?= $row[1] ?></td>
+                                                                                    <td><?= $row[6] ?></td>
+                                                                                    <td><?= $row[5] ?></td>
+                                                                                    <td for="flexButtonDefault">
+                                                                                        <div class="form-button d-flex justify-content-center">
+                                                                                            <button type="button" class="btn btn-warning" onclick="selectProduct(<?= $row[0] ?>);"><i class="fi fi-rr-pencil"></i> Edit</button>
+                                                                                            <!--<input onchange="hakenAusgewaehlt( $row[0] );" name=" $row[0] " class="form-check-input" type="button" value="" id=" $row[0] "> -->
+                                                                                        </div>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            <?php endforeach; ?>
+                                                                        </tbody>
+                                                                    </table>
                                                                 </div>
+
                                                             </div>
                                                         </div>
                                                     </div>
@@ -283,16 +263,15 @@
                                                 </div>
                                             </div>
                                         </div>
-
                                         <!-- Pie Chart -->
                                         <div class="col-xl-4 col-lg-5">
                                             <div class="card shadow mb-4 darkcard row-border-light">
                                                 <!-- Card Header - Dropdown -->
                                                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between  darkcard row-border-light">
-                                                    <h6 class="m-0 font-weight-bold text-primary">Produktbild</h6>
+                                                    <h6 class="m-0 font-weight-bold text-primary">Produktauswahl</h6>
                                                     <div class="dropdown no-arrow">
                                                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                            <i class="fi fi-rr-portrait text-gray-400"></i>
+                                                            <i class="fi fi-rr-filter text-gray-400"></i>
                                                         </a>
                                                         <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
                                                             <div class="dropdown-header">Dropdown Header:</div>
@@ -310,36 +289,82 @@
 
 
                                                     <div class="col-md-12 mb-4 pb-2 mb-md-0 pb-md-0">
-                                                        <?php
-                                                        include 'uploadimage.php';
+                                                        <p id="produktname"> wird bearbeitet</p>
+                                                        
+                                                        <div class="row">
+                                                            <div class="col-md-8 mb-8 pb-8">
+                                                                <div class="form-outline">
+                                                                    <label class="form-label goingdark" for="form3Examplev22">
+                                                                        <nobr>Produktname*</nobr>
+                                                                    </label>
+                                                                    <input maxlength="30" type="text" id="form3Examplev22" class="form-control form-control-lg searchbar goingdark" name="produktname" />
 
-                                                        ?>
-                                                        <img id="preview">
-                                                        <input type="file" class="form-control" name="image" id="customFile" onchange="previewImage();" />
-                                                        <br>
-                                                        <input type="submit" name="submit" id="uploadbtn" class="btn btn-success disabled" value="Hochladen">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4 mb-4 pb-4">
+                                                                <div class="form-outline">
+                                                                    <label class="form-label goingdark" for="form3Examplev223">
+                                                                        <nobr>Preis</nobr>
+                                                                    </label>
+                                                                    <input type="text" id="form3Examplev223" placeholder="" class="form-control form-control-lg searchbar goingdark" name="kattechdatacount" />
 
-                                                        <?php
-                                                        if (!empty($statusMsg)) { ?>
-                                                            <p><?php echo "<br>" . $statusMsg; ?></p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-8 mb-8 pb-8">
+                                                                <div class="form-outline">
+                                                                    <label class="form-label goingdark" for="form3Examplev22">
+                                                                        <nobr>Beschreibung</nobr>
+                                                                    </label>
+                                                                    <textarea rows="2" type="text" id="form3Examplev22" class="form-control form-control-lg searchbar goingdark" name="produktname"></textarea>
 
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4 mb-4 pb-4">
+                                                                <div class="form-outline">
+                                                                    <label class="form-label goingdark" for="form3Examplev223">
+                                                                        <nobr>Auf Lager</nobr>
+                                                                    </label>
+                                                                    <input type="text" id="form3Examplev223" placeholder="" class="form-control form-control-lg searchbar goingdark" name="kattechdatacount" />
 
-                                                        <?php } ?>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-4 mb-4 pb-4">
+                                                                <div class="form-outline">
+                                                                    <label class="form-label goingdark" for="form3Examplev22">
+                                                                        <nobr>Rabatt</nobr>
+                                                                    </label>
+                                                                    <input rows="3" type="text" id="form3Examplev22" class="form-control form-control-lg searchbar goingdark" name="produktname"/>
 
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4 mb-4 pb-4">
+                                                                <div class="form-outline">
+                                                                    <label class="form-label goingdark" for="form3Examplev223">
+                                                                        <nobr>Lieferkosten</nobr>
+                                                                    </label>
+                                                                    <input type="text" id="form3Examplev223" placeholder="" class="form-control form-control-lg searchbar goingdark" name="kattechdatacount" />
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4 mb-4 pb-4">
+                                                                <div class="form-outline">
+                                                                    <label class="form-label goingdark" for="form3Examplev223">
+                                                                        <nobr>Anzahl Techfelder</nobr>
+                                                                    </label>
+                                                                    <input type="text" id="form3Examplev223" placeholder="" class="form-control form-control-lg searchbar goingdark" name="kattechdatacount" />
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <button class="btn btn-success disabled" id="buttonremoveproduct" onclick="">Speichern</button>
                                                     </div>
-
-
                                                 </div>
-
-
-
-
-
                                             </div>
-
                                         </div>
-
-
                                     </div>
                                 </form>
 
@@ -369,33 +394,41 @@
                         </div>
                     </div>
                 </div>
-
                 <script>
-                    function watchKatSelector() {
-                        document.getElementById("uploadbtn").classList.remove("disabled");
-                    }
-
-                    function previewImage() {
-                        var file = document.getElementById("customFile").files;
-                        if (file.length > 0) {
-                            var fileReader = new FileReader();
-                            fileReader.onload = function(event) {
-                                document.getElementById("preview").setAttribute("src", event.target.result);
-                            };
-                            fileReader.readAsDataURL(file[0]);
-                        }
-                    }
-
-
-                    function sendReq(kat) {
+                    function selectProduct(productid) {
                         var ajax = new XMLHttpRequest();
-
-                        ajax.open("GET", "templates/ajax.php?kategorie=" + kat, true);
+                        ajax.open("GET", "templates/ajax.php?productidforedit=" + productid, true);
                         ajax.send();
 
                         ajax.onreadystatechange = function() {
                             if (this.readyState == 4 && this.status == 200) {
-                                document.getElementById("techdetails").innerHTML = this.response;
+                                
+                            }
+                        }
+                    }
+
+
+
+
+                    function searchTable() {
+                        var input, filter, found, table, tr, td, i, j;
+                        input = document.getElementById("myInput");
+                        filter = input.value.toUpperCase();
+                        table = document.getElementById("producttable");
+                        tr = table.getElementsByTagName("tr");
+                        for (i = 1; i < tr.length; i++) {
+                            td = tr[i].getElementsByTagName("td");
+                            for (j = 0; j < td.length; j++) {
+                                if (td[j].innerHTML.toUpperCase().indexOf(filter) > -1) {
+                                    found = true;
+                                }
+                            }
+                            if (found) {
+                                tr[i].style.display = "";
+                                found = false;
+                            } else {
+                                tr[i].style.display = "none";
+
                             }
                         }
                     }
@@ -424,6 +457,8 @@
                 <!-- Page level custom scripts -->
                 <script src="assets/js/chart-area-demo.js"></script>
                 <script src="assets/js/chart-pie-demo.js"></script>
+                <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+
     </body>
 
 </html>

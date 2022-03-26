@@ -19,8 +19,8 @@
 </head>
 
 <body>
-    <?php include 'templates/navbar.php'; 
-    $data = getUserData(getEmailAdress()); 
+    <?php include 'templates/navbar.php';
+    $data = getUserData(getEmailAdress());
     ?>
     <br><br><br>
 
@@ -48,7 +48,7 @@
                             <h6 class="my-0">Promo code</h6>
                             <small>EXAMPLECODE</small>
                         </div>
-                        
+
                         <span class="text-success">-5€</span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between darkcard">
@@ -80,7 +80,7 @@
             </div>
             <div class="col-md-8 order-md-1">
                 <h4 class="mb-3 goingdark">Lieferadresse</h4>
-                <form class="needs-validation" action="index.php/bought?create=1" method="POST" novalidate>
+                <form class="needs-validation" action="index.php/bought?create=1" method="POST" id="boughtform" novalidate>
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="firstName" class="goingdark">Vorname</label>
@@ -222,57 +222,49 @@
 
                     <hr class="mb-4">
 
-                    <h4 class="mb-3 goingdark">Zahlungsart</h4>
+                    <h4 class="mb-3 goingdark">Kreditkarte</h4>
                     <br>
-                    <div class="d-block my-3">
-                        <div class="custom-control custom-radio">
-                            <input id="credit" name="paymentMethod" type="radio" class="custom-control-input searchbar goingdark" checked required>
-                            <label class="custom-control-label goingdark" for="credit">Kreditkarte</label>
-                        </div>
-                        <div class="custom-control custom-radio">
-                            <input id="debit" name="paymentMethod" type="radio" class="custom-control-input searchbar goingdark" required>
-                            <label class="custom-control-label goingdark" for="debit">Debitkarte</label>
-                        </div>
-                        <div class="custom-control custom-radio">
-                            <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input searchbar goingdark" required>
-                            <label class="custom-control-label goingdark" for="paypal">PayPal</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label for="cc-name" class="goingdark">Karteninhaber</label>
-                            <input type="text" class="form-control searchbar goingdark" id="cc-name" placeholder="" required>
-                            <small class="text-muted goingdark">Auf der Karte zu finden</small>
-                            <div class="invalid-feedback">
-                                Name benötigt
+
+                    <div class="showorshownot">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="cc-name" class="goingdark">Karteninhaber</label>
+                                <input type="text" class="form-control searchbar goingdark" id="cc-name" placeholder="" required>
+                                <small class="text-muted goingdark">Auf der Karte zu finden</small>
+                                <div class="invalid-feedback">
+                                    Name benötigt
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="cc-number" class="goingdark">Kartennummer</label>
+                                <input type="text" class="form-control searchbar goingdark" id="cc-number" placeholder="" required>
+                                <div class="invalid-feedback">
+                                    Kartennummer benötigt
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-6 mb-3">
-                            <label for="cc-number" class="goingdark">Kartennummer</label>
-                            <input type="text" class="form-control searchbar goingdark" id="cc-number" placeholder="" required>
-                            <div class="invalid-feedback">
-                                Kartennummer benötigt
+                        <div class="row">
+                            <div class="col-md-3 mb-3">
+                                <label for="cc-expiration" class="goingdark">Ablaufdatum</label>
+                                <input type="text" class="form-control searchbar goingdark" id="cc-expiration" placeholder="" required>
+                                <div class="invalid-feedback">
+                                    Ablaufdatum benötigt
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3 mb-3">
-                            <label for="cc-expiration" class="goingdark">Ablaufdatum</label>
-                            <input type="text" class="form-control searchbar goingdark" id="cc-expiration" placeholder="" required>
-                            <div class="invalid-feedback">
-                                Ablaufdatum benötigt
-                            </div>
-                        </div>
-                        <div class="col-md-3 mb-3">
-                            <label for="cc-cvv" class="goingdark">CVV</label>
-                            <input type="text" class="form-control searchbar goingdark" id="cc-cvv" placeholder="" required>
-                            <div class="invalid-feedback">
-                                Sicherheitscode benötigt
+                            <div class="col-md-3 mb-3">
+                                <label for="cc-cvv" class="goingdark">CVV</label>
+                                <input type="text" class="form-control searchbar goingdark" id="cc-cvv" placeholder="" required>
+                                <div class="invalid-feedback">
+                                    Sicherheitscode benötigt
+                                </div>
                             </div>
                         </div>
                     </div>
                     <hr class="mb-4">
-                    <button class="btn btn-success btn-lg btn-block" type="submit" onclick="Watch();">Kostenpflichtig bestellen</button>
+                    <div class="row">
+                        <button class="btn btn-success btn-lg btn-block" type="submit" onclick="Watch();">Kostenpflichtig bestellen</button>
+                        
+                    </div>
                 </form>
             </div>
         </div>
@@ -348,7 +340,7 @@
     <script src="assets/js/sb-admin-2.min.js"></script>
 
 
-    
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 </body>
