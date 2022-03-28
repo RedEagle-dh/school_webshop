@@ -133,26 +133,30 @@ if (isset($_GET['productid'])) {
     // ADMINPANEL 
 } else if (isset($_GET["kategorie"])) {
     
+    try {
+        $dname = getDescriptionName($_GET["kategorie"]);
 
-    $dname = getDescriptionName($_GET["kategorie"]);
-
-    for ($i = 0; $i < count($dname)-2; $i++) :
-        $firstr = $dname[$i][0];
-        $secstr = str_replace(":", "", $firstr);
-        $thirdstr = str_replace(" ", "_", $secstr);
-        $repstr = str_replace(".", "_", $thirdstr);
-
-        echo '
-        <div class="animated--grow-in kats">
-        <div class="mb-3">
-            <label class="goingdark">
-                <nobr>' . $dname[$i][0] . '</nobr>
-            </label>
-            <input type="text" class="form-control searchbar goingdark" name="' . $repstr . '">
-
-        </div> 
-        </div>';
-    endfor;
+        for ($i = 0; $i < count($dname)-2; $i++) :
+            $firstr = $dname[$i][0];
+            $secstr = str_replace(":", "", $firstr);
+            $thirdstr = str_replace(" ", "_", $secstr);
+            $repstr = str_replace(".", "_", $thirdstr);
+    
+            echo '
+            <div class="animated--grow-in kats">
+            <div class="mb-3">
+                <label class="goingdark">
+                    <nobr>' . $dname[$i][0] . '</nobr>
+                </label>
+                <input type="text" class="form-control searchbar goingdark" name="' . $repstr . '">
+    
+            </div> 
+            </div>';
+        endfor;
+    } catch (Exception $e) {
+        return;
+    }
+    
 } else if(isset($_GET["sendFeedback"])) {
 
     $message = $_GET["sendFeedback"];
