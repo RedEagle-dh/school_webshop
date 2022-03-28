@@ -14,7 +14,7 @@
                 </li>
 
                 <li class="nav-item dropdown">
-                    <a class="nav-link goingdark" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link goingdark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Kategorie &nbsp;<i class="fi fi-rr-angle-small-down"></i>
                     </a>
                     <ul class="dropdown-menu darkcard animated--grow-in" aria-labelledby="navbarDropdown">

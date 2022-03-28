@@ -89,7 +89,7 @@ function searchProduct()
 {
     $searchword = $_POST['searchproduct'];
 
-    $sql = "SELECT artnr, titel, beschreibung, preis, picture, auflager FROM produkte WHERE titel LIKE '%" . $searchword . "%';";
+    $sql = "SELECT artnr, titel, beschreibung, preis, picture, auflager, datum, lieferkosten, discount FROM produkte WHERE titel LIKE '%" . $searchword . "%';";
     $result = db_query($sql);
     if (!$result) {
         return [];
@@ -106,7 +106,7 @@ function searchProduct()
 
 function getCat()
 {
-    $sql = "SELECT artnr, titel, beschreibung, preis, picture, auflager FROM produkte, kategorien WHERE produkte.katid = kategorien.katid AND kategorien.katid = '" . $_GET['cat'] . "' AND auflager > 0";
+    $sql = "SELECT artnr, titel, beschreibung, preis, picture, auflager, datum, lieferkosten, discount FROM produkte, kategorien WHERE produkte.katid = kategorien.katid AND kategorien.katid = '" . $_GET['cat'] . "' AND auflager > 0";
     $result = db_query($sql);
     if (!$result) {
         return [];

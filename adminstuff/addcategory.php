@@ -253,7 +253,7 @@
 
                                                                         <br>
                                                                         <div id="techdetails">
-                                                                            <button id="categoryuploadbtn" class="btn btn-success disabled" onclick="sendReq();"> Eintragen </button>
+                                                                            <button id="categoryuploadbtn" class="btn btn-success disabled" onclick="sendReq(); return false"> Eintragen </button>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -337,7 +337,11 @@
 
                         ajax.onreadystatechange = function() {
                             if (this.readyState == 4 && this.status == 200) {
-                                
+                                if(this.response == " t") {
+                                    alert("Kategorie erfolgreich hinzugefügt");
+                                } else {
+                                    alert("Oops, es ist etwas schief gelaufen.");
+                                }
 
                             }
                         }

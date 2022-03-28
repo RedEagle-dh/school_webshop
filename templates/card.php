@@ -1,5 +1,5 @@
 <div class="card shadow darkcard" style="width: 18rem">
-    <div class="card-title" style="width:100%;max-width:300px">
+    <div class="card-title" style="width:100%;max-width:300px;">
         <?php
         
         if ($product[4] == null) {

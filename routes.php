@@ -167,6 +167,9 @@ if (strpos($route, '/registercheck') !== false) {
             $sql = "INSERT INTO adressen SET strasse = '" . $street . "', hausnummer = '" . $hnr . "', plz = '" . $zip . "', ort = '" . $city . "', land = '" . $country . "', addinfo = '" . $addinfo . "', adresseid = '" . $newadressid . "';";
             db_query($sql);
             $_SESSION['redirectTarget'] = 'Webshop/#';
+            echo '<script>
+            alert("Erfolgreich registriert, bitte einloggen!");
+        </script>';
             header("Location: Webshop/index.php/login");
             exit();
         } else {
