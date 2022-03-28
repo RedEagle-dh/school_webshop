@@ -110,6 +110,14 @@
 
 
     <script src="assets/js/bootstrap.bundle.js"></script>
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1 goingdark">&copy; 2022 Dave's Webshop GmbH</p>
+        <ul class="list-inline">
+            <li class="list-inline-item"><a href="index.php/impressum">Impressum</a></li>
+            <li class="list-inline-item"><a href="index.php/tos">AGB</a></li>
+            <li class="list-inline-item"><a href="#">Support</a></li>
+        </ul>
+    </footer>
 </body>
 
 </html>

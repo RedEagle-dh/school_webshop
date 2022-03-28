@@ -89,8 +89,8 @@ foreach ($cartItems as $cartItem) {
     $pdf->Cell(10, 6, $i, 1, 0);
     $pdf->Cell(80, 6, $cartItem[1], 1, 0);
     $pdf->Cell(23, 6, $cartItem[6], 1, 0, 'R');
-    $pdf->Cell(30, 6, ($cartItem[3]-($cartItem[3]*19/100)).EURO, 1, 0, 'R');
-    $pdf->Cell(20, 6, ($cartItem[3]*19/100).EURO, 1, 0, 'R');
+    $pdf->Cell(30, 6, number_format(($cartItem[3]-($cartItem[3]*19/100)), 2).EURO, 1, 0, 'R');
+    $pdf->Cell(20, 6, number_format(($cartItem[3]*19/100), 2).EURO, 1, 0, 'R');
     $pdf->Cell(25, 6, (($cartItem[3]*$cartItem[6])-((($cartItem[3] * $cartItem[9] ) / 100)) *$cartItem[6] ).EURO, 1, 1, 'R');
     $i++;
 }

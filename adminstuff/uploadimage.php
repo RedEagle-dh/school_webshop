@@ -18,39 +18,8 @@ if(isset($_POST["submit"])) {
     $auflager = (int) $_POST["anzahl"];
     $preis = (double) $_POST["preis"];
     $kategorie = (int) $_POST["kategorie"];
-    
-    $descriptionNames = getDescriptionName($kategorie);
-    
-
-    $descspaltenpost = [];
-    $k = 0;
-    foreach ($descriptionNames as $name) {
-        if ($k == (count($descriptionNames) - 2)) {
-            break;
-        } else {
-            $end = str_replace(" ", "_", $name[0]);
-            $end2 = str_replace(":", "", $end);
-            $end3 = str_replace(".", "_", $end2);
-            array_push($descspaltenpost, $_POST[$end3]);
-            $k++;
-        }
-    }
-
-    $earlystr = "";
-    for ($i = 0; $i < count($descspaltenpost); $i++) {
-
-
-        if (empty($earlystr)) {
-            $earlystr = $earlystr . "'" . $descspaltenpost[$i] . "'";
-        } else {
-            $earlystr = $earlystr . ", " .  "'" . $descspaltenpost[$i] . "'";
-        }
-    }
     $newPID = getNewProductID();
-    $earlystr = $earlystr . ", $newPID";
-
-
-    $tablename = getDescriptionTableName(getCatNameFromID($kategorie));
+     
     
     
     
@@ -72,9 +41,47 @@ if(isset($_POST["submit"])) {
                     
                     $sql = "INSERT INTO produkte (artnr, titel, beschreibung, preis, katid, picture, auflager, lieferkosten, datum) VALUES ($newPID, '".$titel."', '".$beschreibung."', '".$preis."', '".$kategorie."', '".$imgContent."', '".$auflager."', '".$lieferkosten."', '".$datetime."');";
                     $insert = db_query($sql);
+
+                    try {
+                        $descriptionNames = getDescriptionName($kategorie);
+                    
+                
+                    $descspaltenpost = [];
+                    $k = 0;
+                    foreach ($descriptionNames as $name) {
+                        if ($k == (count($descriptionNames) - 2)) {
+                            break;
+                        } else {
+                            $end = str_replace(" ", "_", $name[0]);
+                            $end2 = str_replace(":", "", $end);
+                            $end3 = str_replace(".", "_", $end2);
+                            array_push($descspaltenpost, $_POST[$end3]);
+                            $k++;
+                        }
+                    }
+                
+                    $earlystr = "";
+                    for ($i = 0; $i < count($descspaltenpost); $i++) {
+                
+                
+                        if (empty($earlystr)) {
+                            $earlystr = $earlystr . "'" . $descspaltenpost[$i] . "'";
+                        } else {
+                            $earlystr = $earlystr . ", " .  "'" . $descspaltenpost[$i] . "'";
+                        }
+                    }
+                    
+                    $earlystr = $earlystr . ", $newPID";
+                
+                
+                    $tablename = getDescriptionTableName(getCatNameFromID($kategorie));
                     $earlystmt = "INSERT INTO " . $tablename . " VALUES (" . $earlystr . ", null);";
                     
                     db_query($earlystmt);
+                    } catch (Exception $e) {
+                        
+                    }
+                    
                     //$sql = "INSERT INTO ".getDescriptionTableName()." VALUES (". $values .")";
                     if($insert) {
                         $status = 'success';

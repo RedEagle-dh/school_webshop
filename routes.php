@@ -412,14 +412,16 @@ if (strpos($route, '/updateprofile') !== false) {
         } else {
             $errors = [];
 
-            $userData = getUserData(getEmail());
+            $userData = getUserData(getEmailAdress());
             
 
             if ($actualpw && isset($userData[1]) && false === password_verify($actualpw, $userData[1])) {
                 $errors[] = "Passwort stimmt nicht";
+                echo '<script>alert("Passwort stimmt nicht");</script>';
             }
             if ($firstnewpw != $secondnewpw) {
                 $errors[] = "Passwörter stimmen nicht überein!";
+                echo '<script>alert("Passwörter stimmen nicht überein!");</script>';
             }
             if (0 === count($errors)) {
                 $password = password_hash($secondnewpw, PASSWORD_DEFAULT);
@@ -440,7 +442,7 @@ if (strpos($route, '/updateprofile') !== false) {
     }
 
 
-    require 'sites/register.php';
+    require 'sites/settings.php';
     exit();
 }
 

@@ -3,11 +3,16 @@
 function getDescriptionValue($productid, $kat)
 {
     $sql = "SELECT * FROM " . getDescriptionTableName(getCatNameFromID($kat)) . ", produkte WHERE " . getDescriptionTableName(getCatNameFromID($kat)) . ".productid = produkte.artnr AND produkte.artnr = $productid;";
-
-    $result = db_query($sql);
-    $row = mysqli_fetch_array($result);
-
-    return $row;
+    try {
+        $result = db_query($sql);
+    
+        $row = mysqli_fetch_array($result);
+    
+        return $row;
+    } catch (Exception $e) {
+        return null;
+    }
+    
     
 }
 
